@@ -1,0 +1,213 @@
+<div class="flex flex-col flex-auto min-w-0">
+  <!-- Header -->
+  <div
+    class="flex flex-col sm:flex-row flex-0 sm:items-center sm:justify-between p-6 sm:py-8 sm:px-10 border-b bg-card dark:bg-transparent"
+  >
+    <div class="flex-1 min-w-0">
+      <!-- Breadcrumbs -->
+      <div>
+        <div class="hidden sm:flex flex-wrap items-center font-medium">
+          <div>
+            <a class="whitespace-nowrap text-primary-500">Cadastros</a>
+          </div>
+          <div class="flex items-center ml-1 whitespace-nowrap">
+            <mat-icon
+              class="icon-size-5 text-secondary"
+              [svgIcon]="'heroicons_mini:chevron-right'"
+            ></mat-icon>
+            <a href="cadastros/empresa" class="ml-1 text-primary-500"
+              >Empresa</a
+            >
+          </div>
+          <div class="flex items-center ml-1 whitespace-nowrap">
+            <mat-icon
+              class="icon-size-5 text-secondary"
+              [svgIcon]="'heroicons_mini:chevron-right'"
+            ></mat-icon>
+            <span class="ml-1 text-secondary">Incluir</span>
+          </div>
+        </div>
+      </div>
+      <!-- Title -->
+      <div class="mt-2">
+        <h2
+          class="text-3xl md:text-4xl font-extrabold tracking-tight leading-7 sm:leading-10 truncate"
+        >
+          Incluir empresa
+        </h2>
+      </div>
+    </div>
+    <!-- Actions -->
+    <div class="flex shrink-0 items-center mt-6 sm:mt-0 sm:ml-4">
+      <button mat-stroked-button>
+        <mat-icon
+          class="icon-size-4"
+          [svgIcon]="'heroicons_mini:pencil-square'"
+        ></mat-icon>
+        <span class="ml-2">Editar</span>
+      </button>
+      <button
+        class="ml-3"
+        mat-flat-button
+        [color]="'primary'"
+        [routerLink]="'./..'"
+      >
+        <mat-icon
+          class="icon-size-4"
+          [svgIcon]="'heroicons_mini:arrow-uturn-left'"
+        ></mat-icon>
+        <span class="ml-2">Voltar</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Main -->
+  <div class="flex-auto p-6 sm:p-10">
+    <form
+      class="flex flex-col mt-0 p-8 pb-4 bg-card rounded-2xl shadow overflow-hidden"
+    >
+      <div class="flex flex-col gt-xs:flex-row">
+        <mat-form-field
+          [ngClass]="formFieldHelpers"
+          class="flex-auto gt-xs:pr-3"
+        >
+          <mat-label>Nome</mat-label>
+          <input matInput />
+          <mat-icon
+            class="icon-size-5"
+            matSuffix
+            [svgIcon]="'heroicons_solid:user-circle'"
+          ></mat-icon>
+        </mat-form-field>
+        <mat-form-field
+          [ngClass]="formFieldHelpers"
+          class="flex-auto gt-xs:pl-3"
+        >
+          <mat-label>Responsável</mat-label>
+          <input matInput />
+          <mat-icon
+            class="icon-size-5"
+            matSuffix
+            [svgIcon]="'heroicons_solid:user-circle'"
+          ></mat-icon>
+        </mat-form-field>
+      </div>
+
+      <mat-divider class="p-2"></mat-divider>
+      <!-- Endereço -->
+      <div class="flex">
+        <mat-form-field [ngClass]="formFieldHelpers" class="flex-auto">
+          <mat-label>CEP</mat-label>
+          <input matInput maxlength="10" #postalCode />
+          <mat-hint align="end">{{ postalCode.value.length }} / 10</mat-hint>
+          <mat-icon
+            class="icon-size-5"
+            matSuffix
+            [svgIcon]="'heroicons_solid:envelope'"
+          ></mat-icon>
+        </mat-form-field>
+      </div>
+      <div class="flex">
+        <mat-form-field [ngClass]="formFieldHelpers" class="flex-auto">
+          <mat-label>Endereço</mat-label>
+          <input matInput />
+          <mat-icon
+            class="icon-size-5"
+            matSuffix
+            [svgIcon]="'heroicons_solid:map-pin'"
+          ></mat-icon>
+        </mat-form-field>
+      </div>
+      <div class="flex flex-row gt-md:flex-row">
+        <mat-form-field
+          [ngClass]="formFieldHelpers"
+          class="flex-auto gt-md:pr-3 mr-5"
+        >
+          <mat-label>Bairro</mat-label>
+          <input matInput />
+          <mat-icon
+            class="icon-size-5"
+            matSuffix
+            [svgIcon]="'heroicons_solid:map-pin'"
+          ></mat-icon>
+        </mat-form-field>
+        <mat-form-field
+          [ngClass]="formFieldHelpers"
+          class="flex-auto gt-md:pr-3 mr-5"
+        >
+          <mat-label>Cidade</mat-label>
+          <input matInput />
+          <mat-icon
+            class="icon-size-5"
+            matSuffix
+            [svgIcon]="'heroicons_solid:map-pin'"
+          ></mat-icon>
+        </mat-form-field>
+        <mat-form-field
+          [ngClass]="formFieldHelpers"
+          class="flex-auto gt-md:pr-3"
+        >
+          <mat-label>Estado</mat-label>
+          <input matInput />
+          <mat-icon
+            class="icon-size-5"
+            matSuffix
+            [svgIcon]="'heroicons_solid:map-pin'"
+          ></mat-icon>
+        </mat-form-field>
+      </div>
+      <div class="flex flex-col gt-md:flex-row">
+        <mat-form-field
+          [ngClass]="formFieldHelpers"
+          class="flex-auto gt-md:pr-3"
+        >
+          <mat-label>City</mat-label>
+          <input matInput />
+          <mat-icon
+            class="icon-size-5"
+            matSuffix
+            [svgIcon]="'heroicons_solid:map-pin'"
+          ></mat-icon>
+        </mat-form-field>
+        <mat-form-field
+          [ngClass]="formFieldHelpers"
+          class="flex-auto gt-md:pl-3"
+        >
+          <mat-label>State</mat-label>
+          <input matInput />
+          <mat-icon
+            class="icon-size-5"
+            matSuffix
+            [svgIcon]="'heroicons_solid:map-pin'"
+          ></mat-icon>
+        </mat-form-field>
+      </div>
+      <div class="flex">
+        <mat-form-field [ngClass]="formFieldHelpers" class="flex-auto">
+          <mat-label>Postal code</mat-label>
+          <input matInput maxlength="5" #postalCode />
+          <mat-hint align="end">{{ postalCode.value.length }} / 5</mat-hint>
+          <mat-icon
+            class="icon-size-5"
+            matSuffix
+            [svgIcon]="'heroicons_solid:envelope'"
+          ></mat-icon>
+        </mat-form-field>
+      </div>
+      <div class="flex">
+        <mat-form-field [ngClass]="formFieldHelpers" class="flex-auto">
+          <input
+            matInput
+            [matDatepicker]="picker2"
+            [placeholder]="'Choose a date'"
+          />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="picker2"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker2></mat-datepicker>
+        </mat-form-field>
+      </div>
+    </form>
+  </div>
+</div>
