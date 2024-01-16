@@ -66,12 +66,20 @@
     <form
       class="flex flex-col mt-0 p-8 pb-4 bg-card rounded-2xl shadow overflow-hidden"
     >
-      <div class="flex flex-col gt-xs:flex-row">
+      <h4
+        class="text-2xl md:text-3xl font-extrabold tracking-tight leading-7 sm:leading-10 truncate"
+      >
+        Dados da empresa
+      </h4>
+      <mat-divider class="p-2"></mat-divider>
+
+      <div class="flex flex-row gt-xs:flex-row">
         <mat-form-field
           [ngClass]="formFieldHelpers"
-          class="flex-auto gt-xs:pr-3"
+          class="flex gt-xs:pr-3 mr-5 w-60"
+        
         >
-          <mat-label>Nome</mat-label>
+          <mat-label>CNPJ</mat-label>
           <input matInput />
           <mat-icon
             class="icon-size-5"
@@ -81,9 +89,9 @@
         </mat-form-field>
         <mat-form-field
           [ngClass]="formFieldHelpers"
-          class="flex-auto gt-xs:pl-3"
+          class="flex-auto gt-xs:pr-3"
         >
-          <mat-label>Responsável</mat-label>
+          <mat-label>Nome Fantasia</mat-label>
           <input matInput />
           <mat-icon
             class="icon-size-5"
@@ -93,10 +101,8 @@
         </mat-form-field>
       </div>
 
-      <mat-divider class="p-2"></mat-divider>
-      <!-- Endereço -->
-      <div class="flex">
-        <mat-form-field [ngClass]="formFieldHelpers" class="flex-auto">
+      <div class="flex flex-row gt-xs:flex-row">
+        <mat-form-field [ngClass]="formFieldHelpers" class="md-4 sm-4 mr-5">
           <mat-label>CEP</mat-label>
           <input matInput maxlength="10" #postalCode />
           <mat-hint align="end">{{ postalCode.value.length }} / 10</mat-hint>
@@ -106,8 +112,6 @@
             [svgIcon]="'heroicons_solid:envelope'"
           ></mat-icon>
         </mat-form-field>
-      </div>
-      <div class="flex">
         <mat-form-field [ngClass]="formFieldHelpers" class="flex-auto">
           <mat-label>Endereço</mat-label>
           <input matInput />
@@ -156,6 +160,22 @@
           ></mat-icon>
         </mat-form-field>
       </div>
+
+      <h4
+        class="text-2xl md:text-3xl font-extrabold tracking-tight leading-7 sm:leading-10 truncate"
+      >
+        Dados do responsável
+      </h4>
+      <mat-divider class="p-2"></mat-divider>
+      <mat-form-field [ngClass]="formFieldHelpers" class="flex-auto gt-xs:pl-3">
+        <mat-label>Responsável</mat-label>
+        <input matInput />
+        <mat-icon
+          class="icon-size-5"
+          matSuffix
+          [svgIcon]="'heroicons_solid:user-circle'"
+        ></mat-icon>
+      </mat-form-field>
       <div class="flex flex-col gt-md:flex-row">
         <mat-form-field
           [ngClass]="formFieldHelpers"
