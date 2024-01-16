@@ -49,7 +49,7 @@
       <button
         class="ml-3"
         mat-flat-button
-        [color]="'primary'"
+        [color]="'accent'"
         [routerLink]="'./..'"
       >
         <mat-icon
@@ -66,168 +66,213 @@
     <form
       class="flex flex-col mt-0 p-8 pb-4 bg-card rounded-2xl shadow overflow-hidden"
     >
-      <h4
-        class="text-2xl md:text-3xl font-extrabold tracking-tight leading-7 sm:leading-10 truncate"
-      >
-        Dados da empresa
-      </h4>
-      <mat-divider class="p-2"></mat-divider>
-
-      <div class="flex flex-row gt-xs:flex-row">
-        <mat-form-field
-          [ngClass]="formFieldHelpers"
-          class="flex gt-xs:pr-3 mr-5 w-60"
-        
+      <!-- DADOS DA EMPRESA -->
+      <section>
+        <h4
+          class="text-2xl md:text-3xl font-extrabold tracking-tight leading-7 sm:leading-10 truncate"
         >
-          <mat-label>CNPJ</mat-label>
-          <input matInput />
-          <mat-icon
-            class="icon-size-5"
-            matSuffix
-            [svgIcon]="'heroicons_solid:user-circle'"
-          ></mat-icon>
-        </mat-form-field>
-        <mat-form-field
-          [ngClass]="formFieldHelpers"
-          class="flex-auto gt-xs:pr-3"
+          Dados da empresa
+        </h4>
+        <mat-divider class="p-2"></mat-divider>
+        <div class="flex flex-row gt-xs:flex-row">
+          <mat-form-field
+            [ngClass]="formFieldHelpers"
+            class="flex gt-xs:pr-3 mr-5 w-60"
+          >
+            <mat-label>CNPJ</mat-label>
+            <input matInput />
+            <mat-icon
+              class="icon-size-5"
+              matSuffix
+              [svgIcon]="'heroicons_solid:user-circle'"
+            ></mat-icon>
+          </mat-form-field>
+          <mat-form-field
+            [ngClass]="formFieldHelpers"
+            class="flex-auto gt-xs:pr-3"
+          >
+            <mat-label>Nome</mat-label>
+            <input matInput />
+            <mat-icon
+              class="icon-size-5"
+              matSuffix
+              [svgIcon]="'heroicons_solid:user-circle'"
+            ></mat-icon>
+          </mat-form-field>
+        </div>
+        <div class="flex flex-row gt-xs:flex-row">
+          <mat-form-field
+            [ngClass]="formFieldHelpers"
+            class="flex gt-xs:pr-3 mr-5 w-160"
+          >
+            <mat-label>E-mail</mat-label>
+            <input matInput type="email" />
+            <mat-icon
+              class="icon-size-5"
+              matSuffix
+              [svgIcon]="'heroicons_solid:user-circle'"
+            ></mat-icon>
+          </mat-form-field>
+          <mat-form-field
+            [ngClass]="formFieldHelpers"
+            class="flex-auto gt-xs:pr-3 mr-5"
+          >
+            <mat-label>Telefone</mat-label>
+            <input matInput />
+            <mat-icon
+              class="icon-size-5"
+              matSuffix
+              [svgIcon]="'heroicons_solid:user-circle'"
+            ></mat-icon>
+          </mat-form-field>
+          <mat-form-field
+            [ngClass]="formFieldHelpers"
+            class="flex-auto gt-xs:pr-3"
+          >
+            <mat-label>Celular</mat-label>
+            <input matInput />
+            <mat-icon
+              class="icon-size-5"
+              matSuffix
+              [svgIcon]="'heroicons_solid:user-circle'"
+            ></mat-icon>
+          </mat-form-field>
+        </div>
+        <div class="flex flex-row gt-xs:flex-row">
+          <mat-form-field
+            [ngClass]="formFieldHelpers"
+            class="flex gt-md:pr-3 w-60 mr-5"
+          >
+            <mat-label>CEP</mat-label>
+            <input matInput #postalCode />
+            <mat-icon
+              class="icon-size-5"
+              matSuffix
+              [svgIcon]="'heroicons_solid:map-pin'"
+            ></mat-icon>
+          </mat-form-field>
+          <mat-form-field [ngClass]="formFieldHelpers" class="flex-auto gt-md:pr-3">
+            <mat-label>Endereço</mat-label>
+            <input matInput />
+            <mat-icon
+              class="icon-size-5"
+              matSuffix
+              [svgIcon]="'heroicons_solid:map-pin'"
+            ></mat-icon>
+          </mat-form-field>
+        </div>
+        <div class="flex flex-row gt-md:flex-row">
+          <mat-form-field
+            [ngClass]="formFieldHelpers"
+            class="flex-auto gt-md:pr-3 mr-5"
+          >
+            <mat-label>Bairro</mat-label>
+            <input matInput />
+            <mat-icon
+              class="icon-size-5"
+              matSuffix
+              [svgIcon]="'heroicons_solid:map-pin'"
+            ></mat-icon>
+          </mat-form-field>
+          <mat-form-field
+            [ngClass]="formFieldHelpers"
+            class="flex-auto gt-md:pr-3 mr-5"
+          >
+            <mat-label>Cidade</mat-label>
+            <input matInput />
+            <mat-icon
+              class="icon-size-5"
+              matSuffix
+              [svgIcon]="'heroicons_solid:map-pin'"
+            ></mat-icon>
+          </mat-form-field>
+          <mat-form-field
+            [ngClass]="formFieldHelpers"
+            class="flex-auto gt-md:pr-3"
+          >
+            <mat-label>Estado</mat-label>
+            <input matInput />
+            <mat-icon
+              class="icon-size-5"
+              matSuffix
+              [svgIcon]="'heroicons_solid:map-pin'"
+            ></mat-icon>
+          </mat-form-field>
+        </div>
+      </section>
+      <!-- CONTATO RESPONSÁVEL DA EMPRESA -->
+      <section>
+        <h4
+          class="text-2xl md:text-3xl font-extrabold tracking-tight leading-7 sm:leading-10 truncate"
         >
-          <mat-label>Nome Fantasia</mat-label>
-          <input matInput />
-          <mat-icon
-            class="icon-size-5"
-            matSuffix
-            [svgIcon]="'heroicons_solid:user-circle'"
-          ></mat-icon>
-        </mat-form-field>
-      </div>
-
-      <div class="flex flex-row gt-xs:flex-row">
-        <mat-form-field [ngClass]="formFieldHelpers" class="md-4 sm-4 mr-5">
-          <mat-label>CEP</mat-label>
-          <input matInput maxlength="10" #postalCode />
-          <mat-hint align="end">{{ postalCode.value.length }} / 10</mat-hint>
-          <mat-icon
-            class="icon-size-5"
-            matSuffix
-            [svgIcon]="'heroicons_solid:envelope'"
-          ></mat-icon>
-        </mat-form-field>
-        <mat-form-field [ngClass]="formFieldHelpers" class="flex-auto">
-          <mat-label>Endereço</mat-label>
-          <input matInput />
-          <mat-icon
-            class="icon-size-5"
-            matSuffix
-            [svgIcon]="'heroicons_solid:map-pin'"
-          ></mat-icon>
-        </mat-form-field>
-      </div>
-      <div class="flex flex-row gt-md:flex-row">
-        <mat-form-field
-          [ngClass]="formFieldHelpers"
-          class="flex-auto gt-md:pr-3 mr-5"
-        >
-          <mat-label>Bairro</mat-label>
-          <input matInput />
-          <mat-icon
-            class="icon-size-5"
-            matSuffix
-            [svgIcon]="'heroicons_solid:map-pin'"
-          ></mat-icon>
-        </mat-form-field>
-        <mat-form-field
-          [ngClass]="formFieldHelpers"
-          class="flex-auto gt-md:pr-3 mr-5"
-        >
-          <mat-label>Cidade</mat-label>
-          <input matInput />
-          <mat-icon
-            class="icon-size-5"
-            matSuffix
-            [svgIcon]="'heroicons_solid:map-pin'"
-          ></mat-icon>
-        </mat-form-field>
-        <mat-form-field
-          [ngClass]="formFieldHelpers"
-          class="flex-auto gt-md:pr-3"
-        >
-          <mat-label>Estado</mat-label>
-          <input matInput />
-          <mat-icon
-            class="icon-size-5"
-            matSuffix
-            [svgIcon]="'heroicons_solid:map-pin'"
-          ></mat-icon>
-        </mat-form-field>
-      </div>
-
-      <h4
-        class="text-2xl md:text-3xl font-extrabold tracking-tight leading-7 sm:leading-10 truncate"
-      >
-        Dados do responsável
-      </h4>
-      <mat-divider class="p-2"></mat-divider>
-      <mat-form-field [ngClass]="formFieldHelpers" class="flex-auto gt-xs:pl-3">
-        <mat-label>Responsável</mat-label>
-        <input matInput />
-        <mat-icon
-          class="icon-size-5"
-          matSuffix
-          [svgIcon]="'heroicons_solid:user-circle'"
-        ></mat-icon>
-      </mat-form-field>
-      <div class="flex flex-col gt-md:flex-row">
-        <mat-form-field
-          [ngClass]="formFieldHelpers"
-          class="flex-auto gt-md:pr-3"
-        >
-          <mat-label>City</mat-label>
-          <input matInput />
-          <mat-icon
-            class="icon-size-5"
-            matSuffix
-            [svgIcon]="'heroicons_solid:map-pin'"
-          ></mat-icon>
-        </mat-form-field>
-        <mat-form-field
-          [ngClass]="formFieldHelpers"
-          class="flex-auto gt-md:pl-3"
-        >
-          <mat-label>State</mat-label>
-          <input matInput />
-          <mat-icon
-            class="icon-size-5"
-            matSuffix
-            [svgIcon]="'heroicons_solid:map-pin'"
-          ></mat-icon>
-        </mat-form-field>
-      </div>
-      <div class="flex">
-        <mat-form-field [ngClass]="formFieldHelpers" class="flex-auto">
-          <mat-label>Postal code</mat-label>
-          <input matInput maxlength="5" #postalCode />
-          <mat-hint align="end">{{ postalCode.value.length }} / 5</mat-hint>
-          <mat-icon
-            class="icon-size-5"
-            matSuffix
-            [svgIcon]="'heroicons_solid:envelope'"
-          ></mat-icon>
-        </mat-form-field>
-      </div>
-      <div class="flex">
-        <mat-form-field [ngClass]="formFieldHelpers" class="flex-auto">
-          <input
-            matInput
-            [matDatepicker]="picker2"
-            [placeholder]="'Choose a date'"
-          />
-          <mat-datepicker-toggle
-            matSuffix
-            [for]="picker2"
-          ></mat-datepicker-toggle>
-          <mat-datepicker #picker2></mat-datepicker>
-        </mat-form-field>
-      </div>
+          Dados do responsável
+        </h4>
+        <mat-divider class="p-2"></mat-divider>
+        <div class="flex flex-row gt-xs:flex-row">
+          <mat-form-field
+            [ngClass]="formFieldHelpers"
+            class="flex-auto gt-xs:pl-3 mr-5"
+          >
+            <mat-label>Nome do responsável</mat-label>
+            <input matInput />
+            <mat-icon
+              class="icon-size-5"
+              matSuffix
+              [svgIcon]="'heroicons_solid:user-circle'"
+            ></mat-icon>
+          </mat-form-field>
+          <mat-form-field
+            [ngClass]="formFieldHelpers"
+            class="flex-auto gt-xs:pl-3 mr-5"
+          >
+            <mat-label>Setor</mat-label>
+            <input matInput />
+            <mat-icon
+              class="icon-size-5"
+              matSuffix
+              [svgIcon]="'heroicons_solid:user-circle'"
+            ></mat-icon>
+          </mat-form-field>
+          <mat-form-field
+            [ngClass]="formFieldHelpers"
+            class="flex-auto gt-xs:pr-3"
+          >
+            <mat-label>E-mail</mat-label>
+            <input matInput type="email" />
+            <mat-icon
+              class="icon-size-5"
+              matSuffix
+              [svgIcon]="'heroicons_solid:user-circle'"
+            ></mat-icon>
+          </mat-form-field>
+        </div>
+        <div class="flex flex-row gt-xs:flex-row">
+          <mat-form-field
+            [ngClass]="formFieldHelpers"
+            class="flex-auto gt-xs:pr-3 mr-5"
+          >
+            <mat-label>Telefone</mat-label>
+            <input matInput />
+            <mat-icon
+              class="icon-size-5"
+              matSuffix
+              [svgIcon]="'heroicons_solid:user-circle'"
+            ></mat-icon>
+          </mat-form-field>
+          <mat-form-field
+            [ngClass]="formFieldHelpers"
+            class="flex-auto gt-xs:pr-3"
+          >
+            <mat-label>Celular</mat-label>
+            <input matInput />
+            <mat-icon
+              class="icon-size-5"
+              matSuffix
+              [svgIcon]="'heroicons_solid:user-circle'"
+            ></mat-icon>
+          </mat-form-field>
+        </div>
+      </section>
     </form>
   </div>
 </div>
