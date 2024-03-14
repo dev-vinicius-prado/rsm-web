@@ -3,10 +3,15 @@
     "bem-vindo-de-volta": "Bem vindo de volta",
     "cadastro": "Cadastro",
     "cadastros": "Cadastros",
+    "codigo-contrato": "Código do contrato",
     "Configuracoes": "Configurações",
     "contrato": "Contrato",
     "empresa": "Empresa",
     "empresa-contratante": "Empresa contratante",
     "projeto": "Projeto",
-    "Mobilizacao": "Mobilização"
+    "Mobilizacao": "Mobilização",
+    "vigencia": "Vigência",
+    "lista-contratos": "Lista de contratos",
+    "pesquisa-contrato": "pesquisar contrato",
+    "incluir-contrato": "Incluir um novo contrato"
 }

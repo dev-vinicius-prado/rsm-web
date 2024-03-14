@@ -3,12 +3,17 @@
     "bem-vindo-de-volta": "Welcome back",
     "Cadastro": "Registration",
     "Cadastros": "Registrations",
+    "codigo-contrato": "Contract code",
     "Configuracoes": "Settings",
     "Contrato": "Contract",
-    "Empresa": "Company",
     "empresa": "company",
+    "Empresa": "Company",
+    "empresa-contratante": "Contracting company",
     "Incluir": "Include",
     "Mobilizacao": "Mobilization",
     "projeto": "Project",
-    "empresa-contratante": "Contracting Company"
+    "vigencia": "Vigence",
+    "lista-contratos": "Contracts list",
+    "pesquisa-contrato": "Search contract",
+    "incluir-contrato": "Include a new contract"
 }
