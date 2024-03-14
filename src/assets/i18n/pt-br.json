@@ -1,9 +1,12 @@
 {
-    "bem-vindo-de-volta": "Bem vindo de volta",
-    "projeto": "Projeto",
     "analitico": "Analítico",
+    "bem-vindo-de-volta": "Bem vindo de volta",
     "cadastro": "Cadastro",
     "cadastros": "Cadastros",
+    "Configuracoes": "Configurações",
+    "contrato": "Contrato",
     "empresa": "Empresa",
-    "contrato": "Contrato"
+    "empresa-contratante": "Empresa contratante",
+    "projeto": "Projeto",
+    "Mobilizacao": "Mobilização"
 }

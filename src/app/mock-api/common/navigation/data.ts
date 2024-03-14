@@ -4,7 +4,7 @@ import { FuseNavigationItem } from '@fuse/components/navigation';
 export const defaultNavigation: FuseNavigationItem[] = [
     {
         id   : 'mobilizacao',
-        title: 'Mobilização',
+        title: 'Mobilizacao',
         type : 'collapsable',
         icon : 'heroicons_outline:pencil-square',
         children: [
@@ -19,13 +19,13 @@ export const defaultNavigation: FuseNavigationItem[] = [
     },
     {
         id   : 'configuracao',
-        title: 'Configurações',
+        title: 'Configuracoes',
         type : 'collapsable',
         icon : 'heroicons_outline:adjustments-horizontal',
         children: [
             {
                 id   : 'configuracao.empresa',
-                title: 'Empresa Contratante',
+                title: 'empresa-contratante',
                 type : 'basic',
                 link : '/configuracoes/empresa',
                 icon : 'heroicons_outline:building-office-2'
