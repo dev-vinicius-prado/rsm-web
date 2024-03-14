@@ -1,12 +1,17 @@
 import { Routes } from "@angular/router";
-import { ListComponent } from "app/modules/mobilization/contract/list/list-contract.component";
+import { ListContractComponent } from "app/modules/mobilization/contract/list/list-contract.component";
 import { ContractComponent } from "./contract.component";
 
 export default [
   {
     path: "",
-    component: ListComponent,
+    component: ContractComponent,
     children: [
+      {
+        path: "",
+        pathMatch: 'full',
+        component: ListContractComponent,
+      },
       {
         path: "incluir",
         component: ContractComponent,

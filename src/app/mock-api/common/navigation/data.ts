@@ -12,7 +12,7 @@ export const defaultNavigation: FuseNavigationItem[] = [
                 id   : 'mobilizacao.contrato',
                 title: 'Contrato',
                 type : 'basic',
-                link : '/mobilizacao/contrato',
+                link : '/mobilizacao/contratos',
                 icon : 'heroicons_outline:clipboard-document-list'
             },
         ],
