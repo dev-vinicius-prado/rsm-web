@@ -1,5 +1,9 @@
 {
-    "welcome-back": "Bem vindo de volta",
-    "Project": "Projeto",
-    "Analytics": "Analítico"
+    "bem-vindo-de-volta": "Bem vindo de volta",
+    "projeto": "Projeto",
+    "analitico": "Analítico",
+    "cadastro": "Cadastro",
+    "cadastros": "Cadastros",
+    "empresa": "Empresa",
+    "contrato": "Contrato"
 }

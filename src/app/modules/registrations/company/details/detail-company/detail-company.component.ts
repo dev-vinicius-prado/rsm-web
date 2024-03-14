@@ -20,6 +20,7 @@ import { MatInputModule } from "@angular/material/input";
 import { MatSelectModule } from "@angular/material/select";
 import { RouterLink } from "@angular/router";
 import { MatDividerModule } from "@angular/material/divider";
+import { TranslocoModule } from "@ngneat/transloco";
 
 @Component({
   selector: "app-detail-company",
@@ -41,7 +42,8 @@ import { MatDividerModule } from "@angular/material/divider";
     MatChipsModule,
     MatDatepickerModule,
     MatDividerModule,
-    RouterLink
+    RouterLink,
+    TranslocoModule
   ],
   styleUrl: "./detail-company.component.scss",
 })
