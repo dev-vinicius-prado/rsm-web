@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { RouterOutlet } from '@angular/router';
+
 
 @Component({
   selector: 'app-contract',
   standalone: true,
-  imports: [CommonModule],
-  templateUrl: './contract.component.html',
-  styleUrl: './contract.component.scss'
+  imports: [RouterOutlet],
+  template: '<router-outlet></router-outlet>',
 })
 export class ContractComponent {
 
