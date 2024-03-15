@@ -43,7 +43,7 @@ import { TranslocoModule } from "@ngneat/transloco";
   templateUrl: "./list-contract.component.html",
   styleUrl: "./list-contract.component.scss",
 })
-export class ListComponent {
+export class ListContractComponent {
   isLoading: boolean = false;
   searchInputControl: UntypedFormControl = new UntypedFormControl();
   private _unsubscribeAll: Subject<any> = new Subject<any>();
@@ -57,5 +57,9 @@ export class ListComponent {
 
   ngOnInit(): void {
     console.log("initialzing contract list component!!");
+  }
+
+  createContract() {
+    this._router.navigate(["incluir"], { relativeTo: this._activatedRoute });
   }
 }
