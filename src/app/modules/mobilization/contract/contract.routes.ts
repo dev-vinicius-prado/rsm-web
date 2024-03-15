@@ -1,6 +1,7 @@
 import { Routes } from "@angular/router";
 import { ListContractComponent } from "app/modules/mobilization/contract/list/list-contract.component";
 import { ContractComponent } from "./contract.component";
+import { DetailContractComponent } from "./detail/detail-contract.component";
 
 export default [
   {
@@ -14,7 +15,7 @@ export default [
       },
       {
         path: "incluir",
-        component: ContractComponent,
+        component: DetailContractComponent,
       },
     ],
   },
