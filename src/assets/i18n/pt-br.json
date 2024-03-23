@@ -6,6 +6,7 @@
     "codigo-contrato": "Código do contrato",
     "Configuracoes": "Configurações",
     "contrato": "Contrato",
+    "contratos": "Contratos",
     "empresa": "Empresa",
     "empresa-contratante": "Empresa contratante",
     "projeto": "Projeto",
@@ -13,5 +14,11 @@
     "vigencia": "Vigência",
     "lista-contratos": "Lista de contratos",
     "pesquisa-contrato": "pesquisar contrato",
-    "incluir-contrato": "Incluir um novo contrato"
+    "incluir-contrato": "Incluir um novo contrato",
+    "dados-contrato": "Dados básicos do contrato",
+    "proximo": "Próximo",
+    "voltar":"Voltar",
+    "dados-recurso": "Dados do recurso",
+    "finalizar": "Finalizar",
+    "enviar": "Enviar"
 }
