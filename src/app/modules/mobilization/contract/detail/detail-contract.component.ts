@@ -16,6 +16,8 @@ import { MatInputModule } from "@angular/material/input";
 import { MatRadioModule } from "@angular/material/radio";
 import { MatSelectModule } from "@angular/material/select";
 import { MatStepperModule } from "@angular/material/stepper";
+import { MatDatepickerModule } from '@angular/material/datepicker';
+
 
 @Component({
   selector: "app-detail-contract",
@@ -34,6 +36,7 @@ import { MatStepperModule } from "@angular/material/stepper";
     MatButtonModule,
     MatCheckboxModule,
     MatRadioModule,
+    MatDatepickerModule
   ],
   templateUrl: "./detail-contract.component.html",
   styleUrl: "./detail-contract.component.scss",

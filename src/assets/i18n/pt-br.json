@@ -9,6 +9,7 @@
     "contratos": "Contratos",
     "empresa": "Empresa",
     "empresa-contratante": "Empresa contratante",
+    "empresa-contratada": "Empresa contratada",
     "projeto": "Projeto",
     "Mobilizacao": "Mobilização",
     "vigencia": "Vigência",
@@ -20,5 +21,9 @@
     "voltar":"Voltar",
     "dados-recurso": "Dados do recurso",
     "finalizar": "Finalizar",
-    "enviar": "Enviar"
+    "enviar": "Enviar",
+    "numero-contrato": "Número do contrato",
+    "nome-fantasia": "Nome fantasia",
+    "vigencia-inicio": "Início da vigência",
+    "vigencia-fim": "Fim da vigência"
 }
