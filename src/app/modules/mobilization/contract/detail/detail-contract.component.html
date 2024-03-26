@@ -48,17 +48,31 @@
             <ng-template matStepLabel>{{ trs("dados-contrato") }}</ng-template>
             <div class="flex flex-wrap gap-2">
               <!-- FIELD CONTRACT NUMBER -->
-              <mat-form-field class="flex w-60">
+              <mat-form-field class="flex flex-auto">
                 <mat-label>{{ trs("numero-contrato") }}</mat-label>
                 <input matInput [formControlName]="" />
               </mat-form-field>
-            </div>
-            <div class="flex flex-wrap gap-2">
               <!-- FIELD CNPJ -->
-              <mat-form-field class="flex w-60">
+              <mat-form-field class="flex flex-auto">
                 <mat-label>CNPJ</mat-label>
                 <input matInput [formControlName]="" />
               </mat-form-field>
+              <!-- FIELD INITIAL MEET DATE -->
+              <mat-form-field class="flex flex-auto">
+                <mat-label>{{ trs("data-reuniao-inicial") }}</mat-label>
+                <input
+                  matInput
+                  [matDatepicker]="dateInitialMeet"
+                  [placeholder]="'99/99/9999'"
+                />
+                <mat-datepicker-toggle
+                  matSuffix
+                  [for]="dateInitialMeet"
+                ></mat-datepicker-toggle>
+                <mat-datepicker #dateInitialMeet></mat-datepicker>
+              </mat-form-field>
+            </div>
+            <div class="flex flex-wrap gap-2">
               <!-- FIELD CONTRACTOR FANTANY NAME -->
               <mat-form-field class="flex-auto gt-xs:pr-3">
                 <mat-label>{{ trs("nome-fantasia") }}</mat-label>
@@ -66,34 +80,133 @@
               </mat-form-field>
             </div>
             <div class="flex flex-wrap gap-2">
-              <!-- FIELDS PERIOD -->
-              <mat-form-field class="flex w-40">
+              <!-- FIELD START VIGENCE -->
+              <mat-form-field class="flex w-60">
                 <mat-label>{{ trs("vigencia-inicio") }}</mat-label>
                 <input
                   matInput
-                  [matDatepicker]="picker2"
-                  [placeholder]="'Choose a date'"
+                  [matDatepicker]="dateStartVigence"
+                  [placeholder]="'99/99/9999'"
                 />
                 <mat-datepicker-toggle
                   matSuffix
-                  [for]="picker2"
+                  [for]="dateStartVigence"
                 ></mat-datepicker-toggle>
-                <mat-datepicker #picker2></mat-datepicker>
+                <mat-datepicker #dateStartVigence></mat-datepicker>
               </mat-form-field>
-              <mat-form-field class="flex w-40">
+              <!-- FIELD FINISH VIGENCE -->
+              <mat-form-field class="flex w-60">
                 <mat-label>{{ trs("vigencia-fim") }}</mat-label>
                 <input
                   matInput
-                  [matDatepicker]="picker2"
-                  [placeholder]="'Choose a date'"
+                  [matDatepicker]="dateEndingVigence"
+                  [placeholder]="'99/99/9999'"
                 />
                 <mat-datepicker-toggle
                   matSuffix
-                  [for]="picker2"
+                  [for]="dateEndingVigence"
                 ></mat-datepicker-toggle>
-                <mat-datepicker #picker2></mat-datepicker>
+                <mat-datepicker #dateEndingVigence></mat-datepicker>
+              </mat-form-field>
+              <!-- FIELD SCOPE -->
+              <mat-form-field class="flex w-60">
+                <mat-label>{{ trs("escopo") }}</mat-label>
+                <input matInput [formControlName]="" />
+              </mat-form-field>
+              <!-- FIELD RISK LEVEL -->
+              <mat-form-field class="flex flex-auto">
+                <mat-label>{{ trs("grau-risco") }}</mat-label>
+                <mat-select
+                  [formControlName]="''"
+                  [placeholder]="trs('selecione')"
+                  required
+                >
+                  <mat-option value="HIGH">{{
+                    trs("grau-risco-alto")
+                  }}</mat-option>
+                  <mat-option value="MEDIUM">{{
+                    trs("grau-risco-medio")
+                  }}</mat-option>
+                  <mat-option value="LOW">{{
+                    trs("grau-risco-baixo")
+                  }}</mat-option>
+                </mat-select>
               </mat-form-field>
             </div>
+            
+            <!-- PANEL CONTRACT MANAGER -->
+            <mat-accordion>
+              <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                  <mat-panel-title>
+                  <mat-icon
+                  class="icon-size-8 pr-2"
+                  matPrefix
+                  [svgIcon]="'heroicons_solid:user-circle'"
+                ></mat-icon>
+                    <h5
+                    class="text-2xl md:text-3xl font-extrabold tracking-tight leading-7 sm:leading-10 truncate">
+                    {{trs('painel-gestor-contrato')}}
+                  </h5>
+                 
+                  </mat-panel-title>
+                </mat-expansion-panel-header>
+            
+                <section formGroupName="responsavelResource">
+                  <!-- FIELD CONTRACT MANAGER NAME -->
+                  <div class="flex flex-wrap gap-2">
+                      <mat-form-field class="flex flex-auto">
+                        <mat-label>{{trs('gestor-contrato-nome')}}</mat-label>
+                        <input matInput formControlName="nome" />
+                        <mat-error>Campo obrigatório!</mat-error>
+                        <mat-icon
+                          class="icon-size-5"
+                          matSuffix
+                          [svgIcon]="'heroicons_solid:user-circle'"
+                        ></mat-icon>
+                      </mat-form-field>
+                  
+                      <mat-form-field class="flex flex-auto">
+                        <mat-label>E-mail</mat-label>
+                        <input 
+                        matInput 
+                        type="email" 
+                        formControlName="email" 
+                        name="emailResponsavelResource"
+                        />
+                        <!-- <mat-error *ngIf="emailResponsavelResource.touched && emailResponsavelResource.errors?.['required']">Campo obrigatório!</mat-error>
+                        <mat-error *ngIf="emailResponsavelResource.touched && emailResponsavelResource.errors?.['email']">E-mail inválido!</mat-error> -->
+                        <mat-icon
+                          class="icon-size-5"
+                          matSuffix
+                          [svgIcon]="'heroicons_solid:user-circle'"
+                        ></mat-icon>
+                      </mat-form-field>
+                    
+                      <mat-form-field class="flex flex-auto">
+                        <mat-label>Celular</mat-label>
+                        <input 
+                        matInput 
+                        type="tel"
+                        mask="(00) 0 0000-0000"
+                        formControlName="celular" />
+                        <mat-error>Campo obrigatório!</mat-error>
+                        <mat-icon
+                          class="icon-size-5"
+                          matSuffix
+                          [svgIcon]="'heroicons_solid:user-circle'"
+                        ></mat-icon>
+                      </mat-form-field>
+                  </div>
+                </section>
+      
+      
+              </mat-expansion-panel>
+            </mat-accordion>
+  
+            <!-- Divider -->
+            <div class="my-10 border-t"></div>
+
             <div class="flex flex-wrap gap-2">
               <button
                 class="px-8"

@@ -28,6 +28,15 @@
     "vigencia": "Vigence",
     "voltar": "Back",
     "vigencia-inicio": "Start vigence",
-    "vigencia-fim": "Finish vigence"
+    "vigencia-fim": "Ending vigence",
+    "escopo": "Scope",
+    "grau-risco": "Degree of risk",
+    "grau-risco-alto": "High",
+    "grau-risco-medio": "Medium",
+    "grau-risco-baixo": "Low",
+    "selecione": "Select one",
+    "data-reuniao-inicial": "Date the kick-off meeting",
+    "painel-gestor-contrato": "Contract manager",
+    "gestor-contrato-nome": "Manager name"
     
 }

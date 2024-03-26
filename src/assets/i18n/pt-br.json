@@ -25,5 +25,14 @@
     "numero-contrato": "Número do contrato",
     "nome-fantasia": "Nome fantasia",
     "vigencia-inicio": "Início da vigência",
-    "vigencia-fim": "Fim da vigência"
+    "vigencia-fim": "Fim da vigência",
+    "escopo": "Escopo",
+    "grau-risco": "Grau de risco",
+    "grau-risco-alto": "Alto",
+    "grau-risco-medio": "Médio",
+    "grau-risco-baixo": "Baixo",
+    "selecione": "Selecione",
+    "data-reuniao-inicial": "Data da reunião inicial",
+    "painel-gestor-contrato": "Gestor do contrato",
+    "gestor-contrato-nome": "Nome do gestor"
 }
