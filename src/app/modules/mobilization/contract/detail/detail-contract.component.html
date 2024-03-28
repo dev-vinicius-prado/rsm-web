@@ -134,9 +134,10 @@
               </mat-form-field>
             </div>
             
+            <div class="flex flex-col gap-5">
             <!-- PANEL CONTRACT MANAGER -->
-            <mat-accordion>
-              <mat-expansion-panel>
+            <mat-accordion class="rounded-md shadow-md shadow-slate-300">
+              <mat-expansion-panel >
                 <mat-expansion-panel-header>
                   <mat-panel-title>
                   <mat-icon
@@ -152,12 +153,15 @@
                   </mat-panel-title>
                 </mat-expansion-panel-header>
             
-                <section formGroupName="responsavelResource">
+                <section >
+                <!-- formGroupName="responsavelResource" -->
                   <!-- FIELD CONTRACT MANAGER NAME -->
                   <div class="flex flex-wrap gap-2">
                       <mat-form-field class="flex flex-auto">
                         <mat-label>{{trs('gestor-contrato-nome')}}</mat-label>
-                        <input matInput formControlName="nome" />
+                        <input matInput 
+                        />
+                        <!-- formControlName="nome"  -->
                         <mat-error>Campo obrigatório!</mat-error>
                         <mat-icon
                           class="icon-size-5"
@@ -171,9 +175,9 @@
                         <input 
                         matInput 
                         type="email" 
-                        formControlName="email" 
                         name="emailResponsavelResource"
                         />
+                        <!-- formControlName="email"  -->
                         <!-- <mat-error *ngIf="emailResponsavelResource.touched && emailResponsavelResource.errors?.['required']">Campo obrigatório!</mat-error>
                         <mat-error *ngIf="emailResponsavelResource.touched && emailResponsavelResource.errors?.['email']">E-mail inválido!</mat-error> -->
                         <mat-icon
@@ -189,7 +193,8 @@
                         matInput 
                         type="tel"
                         mask="(00) 0 0000-0000"
-                        formControlName="celular" />
+                        />
+                        <!-- formControlName="celular" -->
                         <mat-error>Campo obrigatório!</mat-error>
                         <mat-icon
                           class="icon-size-5"
@@ -203,7 +208,82 @@
       
               </mat-expansion-panel>
             </mat-accordion>
-  
+            
+            <!-- PANEL RESPONSABILITY GRID -->
+            <mat-accordion class="rounded-md shadow-md shadow-slate-300">
+              <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                  <mat-panel-title>
+                  <mat-icon
+                  class="icon-size-8 pr-2"
+                  matPrefix
+                  [svgIcon]="'heroicons_solid:table-cells'"
+                ></mat-icon>
+                    <h5
+                    class="text-2xl md:text-3xl font-extrabold tracking-tight leading-7 sm:leading-10 truncate">
+                    {{trs('painel-matrix-responsabilidade')}}
+                  </h5>
+                 
+                  </mat-panel-title>
+                </mat-expansion-panel-header>
+            
+                <section 
+                >
+                <!-- formGroupName="responsavelResource" -->
+                  <!-- FIELD CONTRACT MANAGER NAME -->
+                  <div class="flex flex-wrap gap-2">
+                      <mat-form-field class="flex flex-auto">
+                        <mat-label>{{trs('gestor-contrato-nome')}}</mat-label>
+                        <input matInput 
+                        />
+                        <!-- formControlName="nome"  -->
+                        <mat-error>Campo obrigatório!</mat-error>
+                        <mat-icon
+                          class="icon-size-5"
+                          matSuffix
+                          [svgIcon]="'heroicons_solid:user-circle'"
+                        ></mat-icon>
+                      </mat-form-field>
+                  
+                      <mat-form-field class="flex flex-auto">
+                        <mat-label>E-mail</mat-label>
+                        <input 
+                        matInput 
+                        type="email" 
+                        name="emailResponsavelResource"
+                        />
+                        <!-- formControlName="email"  -->
+                        <!-- <mat-error *ngIf="emailResponsavelResource.touched && emailResponsavelResource.errors?.['required']">Campo obrigatório!</mat-error>
+                        <mat-error *ngIf="emailResponsavelResource.touched && emailResponsavelResource.errors?.['email']">E-mail inválido!</mat-error> -->
+                        <mat-icon
+                          class="icon-size-5"
+                          matSuffix
+                          [svgIcon]="'heroicons_solid:user-circle'"
+                        ></mat-icon>
+                      </mat-form-field>
+                    
+                      <mat-form-field class="flex flex-auto">
+                        <mat-label>Celular</mat-label>
+                        <input 
+                        matInput 
+                        type="tel"
+                        mask="(00) 0 0000-0000"
+                        />
+                        <!-- formControlName="celular" -->
+                        <mat-error>Campo obrigatório!</mat-error>
+                        <mat-icon
+                          class="icon-size-5"
+                          matSuffix
+                          [svgIcon]="'heroicons_solid:user-circle'"
+                        ></mat-icon>
+                      </mat-form-field>
+                  </div>
+                </section>
+      
+      
+              </mat-expansion-panel>
+            </mat-accordion>
+          </div>
             <!-- Divider -->
             <div class="my-10 border-t"></div>
 
