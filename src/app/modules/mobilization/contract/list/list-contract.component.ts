@@ -1,28 +1,23 @@
-import { Component } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { MatFormFieldModule } from "@angular/material/form-field";
-import { MatIconModule } from "@angular/material/icon";
-import { MatInputModule } from "@angular/material/input";
-import { MatButtonModule } from "@angular/material/button";
-import { MatTableModule } from "@angular/material/table";
-import { MatPaginator, MatPaginatorModule } from "@angular/material/paginator";
+import { Component } from "@angular/core";
 import {
   FormsModule,
   ReactiveFormsModule,
   UntypedFormControl,
 } from "@angular/forms";
-import {
-  Subject,
-  debounceTime,
-  map,
-  switchMap,
-  takeUntil,
-  Observable,
-} from "rxjs";
+import { MatButtonModule } from "@angular/material/button";
+import { MatFormFieldModule } from "@angular/material/form-field";
+import { MatIconModule } from "@angular/material/icon";
+import { MatInputModule } from "@angular/material/input";
+import { MatPaginatorModule } from "@angular/material/paginator";
+import { MatTableModule } from "@angular/material/table";
 import { ActivatedRoute, Router, RouterOutlet } from "@angular/router";
-import { Contact } from "app/layout/common/quick-chat/quick-chat.types";
-import { ContractResource } from "../contract.types";
 import { TranslocoModule } from "@ngneat/transloco";
+import {
+  Observable,
+  Subject,
+} from "rxjs";
+import { ContractResource } from "../contract.types";
 
 @Component({
   selector: "app-list-contract",
