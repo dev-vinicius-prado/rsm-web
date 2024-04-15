@@ -15,29 +15,51 @@ import { MatDatepickerModule } from "@angular/material/datepicker";
 import { MatExpansionModule } from "@angular/material/expansion";
 import { CdkAccordionModule } from "@angular/cdk/accordion";
 import { MatTableModule } from "@angular/material/table";
-import { ContractResource } from '../contract.types';
+import { ContractResource, MatrixOfResponsabilityResource } from '../contract.types';
 
-const DATA = [
-  {
-    nome: "Nimasi",
-    funcao: "Administrador",
-    email: "email@email.com",
+const DATA = {
+  "id": 0,
+  code: "",
+  cnpj: "",
+  dateInitialMet: null,
+  fantasyName: 'Pico Empreendimentos',
+  vigence: {
+    startAt: null,
+    finishAt: null,
   },
-  {
-    nome: "Togata",
-    funcao: "Coordenador",
-    email: "email@email.com",
+  scope: '',
+  degreeRiskLevel: null,
+  contractManager: {
+    name: '',
+    email: '',
+    phoneNumber: '',
   },
-];
+  matrixOfResponsability: [
+    {
+    name: "Nimasi",
+    function: "Administrador",
+    email: "email@email.com",
+    },
+    {
+    name: "Togata",
+    function: "Coordenador",
+    email: "email@email.com",
+    }
+  ],
+  contractor: {
+    name: "",
+  }
+
+};    
 
 const COLUMNS_SCHEMA = [
   {
-    key: "nome",
+    key: "name",
     type: "text",
     label: "Nome",
   },
   {
-    key: "funcao",
+    key: "function",
     type: "text",
     label: "Função",
   },
@@ -62,18 +84,19 @@ const COLUMNS_SCHEMA = [
   styleUrl: "./detail-contract.component.scss",
 })
 export class DetailContractComponent implements OnInit {
-  includeNewContractForm: FormGroup;
-  contractResource: ContractResource;
+  includeNewContractForm: UntypedFormGroup;
+  contractResource: ContractResource = DATA;
   
   
-  dataSource: any = DATA;
+  dataSource: Array<MatrixOfResponsabilityResource> = this.contractResource.matrixOfResponsability;
+
   displayedColsResponsibles: string[] = COLUMNS_SCHEMA.map((col) => col.key);
   columnsSchema: any = COLUMNS_SCHEMA;
 
   /**
    * Constructor
    */
-  constructor(private _formBuilder: FormBuilder) {}
+  constructor(private _formBuilder: UntypedFormBuilder) {}
 
   // -----------------------------------------------------------------------------------------------------
   // @ Lifecycle hooks
@@ -95,14 +118,14 @@ export class DetailContractComponent implements OnInit {
         degreeRiskLevel: ["", Validators.required],
         contractManager: this._formBuilder.group({
           managerName: ['', Validators.required],
-          email: ["", Validators.required],
+          managerEmail: ["", Validators.required],
           phoneNumber: ["", Validators.required],
         }),
-        matrixOfResponsability: this._formBuilder.group({
+        matrixOfResponsability: this._formBuilder.group([{
           name: ["", Validators.required],
           function: ["", Validators.required],
           email: ["", Validators.required]
-        })
+        }]),
       }),
       contractorData: this._formBuilder.group({
         firstName: ["", Validators.required],
@@ -119,5 +142,9 @@ export class DetailContractComponent implements OnInit {
         pushNotifications: ["everything", Validators.required],
       }),
     });
+  }
+
+  addResponsibleOnMatrix() {
+    this.dataSource = [...this.dataSource, { name: "", email: "", function: '' }]
   }
 }

@@ -26,7 +26,7 @@
     <div class="max-w-8xl">
       <form class="p-4 bg-card shadow rounded overflow-hidden" [formGroup]="includeNewContractForm">
         <mat-horizontal-stepper [linear]="true" #newContractStepper>
-          <mat-step [formGroupName]="'contractData'" [stepControl]="includeNewContractForm.get('contractData')" #newContractStepperStepContractData>
+          <mat-step [formGroupName]="contractData" [stepControl]="includeNewContractForm.get('contractData')" #newContractStepperStepContractData>
             <ng-template matStepLabel>{{ trs("dados-contrato") }}</ng-template>
             <div class="flex flex-wrap gap-2">
               <!-- FIELD CONTRACT NUMBER -->
@@ -56,21 +56,21 @@
             </div>
             <div class="flex flex-wrap gap-2">
               <!-- FIELD START VIGENCE -->
-              <mat-form-field class="flex w-60">
+              <mat-form-field class="flex flex-auto">
                 <mat-label>{{ trs("vigencia-inicio") }}</mat-label>
                 <input matInput [matDatepicker]="dateStartVigence" [placeholder]="'99/99/9999'" [formControlName]="'startVigence'" />
                 <mat-datepicker-toggle matSuffix [for]="dateStartVigence"></mat-datepicker-toggle>
                 <mat-datepicker #dateStartVigence></mat-datepicker>
               </mat-form-field>
               <!-- FIELD FINISH VIGENCE -->
-              <mat-form-field class="flex w-60">
+              <mat-form-field class="flex flex-auto">
                 <mat-label>{{ trs("vigencia-fim") }}</mat-label>
                 <input matInput [matDatepicker]="dateEndingVigence" [placeholder]="'99/99/9999'" [formControlName]="'endingVigence'"/>
                 <mat-datepicker-toggle matSuffix [for]="dateEndingVigence"></mat-datepicker-toggle>
                 <mat-datepicker #dateEndingVigence></mat-datepicker>
               </mat-form-field>
               <!-- FIELD SCOPE -->
-              <mat-form-field class="flex w-60">
+              <mat-form-field class="flex flex-auto">
                 <mat-label>{{ trs("escopo") }}</mat-label>
                 <input matInput [formControlName]="'scope'" />
               </mat-form-field>
@@ -91,7 +91,7 @@
                 <mat-expansion-panel>
                   <mat-expansion-panel-header>
                     <mat-panel-title>
-                      <mat-icon class="icon-size-8 pr-2" matPrefix [svgIcon]="'heroicons_solid:user-circle'"></mat-icon>
+                      <mat-icon class="icon-size-8 pr-2" matPrefix [svgIcon]="'heroicons_solid:table-cells'"></mat-icon>
                       <h5 class="text-2xl md:text-3xl font-extrabold tracking-tight leading-7 sm:leading-10 truncate">
                         {{ trs("painel-gestor-contrato") }}
                       </h5>
@@ -142,14 +142,63 @@
                   <section formGroupName="matrixOfResponsability">
                     <!-- FIELD CONTRACT MANAGER NAME -->
                     <table mat-table [dataSource]="dataSource" class="mat-elevation-z1">
-                      <ng-container [matColumnDef]="col.key" *ngFor="let col of columnsSchema">
-                        <th mat-header-cell *matHeaderCellDef>
-                          {{ col.label }}
-                        </th>
+                      <ng-container matColumnDef="name">
+                        <th mat-header-cell *matHeaderCellDef>Nome</th>
                         <td mat-cell *matCellDef="let element">
-                          {{ element[col.key] }}
+                          <div class="btn btn-edit" *ngIf="element.isEdit; else dataFieldName">
+                            <mat-form-field class="flex-auto">
+                              <input *ngIf="element.isEdit" matInput formControlName="'name'" required [autofocus]/>
+                            </mat-form-field>
+                          </div>
+                          <ng-template #dataFieldName>
+                            {{ element.name }}
+                          </ng-template>
                         </td>
                       </ng-container>
+
+                      <!-- Name Column -->
+                      <ng-container matColumnDef="function">
+                        <th mat-header-cell *matHeaderCellDef>Função</th>
+                        <td mat-cell *matCellDef="let element">
+                          <div class="btn btn-edit" *ngIf="element.isEdit; else dataFieldFunction">
+                            <mat-form-field class="flex-auto">
+                              <input *ngIf="element.isEdit" matInput formControlName="'function'" required />
+                            </mat-form-field>
+                          </div>
+                          <ng-template #dataFieldFunction>
+                            {{ element.function }}
+                          </ng-template>
+                        </td>
+                      </ng-container>
+
+                      <!-- Weight Column -->
+                      <ng-container matColumnDef="email">
+                        <th mat-header-cell *matHeaderCellDef>E-mail</th>
+                        <td mat-cell *matCellDef="let element">
+                          <div class="btn btn-edit" *ngIf="element.isEdit; else dataFieldEmail">
+                            <mat-form-field class="flex-auto">
+                              <input *ngIf="element.isEdit" matInput formControlName="'email'" required />
+                            </mat-form-field>
+                          </div>
+                          <ng-template #dataFieldEmail>
+                            {{ element.email }}
+                          </ng-template>
+                        </td>
+                      </ng-container>
+
+                      <!-- Weight Column -->
+                      <ng-container matColumnDef="isEdit">
+                        <th mat-header-cell *matHeaderCellDef>Ação</th>
+                        <td mat-cell *matCellDef="let element">
+                          <div class="btn btn-edit" *ngIf="element.isEdit; else dataField">
+                            <button mat-button (click)="element.isEdit = !element.isEdit">Salvar</button>
+                          </div>
+                          <ng-template #dataField>
+                            <button mat-button (click)="element.isEdit = !element.isEdit">Editar</button>
+                          </ng-template>
+                        </td>
+                      </ng-container>
+
                       <tr mat-header-row *matHeaderRowDef="displayedColsResponsibles"></tr>
                       <tr mat-row *matRowDef="let row; columns: displayedColsResponsibles"></tr>
                     </table>
