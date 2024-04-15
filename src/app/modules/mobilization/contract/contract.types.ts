@@ -8,7 +8,7 @@ export interface ContractResource {
   scope: string;
   degreeRiskLevel: string;
   contractManager: ContractManagerResource;
-  matrixOfResponsability: MatrixOfResponsabilityResource;
+  matrixOfResponsability: MatrixOfResponsabilityResource[];
   contractor: ContractorResource;
   // todo: add others fields for contract resource
 }
