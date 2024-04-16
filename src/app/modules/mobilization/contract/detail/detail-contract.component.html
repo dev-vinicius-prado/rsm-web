@@ -59,7 +59,7 @@
               </mat-form-field>
               <mat-form-field class="flex flex-auto">
                 <mat-label>{{ trs("vigencia-fim") }}</mat-label>
-                <input matInput [matDatepicker]="dateEndingVigence" [placeholder]="'99/99/9999'" [formControlName]="'endingVigence'"/>
+                <input matInput [matDatepicker]="dateEndingVigence" [placeholder]="'99/99/9999'" [formControlName]="'endingVigence'" />
                 <mat-datepicker-toggle matSuffix [for]="dateEndingVigence"></mat-datepicker-toggle>
                 <mat-datepicker #dateEndingVigence></mat-datepicker>
               </mat-form-field>
@@ -78,7 +78,6 @@
             </div>
 
             <div class="flex flex-col gap-5">
-              
               <mat-accordion class="rounded-md shadow-md shadow-slate-300">
                 <mat-expansion-panel>
                   <mat-expansion-panel-header>
@@ -91,7 +90,6 @@
                   </mat-expansion-panel-header>
 
                   <section [formGroupName]="'contractManager'">
-                    
                     <div class="flex flex-wrap gap-2">
                       <mat-form-field class="flex flex-auto">
                         <mat-label>{{ trs("gestor-contrato-nome") }}</mat-label>
@@ -102,7 +100,7 @@
 
                       <mat-form-field class="flex flex-auto">
                         <mat-label>E-mail</mat-label>
-                        <input matInput type="email" [formControlName]="'email'"/>
+                        <input matInput type="email" [formControlName]="'email'" />
                         <mat-icon class="icon-size-5" matSuffix [svgIcon]="'heroicons_solid:user-circle'"></mat-icon>
                       </mat-form-field>
 
@@ -117,7 +115,6 @@
                 </mat-expansion-panel>
               </mat-accordion>
 
-              
               <mat-accordion class="rounded-md shadow-md shadow-slate-300">
                 <mat-expansion-panel>
                   <mat-expansion-panel-header>
@@ -129,80 +126,42 @@
                     </mat-panel-title>
                   </mat-expansion-panel-header>
 
-                  <!--section formGroupName="matrixOfResponsability">
-                    
-                    <table mat-table [dataSource]="dataSource" class="mat-elevation-z1">
-                      <ng-container matColumnDef="name">
-                        <th mat-header-cell *matHeaderCellDef>Nome</th>
-                        <td mat-cell *matCellDef="let element">
-                          <div class="btn btn-edit" *ngIf="element.isEdit; else dataFieldName">
-                            <mat-form-field class="flex-auto">
-                              <input *ngIf="element.isEdit" matInput formControlName="'name'" required [autofocus]/>
-                            </mat-form-field>
-                          </div>
-                          <ng-template #dataFieldName>
-                            {{ element.name }}
-                          </ng-template>
-                        </td>
-                      </ng-container>
+                  <section [formArrayName]="'matrixOfResponsability'">
+                    <div class="flex justify-end">
+                      <button mat-flat-button color="primary" (click)="addResponsible()">{{ trs("add") }}</button>
+                    </div>
 
-                      
-                      <ng-container matColumnDef="function">
-                        <th mat-header-cell *matHeaderCellDef>Função</th>
-                        <td mat-cell *matCellDef="let element">
-                          <div class="btn btn-edit" *ngIf="element.isEdit; else dataFieldFunction">
-                            <mat-form-field class="flex-auto">
-                              <input *ngIf="element.isEdit" matInput formControlName="'function'" required />
-                            </mat-form-field>
-                          </div>
-                          <ng-template #dataFieldFunction>
-                            {{ element.function }}
-                          </ng-template>
-                        </td>
-                      </ng-container>
-
-                      
-                      <ng-container matColumnDef="email">
-                        <th mat-header-cell *matHeaderCellDef>E-mail</th>
-                        <td mat-cell *matCellDef="let element">
-                          <div class="btn btn-edit" *ngIf="element.isEdit; else dataFieldEmail">
-                            <mat-form-field class="flex-auto">
-                              <input *ngIf="element.isEdit" matInput formControlName="'email'" required />
-                            </mat-form-field>
-                          </div>
-                          <ng-template #dataFieldEmail>
-                            {{ element.email }}
-                          </ng-template>
-                        </td>
-                      </ng-container>
-
-                      
-                      <ng-container matColumnDef="isEdit">
-                        <th mat-header-cell *matHeaderCellDef>Ação</th>
-                        <td mat-cell *matCellDef="let element">
-                          <div class="btn btn-edit" *ngIf="element.isEdit; else dataField">
-                            <button mat-button (click)="element.isEdit = !element.isEdit">Salvar</button>
-                          </div>
-                          <ng-template #dataField>
-                            <button mat-button (click)="element.isEdit = !element.isEdit">Editar</button>
-                          </ng-template>
-                        </td>
-                      </ng-container>
-
-                      <tr mat-header-row *matHeaderRowDef="displayedColsResponsibles"></tr>
-                      <tr mat-row *matRowDef="let row; columns: displayedColsResponsibles"></tr>
-                    </table>
-                  </section-->
+                    <div *ngFor="let responsible of matrix().controls; let rowIndex = index">
+                      <div [formGroupName]="rowIndex" class="flex items-baseline gap-2">
+                        <mat-form-field class="flex flex-auto">
+                          <mat-label>{{ trs("nome") }}</mat-label>
+                          <input matInput [formControlName]="'name'" required [disabled]="isEditing"/>
+                        </mat-form-field>
+                        <mat-form-field class="flex flex-auto">
+                          <mat-label>{{ trs("função") }}</mat-label>
+                          <input matInput [formControlName]="'function'" required [disabled]="isEditing"/>
+                        </mat-form-field>
+                        <mat-form-field class="flex flex-auto">
+                          <mat-label>{{ trs("email") }}</mat-label>
+                          <input matInput [formControlName]="'email'" required [disabled]="isEditing"/>
+                        </mat-form-field>
+                        <button mat-raised-button class="bg-warn text-white" (click)="removeResponsible(rowIndex)">
+                          <mat-icon class="icon-5" matPrefix [svgIcon]="'heroicons_solid:trash'"></mat-icon>
+                        </button>
+                        <button mat-raised-button class="bg-primary-200" (click)="isEdit()">
+                          <mat-icon class="icon-5" matPrefix [svgIcon]="'heroicons_solid:user-plus'"></mat-icon>
+                        </button>
+                      </div>
+                    </div>
+                  </section>
                 </mat-expansion-panel>
               </mat-accordion>
             </div>
             <!-- Divider -->
             <div class="my-10 border-t"></div>
 
-            <div class="flex flex-wrap gap-2">
-              <button class="px-8" mat-flat-button [color]="'primary'" 
-              [disabled]="includeFormStepContractData.stepControl.pristine || includeFormStepContractData.stepControl.invalid" 
-              type="button" matStepperNext>
+            <div class="flex flex-wrap">
+              <button class="px-8" mat-flat-button [color]="'primary'" [disabled]="includeFormStepContractData.stepControl.pristine || includeFormStepContractData.stepControl.invalid" type="button" matStepperNext>
                 {{ trs("proximo") }}
               </button>
             </div>
