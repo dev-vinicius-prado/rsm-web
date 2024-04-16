@@ -91,6 +91,7 @@
 
                   <section [formGroupName]="'contractManager'">
                     <div class="flex flex-wrap gap-2">
+                      
                       <mat-form-field class="flex flex-auto">
                         <mat-label>{{ trs("gestor-contrato-nome") }}</mat-label>
                         <input matInput [formControlName]="'name'" />
@@ -135,21 +136,18 @@
                       <div [formGroupName]="rowIndex" class="flex items-baseline gap-2">
                         <mat-form-field class="flex flex-auto">
                           <mat-label>{{ trs("nome") }}</mat-label>
-                          <input matInput [formControlName]="'name'" required [disabled]="isEditing"/>
+                          <input matInput [formControlName]="'name'" required />
                         </mat-form-field>
                         <mat-form-field class="flex flex-auto">
                           <mat-label>{{ trs("função") }}</mat-label>
-                          <input matInput [formControlName]="'function'" required [disabled]="isEditing"/>
+                          <input matInput [formControlName]="'function'" required />
                         </mat-form-field>
                         <mat-form-field class="flex flex-auto">
                           <mat-label>{{ trs("email") }}</mat-label>
-                          <input matInput [formControlName]="'email'" required [disabled]="isEditing"/>
+                          <input matInput [formControlName]="'email'" required />
                         </mat-form-field>
                         <button mat-raised-button class="bg-warn text-white" (click)="removeResponsible(rowIndex)">
-                          <mat-icon class="icon-5" matPrefix [svgIcon]="'heroicons_solid:trash'"></mat-icon>
-                        </button>
-                        <button mat-raised-button class="bg-primary-200" (click)="isEdit()">
-                          <mat-icon class="icon-5" matPrefix [svgIcon]="'heroicons_solid:user-plus'"></mat-icon>
+                          <mat-icon class="icon-5"  [svgIcon]="'heroicons_solid:trash'"></mat-icon>
                         </button>
                       </div>
                     </div>
@@ -165,6 +163,10 @@
                 {{ trs("proximo") }}
               </button>
             </div>
+<pre>
+  
+  {{includeForm.value | json}}
+</pre>
           </mat-step>
 
           <!-- <mat-step [formGroupName]="'step2'" [stepControl]="horizontalStepperForm.get('step2')" #horizontalStepperStep2>
