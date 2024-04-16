@@ -52,6 +52,11 @@ export class DetailContractComponent implements OnInit {
         endingVigence: ["", Validators.required],
         scope: ["", Validators.required],
         degreeRiskLevel: ["", Validators.required],
+        contractManager: this._formBuilder.group({
+          name: ["", Validators.required],
+          email: ["", Validators.required],
+          phoneNumber: ["", Validators.required],
+        })
       }),
      
     });
