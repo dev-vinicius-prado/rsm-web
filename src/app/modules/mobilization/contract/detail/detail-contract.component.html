@@ -31,7 +31,7 @@
             <div class="flex flex-wrap gap-2">
               <mat-form-field class="flex flex-auto">
                 <mat-label>{{ trs("numero-contrato") }}</mat-label>
-                <input matInput [formControlName]="" />
+                <input matInput [formControlName]="'code'" />
               </mat-form-field>
               <mat-form-field class="flex flex-auto">
                 <mat-label>CNPJ</mat-label>
@@ -51,18 +51,20 @@
               </mat-form-field>
             </div>
             <div class="flex flex-wrap gap-2">
-              <mat-form-field class="flex flex-auto">
-                <mat-label>{{ trs("vigencia-inicio") }}</mat-label>
-                <input matInput [matDatepicker]="dateStartVigence" [placeholder]="'99/99/9999'" [formControlName]="'startVigence'" />
-                <mat-datepicker-toggle matSuffix [for]="dateStartVigence"></mat-datepicker-toggle>
-                <mat-datepicker #dateStartVigence></mat-datepicker>
-              </mat-form-field>
-              <mat-form-field class="flex flex-auto">
-                <mat-label>{{ trs("vigencia-fim") }}</mat-label>
-                <input matInput [matDatepicker]="dateEndingVigence" [placeholder]="'99/99/9999'" [formControlName]="'endingVigence'" />
-                <mat-datepicker-toggle matSuffix [for]="dateEndingVigence"></mat-datepicker-toggle>
-                <mat-datepicker #dateEndingVigence></mat-datepicker>
-              </mat-form-field>
+              <div class="flex flex-auto gap-2" [formGroupName]="'vigence'">
+                <mat-form-field class="flex flex-auto">
+                  <mat-label>{{ trs("vigencia-inicio") }}</mat-label>
+                  <input matInput [matDatepicker]="dateStartVigence" [placeholder]="'99/99/9999'" [formControlName]="'startAt'" />
+                  <mat-datepicker-toggle matSuffix [for]="dateStartVigence"></mat-datepicker-toggle>
+                  <mat-datepicker #dateStartVigence></mat-datepicker>
+                </mat-form-field>
+                <mat-form-field class="flex flex-auto">
+                  <mat-label>{{ trs("vigencia-fim") }}</mat-label>
+                  <input matInput [matDatepicker]="dateEndingVigence" [placeholder]="'99/99/9999'" [formControlName]="'finishAt'" />
+                  <mat-datepicker-toggle matSuffix [for]="dateEndingVigence"></mat-datepicker-toggle>
+                  <mat-datepicker #dateEndingVigence></mat-datepicker>
+                </mat-form-field>
+              </div>
               <mat-form-field class="flex flex-auto">
                 <mat-label>{{ trs("escopo") }}</mat-label>
                 <input matInput [formControlName]="'scope'" />
@@ -91,7 +93,6 @@
 
                   <section [formGroupName]="'contractManager'">
                     <div class="flex flex-wrap gap-2">
-                      
                       <mat-form-field class="flex flex-auto">
                         <mat-label>{{ trs("gestor-contrato-nome") }}</mat-label>
                         <input matInput [formControlName]="'name'" />
@@ -147,7 +148,7 @@
                           <input matInput [formControlName]="'email'" required />
                         </mat-form-field>
                         <button mat-raised-button class="bg-warn text-white" (click)="removeResponsible(rowIndex)">
-                          <mat-icon class="icon-5"  [svgIcon]="'heroicons_solid:trash'"></mat-icon>
+                          <mat-icon class="icon-5" [svgIcon]="'heroicons_solid:trash'"></mat-icon>
                         </button>
                       </div>
                     </div>
@@ -159,17 +160,13 @@
             <div class="my-10 border-t"></div>
 
             <div class="flex flex-wrap">
-              <button class="px-8" mat-flat-button [color]="'primary'" [disabled]="includeFormStepContractData.stepControl.pristine || includeFormStepContractData.stepControl.invalid" type="button" matStepperNext>
+              <button class="px-8" mat-flat-button [color]="'primary'" type="button" matStepperNext>
                 {{ trs("proximo") }}
               </button>
             </div>
-<pre>
-  
-  {{includeForm.value | json}}
-</pre>
           </mat-step>
 
-          <!-- <mat-step [formGroupName]="'step2'" [stepControl]="horizontalStepperForm.get('step2')" #horizontalStepperStep2>
+          <mat-step [formGroupName]="'contractorData'" [stepControl]="includeForm.get('contractorData')" #includeFormStepperContractorStep>
             <ng-template matStepLabel>{{ trs("empresa-contratante") }}</ng-template>
             <div class="flex flex-col gt-xs:flex-row">
               <mat-form-field class="flex-auto gt-xs:pr-3">
@@ -197,13 +194,13 @@
               <button class="px-8 mr-2" mat-flat-button [color]="'accent'" type="button" matStepperPrevious>
                 {{ trs("voltar") }}
               </button>
-              <button class="px-8" mat-flat-button [color]="'primary'" [disabled]="horizontalStepperStep2.stepControl.pristine || horizontalStepperStep2.stepControl.invalid" type="button" matStepperNext>
+              <button class="px-8" mat-flat-button [color]="'primary'"  type="button" matStepperNext>
                 {{ trs("proximo") }}
               </button>
             </div>
           </mat-step>
 
-          <mat-step [formGroupName]="'step3'" [stepControl]="horizontalStepperForm.get('step3')">
+          <!-- mat-step [formGroupName]="'step3'" [stepControl]="includeForm.get('step3')">
             <ng-template matStepLabel>{{ trs("dados-recurso") }}</ng-template>
             <div class="flex flex-col gt-sm:flex-row">
               <div class="flex flex-col">
@@ -231,7 +228,7 @@
                 {{ trs("proximo") }}
               </button>
             </div>
-          </mat-step> -->
+          </mat-step --> 
 
           <mat-step>
             <ng-template matStepLabel>{{ trs("finalizar") }}</ng-template>

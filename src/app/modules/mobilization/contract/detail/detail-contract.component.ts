@@ -17,6 +17,39 @@ import { MatTableModule } from "@angular/material/table";
 import { TranslocoModule } from "@ngneat/transloco";
 import { ContractResource } from "../contract.types";
 
+const DEFAULT_CONTRACT_DATA = {
+  "id": 0,
+  "code": 'RSM-20240001',
+  "cnpj": "00.000.000/0001-00",
+  "dateInitialMet": new Date("2024-04-16"),
+  "fantasyName": "Prado Sistemas SA",
+  "vigence": {
+    "startAt": new Date("2024-04-16"),
+    "finishAt": new Date("2024-04-16"),
+  },
+  "scope": "32.240-410",
+  "degreeRiskLevel": "HIGH",
+  "contractManager": {
+    "name": "Vinicius Francisco Prado",
+    "email": "email@email.com",
+    "phoneNumber": "32956565656"
+  },
+  "matrixOfResponsability": [
+    {
+      "name": "Vinicius Francisco Prado",
+      "function": "admin",
+      "email": "developer.vinicius.prado@gmail.com"
+    },
+    {
+      "name": "Vinicius Francisco Prado",
+      "function": "coordenador",
+      "email": "developer.vinicius.prado@gmail.com"
+    }
+  ],
+  "contractor": {
+    name: "",
+  }
+}
 @Component({
   selector: "app-detail-contract",
   standalone: true,
@@ -27,7 +60,7 @@ import { ContractResource } from "../contract.types";
 })
 export class DetailContractComponent implements OnInit {
   includeForm: UntypedFormGroup;
-  contractResource: ContractResource;
+  contractResource: ContractResource = DEFAULT_CONTRACT_DATA;
   /**
    * Constructor
    */
@@ -41,14 +74,19 @@ export class DetailContractComponent implements OnInit {
    * On init
    */
   ngOnInit(): void {
+    console.log(this.contractResource);
+    
     // Horizontal stepper form
     this.includeForm = this._formBuilder.group({
       contractData: this._formBuilder.group({
+        code: ['RSM-20240001'],
         cnpj: ["", Validators.required],
         dateInitialMet: ["", Validators.required],
         fantasyName: ["", Validators.required],
-        startVigence: ["", Validators.required],
-        endingVigence: ["", Validators.required],
+        vigence: this._formBuilder.group({
+          startAt: ["", Validators.required],
+          finishAt: ["", Validators.required],
+        }),
         scope: ["", Validators.required],
         degreeRiskLevel: ["", Validators.required],
         contractManager: this._formBuilder.group({
@@ -58,9 +96,42 @@ export class DetailContractComponent implements OnInit {
         }),
         matrixOfResponsability: this._formBuilder.array([]),
       }),
+      contractorData: this._formBuilder.group({})
     });
 
     this.addResponsible();
+
+    this.includeForm.patchValue({
+      contractData: {
+        "code": 'RSM-20240001',
+        "cnpj": "00.000.000/0001-00",
+        "dateInitialMet": new Date("2024-04-16"),
+        "fantasyName": "Prado Sistemas SA",
+        "vigence": {
+          "startAt": new Date("2024-04-16"),
+          "finishAt": new Date("2024-04-16"),
+        },
+        "scope": "32.240-410",
+        "degreeRiskLevel": "HIGH",
+        "contractManager": {
+          "name": "Vinicius Francisco Prado",
+          "email": "email@email.com",
+          "phoneNumber": "32956565656"
+        },
+        "matrixOfResponsability": [
+          {
+            "name": "Vinicius Francisco Prado",
+            "function": "admin",
+            "email": "developer.vinicius.prado@gmail.com"
+          },
+          {
+            "name": "Vinicius Francisco Prado",
+            "function": "coordenador",
+            "email": "developer.vinicius.prado@gmail.com"
+          }
+        ]
+      }
+    })
   }
 
   matrix(): FormArray {
