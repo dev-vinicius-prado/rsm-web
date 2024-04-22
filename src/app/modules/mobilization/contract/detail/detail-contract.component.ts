@@ -18,38 +18,42 @@ import { TranslocoModule } from "@ngneat/transloco";
 import { ContractResource } from "../contract.types";
 
 const DEFAULT_CONTRACT_DATA = {
-  "id": 0,
-  "code": 'RSM-20240001',
-  "cnpj": "00.000.000/0001-00",
-  "dateInitialMet": new Date("2024-04-16"),
-  "fantasyName": "Prado Sistemas SA",
-  "vigence": {
-    "startAt": new Date("2024-04-16"),
-    "finishAt": new Date("2024-04-16"),
+  id: 0,
+  code: "RSM-20240001",
+  cnpj: "00.000.000/0001-00",
+  dateInitialMet: new Date("2024-04-16"),
+  fantasyName: "Prado Sistemas SA",
+  vigence: {
+    startAt: new Date("2024-04-16"),
+    finishAt: new Date("2024-04-16"),
   },
-  "scope": "32.240-410",
-  "degreeRiskLevel": "HIGH",
-  "contractManager": {
-    "name": "Vinicius Francisco Prado",
-    "email": "email@email.com",
-    "phoneNumber": "32956565656"
+  scope: "32.240-410",
+  degreeRiskLevel: "HIGH",
+  contractManager: {
+    name: "Vinicius Francisco Prado",
+    email: "email@email.com",
+    phoneNumber: "32956565656",
   },
-  "matrixOfResponsability": [
+  matrixOfResponsability: [
     {
-      "name": "Vinicius Francisco Prado",
-      "function": "admin",
-      "email": "developer.vinicius.prado@gmail.com"
+      name: "Vinicius Francisco Prado",
+      function: "admin",
+      email: "developer.vinicius.prado@gmail.com",
     },
     {
-      "name": "Vinicius Francisco Prado",
-      "function": "coordenador",
-      "email": "developer.vinicius.prado@gmail.com"
-    }
+      name: "Vinicius Francisco Prado",
+      function: "coordenador",
+      email: "developer.vinicius.prado@gmail.com",
+    },
   ],
-  "contractor": {
+  contractor: {
     name: "",
-  }
-}
+  },
+};
+/* eslint-disable */
+export const items = {
+  files: [],
+};
 @Component({
   selector: "app-detail-contract",
   standalone: true,
@@ -61,6 +65,8 @@ const DEFAULT_CONTRACT_DATA = {
 export class DetailContractComponent implements OnInit {
   includeForm: UntypedFormGroup;
   contractResource: ContractResource = DEFAULT_CONTRACT_DATA;
+  items: any= items;
+
   /**
    * Constructor
    */
@@ -75,14 +81,12 @@ export class DetailContractComponent implements OnInit {
    */
   ngOnInit(): void {
     console.log(this.contractResource);
-    
+
     // Horizontal stepper form
     this.includeForm = this._formBuilder.group({
       contractData: this._formBuilder.group({
-        code: ['RSM-20240001'],
-        cnpj: ["", Validators.required],
+        code: ["RSM-20240001"],
         dateInitialMet: ["", Validators.required],
-        fantasyName: ["", Validators.required],
         vigence: this._formBuilder.group({
           startAt: ["", Validators.required],
           finishAt: ["", Validators.required],
@@ -96,46 +100,103 @@ export class DetailContractComponent implements OnInit {
         }),
         matrixOfResponsability: this._formBuilder.array([]),
       }),
-      contractorData: this._formBuilder.group({})
+      contractorData: this._formBuilder.group({
+        cnpj: ["", Validators.required],
+        fantasyName: ["", Validators.required],
+        companyName: ["", Validators.required],
+        phoneNumber: ["", Validators.required],
+        email: ["", Validators.required],
+        address: this._formBuilder.group({
+          street: ["", Validators.required],
+          number: ["", Validators.required],
+          neighborhood: ["", Validators.required],
+          city: ["", Validators.required],
+          state: ["", Validators.required],
+          postalCode: ["", Validators.required],
+        }),
+        contractorManager: this._formBuilder.group({
+          name: ["", Validators.required],
+          email: ["", Validators.required],
+          phoneNumber: ["", Validators.required],
+        }),
+        files: this._formBuilder.array([]),
+      }),
     });
 
     this.addResponsible();
 
     this.includeForm.patchValue({
       contractData: {
-        "code": 'RSM-20240001',
-        "cnpj": "00.000.000/0001-00",
-        "dateInitialMet": new Date("2024-04-16"),
-        "fantasyName": "Prado Sistemas SA",
-        "vigence": {
-          "startAt": new Date("2024-04-16"),
-          "finishAt": new Date("2024-04-16"),
+        code: "RSM-20240001",
+        dateInitialMet: new Date("2024-04-16"),
+        vigence: {
+          startAt: new Date("2024-04-16"),
+          finishAt: new Date("2024-04-16"),
         },
-        "scope": "32.240-410",
-        "degreeRiskLevel": "HIGH",
-        "contractManager": {
-          "name": "Vinicius Francisco Prado",
-          "email": "email@email.com",
-          "phoneNumber": "32956565656"
+        scope: "Mineiração",
+        degreeRiskLevel: "HIGH",
+        contractManager: {
+          name: "Vinicius Francisco Prado",
+          email: "email@email.com",
+          phoneNumber: "32956565656",
         },
-        "matrixOfResponsability": [
+        matrixOfResponsability: [
           {
-            "name": "Vinicius Francisco Prado",
-            "function": "admin",
-            "email": "developer.vinicius.prado@gmail.com"
+            name: "Vinicius Francisco Prado",
+            function: "admin",
+            email: "developer.vinicius.prado@gmail.com",
           },
           {
-            "name": "Vinicius Francisco Prado",
-            "function": "coordenador",
-            "email": "developer.vinicius.prado@gmail.com"
-          }
-        ]
-      }
-    })
+            name: "Vinicius Francisco Prado",
+            function: "coordenador",
+            email: "developer.vinicius.prado@gmail.com",
+          },
+        ],
+      },
+      contractorData: {
+        cnpj: "00.000.000/0001-00",
+        fantasyName: "Prado Sistemas SA",
+        companyName: "Prado Sistemas SA",
+        email: "prado.sistemas@gmail.com",
+        phoneNumber: "31980104522",
+        address: {
+          street: "Rua dos Franciscanos",
+          number: "214",
+          neighborhood: "Bandeirantes",
+          city: "Contagem",
+          state: "MG",
+          postalCode: "32.240-410",
+        },
+        contractorManager: {
+          name: "Vinicius Francisco Prado",
+          email: "4lternativo@gmail.com",
+          phoneNumber: "31980104522",
+        }
+      },
+    });
+
+    this.addFile();
+
   }
 
   matrix(): FormArray {
     return this.includeForm.get("contractData").get("matrixOfResponsability") as FormArray;
+  }
+
+  files(): FormArray {
+    return this.includeForm.get("contractorData").get("files") as FormArray;
+  }
+
+  addFile(){
+    this.files().push(this.newFile());
+  }
+  
+  newFile(): FormGroup {
+  
+    return this._formBuilder.group({
+      fileName: ["Certidão negativa da JUCEMG", Validators.required],
+      mandatory: [true, Validators.required],
+    })
   }
 
   addResponsible() {

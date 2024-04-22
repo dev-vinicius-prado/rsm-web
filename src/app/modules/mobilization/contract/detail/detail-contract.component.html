@@ -26,7 +26,7 @@
     <div class="max-w-8xl">
       <form class="p-4 bg-card shadow rounded overflow-hidden" [formGroup]="includeForm">
         <mat-horizontal-stepper [linear]="true" #includeFormStepper>
-          <mat-step [formGroupName]="'contractData'" [stepControl]="includeForm.get('contractData')" #includeFormStepContractData>
+          <!-- <mat-step [formGroupName]="'contractData'" [stepControl]="includeForm.get('contractData')" #includeFormStepContractData>
             <ng-template matStepLabel>{{ trs("dados-contrato") }}</ng-template>
             <div class="flex flex-wrap gap-2">
               <mat-form-field class="flex flex-auto">
@@ -34,23 +34,25 @@
                 <input matInput [formControlName]="'code'" />
               </mat-form-field>
               <mat-form-field class="flex flex-auto">
-                <mat-label>CNPJ</mat-label>
-                <input matInput [formControlName]="'cnpj'" />
+                <mat-label>{{ trs("escopo") }}</mat-label>
+                <input matInput [formControlName]="'scope'" />
               </mat-form-field>
+              <mat-form-field class="flex flex-auto">
+                <mat-label>{{ trs("grau-risco") }}</mat-label>
+                <mat-select [formControlName]="'degreeRiskLevel'" [placeholder]="trs('selecione')" required>
+                  <mat-option value="HIGH">{{ trs("grau-risco-alto") }}</mat-option>
+                  <mat-option value="MEDIUM">{{ trs("grau-risco-medio") }}</mat-option>
+                  <mat-option value="LOW">{{ trs("grau-risco-baixo") }}</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div class="flex flex-wrap gap-2">
               <mat-form-field class="flex flex-auto">
                 <mat-label>{{ trs("data-reuniao-inicial") }}</mat-label>
                 <input matInput [matDatepicker]="dateInitialMet" [placeholder]="'99/99/9999'" [formControlName]="'dateInitialMet'" />
                 <mat-datepicker-toggle matSuffix [for]="dateInitialMet"></mat-datepicker-toggle>
                 <mat-datepicker #dateInitialMet></mat-datepicker>
               </mat-form-field>
-            </div>
-            <div class="flex flex-wrap gap-2">
-              <mat-form-field class="flex-auto gt-xs:pr-3">
-                <mat-label>{{ trs("nome-fantasia") }}</mat-label>
-                <input matInput [formControlName]="'fantasyName'" />
-              </mat-form-field>
-            </div>
-            <div class="flex flex-wrap gap-2">
               <div class="flex flex-auto gap-2" [formGroupName]="'vigence'">
                 <mat-form-field class="flex flex-auto">
                   <mat-label>{{ trs("vigencia-inicio") }}</mat-label>
@@ -65,18 +67,6 @@
                   <mat-datepicker #dateEndingVigence></mat-datepicker>
                 </mat-form-field>
               </div>
-              <mat-form-field class="flex flex-auto">
-                <mat-label>{{ trs("escopo") }}</mat-label>
-                <input matInput [formControlName]="'scope'" />
-              </mat-form-field>
-              <mat-form-field class="flex flex-auto">
-                <mat-label>{{ trs("grau-risco") }}</mat-label>
-                <mat-select [formControlName]="'degreeRiskLevel'" [placeholder]="trs('selecione')" required>
-                  <mat-option value="HIGH">{{ trs("grau-risco-alto") }}</mat-option>
-                  <mat-option value="MEDIUM">{{ trs("grau-risco-medio") }}</mat-option>
-                  <mat-option value="LOW">{{ trs("grau-risco-baixo") }}</mat-option>
-                </mat-select>
-              </mat-form-field>
             </div>
 
             <div class="flex flex-col gap-5">
@@ -84,7 +74,7 @@
                 <mat-expansion-panel>
                   <mat-expansion-panel-header>
                     <mat-panel-title>
-                      <mat-icon class="icon-size-8 pr-2" matPrefix [svgIcon]="'heroicons_solid:table-cells'"></mat-icon>
+                      <mat-icon class="icon-size-8 pr-2" matPrefix [svgIcon]="'heroicons_solid:user-circle'"></mat-icon>
                       <h5 class="text-2xl md:text-3xl font-extrabold tracking-tight leading-7 sm:leading-10 truncate">
                         {{ trs("painel-gestor-contrato") }}
                       </h5>
@@ -130,7 +120,7 @@
 
                   <section [formArrayName]="'matrixOfResponsability'">
                     <div class="flex justify-end">
-                      <button mat-flat-button color="primary" (click)="addResponsible()">{{ trs("add") }}</button>
+                      <button mat-flat-button color="primary" (click)="addResponsible()">{{ trs("adicionar") }}</button>
                     </div>
 
                     <div *ngFor="let responsible of matrix().controls; let rowIndex = index">
@@ -156,7 +146,6 @@
                 </mat-expansion-panel>
               </mat-accordion>
             </div>
-            <!-- Divider -->
             <div class="my-10 border-t"></div>
 
             <div class="flex flex-wrap">
@@ -164,63 +153,182 @@
                 {{ trs("proximo") }}
               </button>
             </div>
-          </mat-step>
+          </mat-step> -->
 
           <mat-step [formGroupName]="'contractorData'" [stepControl]="includeForm.get('contractorData')" #includeFormStepperContractorStep>
-            <ng-template matStepLabel>{{ trs("empresa-contratante") }}</ng-template>
-            <div class="flex flex-col gt-xs:flex-row">
-              <mat-form-field class="flex-auto gt-xs:pr-3">
-                <input matInput [formControlName]="'firstName'" [placeholder]="'First name'" required />
-                <mat-icon class="icon-size-5" matPrefix [svgIcon]="'heroicons_solid:user-circle'"></mat-icon>
-              </mat-form-field>
-              <mat-form-field class="flex-auto gt-xs:pl-3">
-                <input matInput [formControlName]="'lastName'" [placeholder]="'Last name'" required />
-                <mat-icon class="icon-size-5" matPrefix [svgIcon]="'heroicons_solid:user-circle'"></mat-icon>
-              </mat-form-field>
-            </div>
-            <div class="flex">
+            <ng-template matStepLabel>{{ trs("empresa-contratada") }}</ng-template>
+            <div class="flex gap-2">
               <mat-form-field class="flex-auto">
-                <input matInput [formControlName]="'userName'" [placeholder]="'Username'" required />
-                <span matPrefix>www.example.com/</span>
+                <mat-label>CNPJ</mat-label>
+                <input matInput [formControlName]="'cnpj'" />
               </mat-form-field>
-            </div>
-            <div class="flex">
               <mat-form-field class="flex-auto">
-                <textarea matInput [formControlName]="'about'" [placeholder]="'About'" [rows]="3"></textarea>
-                <mat-icon class="icon-size-5" matPrefix [svgIcon]="'heroicons_solid:bars-3-bottom-left'"></mat-icon>
+                <mat-label>{{ trs("razao-social") }}</mat-label>
+                <input matInput [formControlName]="'companyName'" />
+              </mat-form-field>
+              <mat-form-field class="flex-auto">
+                <mat-label>{{ trs("nome-fantasia") }}</mat-label>
+                <input matInput [formControlName]="'fantasyName'" />
               </mat-form-field>
             </div>
-            <div class="flex justify-end">
-              <button class="px-8 mr-2" mat-flat-button [color]="'accent'" type="button" matStepperPrevious>
-                {{ trs("voltar") }}
-              </button>
-              <button class="px-8" mat-flat-button [color]="'primary'"  type="button" matStepperNext>
-                {{ trs("proximo") }}
-              </button>
+            <div class="flex gap-2">
+              <mat-form-field class="flex-auto">
+                <mat-label>E-mail</mat-label>
+                <input matInput [formControlName]="'email'" required />
+              </mat-form-field>
+              <mat-form-field class="flex-auto">
+                <mat-label>{{ trs("telefone") }}</mat-label>
+                <input matInput [formControlName]="'phoneNumber'" required />
+              </mat-form-field>
             </div>
-          </mat-step>
+            <div class="my-2 border-t"></div>
+            <div class="flex gap-2" [formGroupName]="'address'">
+              <mat-form-field class="flex-auto">
+                <mat-label>{{ trs("postal-code") }}</mat-label>
+                <input matInput [formControlName]="'postalCode'" required />
+                <mat-icon class="icon-size-5" matSuffix [svgIcon]="'heroicons_solid:map-pin'"></mat-icon>
+              </mat-form-field>
+              <mat-form-field class="flex-auto">
+                <mat-label>{{ trs("logradouro") }}</mat-label>
+                <input matInput [formControlName]="'street'" required />
+                <mat-icon class="icon-size-5" matSuffix [svgIcon]="'heroicons_solid:map-pin'"></mat-icon>
+              </mat-form-field>
+              <mat-form-field class="flex-auto">
+                <mat-label>{{ trs("numero") }}</mat-label>
+                <input matInput [formControlName]="'number'" required />
+                <mat-icon class="icon-size-5" matSuffix [svgIcon]="'heroicons_solid:map-pin'"></mat-icon>
+              </mat-form-field>
+            </div>
+            <div class="flex gap-2">
+              <mat-form-field class="flex-auto">
+                <mat-label>{{ trs("bairro") }}</mat-label>
+                <input matInput [formControlName]="'neighborhood'" required />
+                <mat-icon class="icon-size-5" matSuffix [svgIcon]="'heroicons_solid:map-pin'"></mat-icon>
+              </mat-form-field>
+              <mat-form-field class="flex-auto">
+                <mat-label>{{ trs("cidade") }}</mat-label>
+                <input matInput [formControlName]="'city'" required />
+                <mat-icon class="icon-size-5" matSuffix [svgIcon]="'heroicons_solid:map-pin'"></mat-icon>
+              </mat-form-field>
+              <mat-form-field class="flex-auto">
+                <mat-label>{{ trs("estado") }}</mat-label>
+                <input matInput [formControlName]="'state'" required />
+                <mat-icon class="icon-size-5" matSuffix [svgIcon]="'heroicons_solid:map-pin'"></mat-icon>
+              </mat-form-field>
+            </div>
+            <div class="flex flex-col gap-5">
+              <mat-accordion class="rounded-md shadow-md shadow-slate-300">
+                <mat-expansion-panel>
+                  <mat-expansion-panel-header>
+                    <mat-panel-title>
+                      <mat-icon class="icon-size-8 pr-2" matPrefix [svgIcon]="'heroicons_solid:user-circle'"></mat-icon>
+                      <h5 class="text-2xl md:text-3xl font-extrabold tracking-tight leading-7 sm:leading-10 truncate">
+                        {{ trs("painel-gestor-contratada") }}
+                      </h5>
+                    </mat-panel-title>
+                  </mat-expansion-panel-header>
 
-          <!-- mat-step [formGroupName]="'step3'" [stepControl]="includeForm.get('step3')">
-            <ng-template matStepLabel>{{ trs("dados-recurso") }}</ng-template>
-            <div class="flex flex-col gt-sm:flex-row">
-              <div class="flex flex-col">
-                <span class="font-medium mb-2">By Email</span>
-                <div class="flex flex-col" [formGroupName]="'byEmail'">
-                  <mat-checkbox class="mb-1" [color]="'primary'" [formControlName]="'companyNews'"> Company News </mat-checkbox>
-                  <mat-checkbox class="mb-1" [color]="'primary'" [formControlName]="'featuredProducts'"> Featured Products </mat-checkbox>
-                  <mat-checkbox [color]="'primary'" [formControlName]="'messages'"> Messages </mat-checkbox>
-                </div>
-              </div>
-              <div class="flex flex-col mt-8 gt-sm:mt-0 gt-sm:ml-16">
-                <span class="font-medium mb-2">Push Notifications</span>
-                <mat-radio-group class="flex flex-col" [color]="'primary'" [formControlName]="'pushNotifications'">
-                  <mat-radio-button class="mb-2" [value]="'everything'"> Everything </mat-radio-button>
-                  <mat-radio-button class="mb-2" [value]="'just-good'"> Just the good stuff </mat-radio-button>
-                  <mat-radio-button [value]="'no-push'"> No push notifications </mat-radio-button>
-                </mat-radio-group>
-              </div>
+                  <section class="mb-3" [formGroupName]="'contractorManager'">
+                    <div class="flex flex-wrap gap-2">
+                      <mat-form-field class="flex-auto">
+                        <mat-label>{{ trs("gestor-contratada-nome") }}</mat-label>
+                        <input matInput [formControlName]="'name'" />
+                        <mat-error>Campo obrigatório!</mat-error>
+                        <mat-icon class="icon-size-5" matSuffix [svgIcon]="'heroicons_solid:user-circle'"></mat-icon>
+                      </mat-form-field>
+
+                      <mat-form-field class="flex-auto">
+                        <mat-label>E-mail</mat-label>
+                        <input matInput type="email" [formControlName]="'email'" />
+                        <mat-icon class="icon-size-5" matSuffix [svgIcon]="'heroicons_solid:user-circle'"></mat-icon>
+                      </mat-form-field>
+
+                      <mat-form-field class="flex-auto">
+                        <mat-label>{{ trs("telefone") }}</mat-label>
+                        <input matInput type="tel" mask="(00) 0 0000-0000" [formControlName]="'phoneNumber'" />
+                        <mat-error>Campo obrigatório!</mat-error>
+                        <mat-icon class="icon-size-5" matSuffix [svgIcon]="'heroicons_solid:user-circle'"></mat-icon>
+                      </mat-form-field>
+                    </div>
+                  </section>
+                </mat-expansion-panel>
+              </mat-accordion>
+
+              <mat-accordion class="rounded-md shadow-md shadow-slate-300">
+                <mat-expansion-panel>
+                  <mat-expansion-panel-header>
+                    <mat-panel-title>
+                      <mat-icon class="icon-size-8 pr-2" matPrefix [svgIcon]="'heroicons_solid:user-circle'"></mat-icon>
+                      <h5 class="text-2xl md:text-3xl font-extrabold tracking-tight leading-7 sm:leading-10 truncate">
+                        {{ trs("painel-documentos-contratada") }}
+                      </h5>
+                    </mat-panel-title>
+                  </mat-expansion-panel-header>
+
+                  <section [formArrayName]="'files'">
+                    <div class="flex justify-end">
+                      <button mat-flat-button color="primary" (click)="addFile()">{{ trs("adicionar") }}</button>
+                    </div>
+
+                    <div *ngFor="let file of files().controls; let rowIndex = index">
+                      <div [formGroupName]="rowIndex" class="flex gap-2">
+                        <mat-form-field class="flex-auto">
+                          <mat-label>{{ trs("nome") }}</mat-label>
+                          <input matInput [formControlName]="'fileName'" required />
+                        </mat-form-field>
+                        <div class="flex-auto flex-col">
+                          <label [className]="'label-color'" >{{ trs("obrigatorio") }}*</label>
+                          <div class="flex-auto">
+                            <mat-radio-group [formControlName]="'mandatory'" #planRadioGroup="matRadioGroup" required>
+                              <mat-radio-button color="primary" [value]="true">{{trs("sim")}}</mat-radio-button>
+                              <mat-radio-button [value]="false">{{trs("nao")}}</mat-radio-button>
+                            </mat-radio-group>
+                          </div>
+                        </div>
+                        <div class="flex items-center">
+                            <button mat-raised-button class="bg-warn text-white" (click)="removeResponsible(rowIndex)">
+                            <mat-icon class="icon-5" [svgIcon]="'heroicons_solid:trash'"></mat-icon>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- <div class="flex flex-wrap gap-2">
+                      <ng-container *ngIf="items.files.length > 0">
+                        <div>
+                          <div class="font-medium">Files</div>
+                          <div class="flex flex-wrap -m-2 mt-2">
+                            <ng-container *ngFor="let file of items.files; trackBy: trackByFn">
+                              <a class="flex flex-col w-40 h-40 m-2 p-4 shadow rounded-2xl cursor-pointer bg-card" [routerLink]="['./details/', file.id]">
+                                <div class="aspect-[9/6]">
+                                  <div class="flex items-center justify-center h-full">
+                                    <div class="relative">
+                                      <mat-icon class="icon-size-14 text-hint opacity-50" [svgIcon]="'heroicons_solid:document'"></mat-icon>
+                                      <div class="absolute left-0 bottom-0 px-1.5 rounded text-sm font-semibold leading-5 text-white" [class.bg-red-600]="file.type === 'PDF'" [class.bg-blue-600]="file.type === 'DOC'" [class.bg-green-600]="file.type === 'XLS'" [class.bg-gray-600]="file.type === 'TXT'" [class.bg-amber-600]="file.type === 'JPG'">
+                                        {{ file.type.toUpperCase() }}
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="flex flex-col flex-auto justify-center text-center text-sm font-medium">
+                                  <div class="truncate" [matTooltip]="file.name">{{ file.name }}</div>
+                                  <ng-container *ngIf="file.contents">
+                                    <div class="text-secondary truncate">{{ file.contents }}</div>
+                                  </ng-container>
+                                </div>
+                              </a>
+                            </ng-container>
+                          </div>
+                        </div>
+                      </ng-container>
+                    </div> -->
+                  </section>
+                </mat-expansion-panel>
+              </mat-accordion>
             </div>
-            <div class="flex justify-end mt-8">
+
+            <div class="my-10 border-t"></div>
+            <div class="flex justify-end">
               <button class="px-8 mr-2" mat-flat-button [color]="'accent'" type="button" matStepperPrevious>
                 {{ trs("voltar") }}
               </button>
@@ -228,7 +336,7 @@
                 {{ trs("proximo") }}
               </button>
             </div>
-          </mat-step --> 
+          </mat-step>
 
           <mat-step>
             <ng-template matStepLabel>{{ trs("finalizar") }}</ng-template>
