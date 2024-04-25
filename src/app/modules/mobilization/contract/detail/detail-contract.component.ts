@@ -80,9 +80,6 @@ export class DetailContractComponent implements OnInit {
    * On init
    */
   ngOnInit(): void {
-    console.log(this.contractResource);
-
-    // Horizontal stepper form
     this.includeForm = this._formBuilder.group({
       contractData: this._formBuilder.group({
         code: ["RSM-20240001"],
@@ -114,11 +111,16 @@ export class DetailContractComponent implements OnInit {
           state: ["", Validators.required],
           postalCode: ["", Validators.required],
         }),
+      }),
+      resourcesData: this._formBuilder.group({
         contractorManager: this._formBuilder.group({
           name: ["", Validators.required],
           email: ["", Validators.required],
           phoneNumber: ["", Validators.required],
         }),
+        type: ["", Validators.required],
+        function: ["", Validators.required],
+        quantity: ["", Validators.required],
         files: this._formBuilder.array([]),
       }),
     });
@@ -173,6 +175,7 @@ export class DetailContractComponent implements OnInit {
           phoneNumber: "31980104522",
         }
       },
+      resources: {}
     });
 
     this.addFile();
@@ -184,19 +187,31 @@ export class DetailContractComponent implements OnInit {
   }
 
   files(): FormArray {
-    return this.includeForm.get("contractorData").get("files") as FormArray;
+    return this.includeForm.get("resourcesData").get("files") as FormArray;
   }
 
   addFile(){
     this.files().push(this.newFile());
   }
+
+  removeFile(rowIndex: number) {
+    this.files().removeAt(rowIndex);
+  }
   
   newFile(): FormGroup {
-  
-    return this._formBuilder.group({
-      fileName: ["Certidão negativa da JUCEMG", Validators.required],
-      mandatory: [true, Validators.required],
-    })
+    if (this.files().length === 0) {
+    
+      return this._formBuilder.group({
+        fileName: ["Certidão negativa da JUCEMG", Validators.required],
+        mandatory: [true, Validators.required],
+      })
+    } else {
+      return this._formBuilder.group({
+        fileName: ["", Validators.required],
+        mandatory: ["", Validators.required],
+      })
+
+    }
   }
 
   addResponsible() {
