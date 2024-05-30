@@ -59,5 +59,11 @@
     "vigencia-fim": "Fim da vigência",
     "vigencia-inicio": "Início da vigência",
     "painel-dados-mobilizacao": "Dados da mobilização",
-    "voltar": "Voltar"
+    "voltar": "Voltar",
+    "emissao-cracha": "Emissão de crachá",
+    "abrange-alimentacao": "Abrange alimentação",
+    "abrange-transporte": "Abrange transporte",
+    "painel-racs-nrs": "RAC's e NR's",
+    "racs-obrigatorios": "RAC's obrigatórios",
+    "nrs-obrigatorios": "NR's obrigatórios"
 }

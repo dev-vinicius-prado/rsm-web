@@ -62,5 +62,11 @@
     "vigencia": "Vigence",
     "vigencia-fim": "Ending vigence",
     "vigencia-inicio": "Start vigence",
-    "voltar": "Back"
+    "voltar": "Back",
+    "emissao-cracha": "Badge issuance",
+    "abrange-alimentacao": "Covers food",
+    "abrange-transporte": "Covers transportation",
+    "painel-racs-nrs": "RAC's and NR's",
+    "racs-obrigatorios": "Required RAC's",
+    "nrs-obrigatorios": "Required NR's"
 }
