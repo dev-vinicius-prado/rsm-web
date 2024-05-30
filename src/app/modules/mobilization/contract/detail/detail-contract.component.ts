@@ -1,3 +1,4 @@
+import { MatChipInputEvent, MatChipsModule } from '@angular/material/chips';
 import { CdkAccordionModule } from "@angular/cdk/accordion";
 import { NgFor, NgIf, NgSwitch, NgSwitchCase, NgSwitchDefault, JsonPipe } from "@angular/common";
 import { Component, OnInit, ViewEncapsulation } from "@angular/core";
@@ -16,6 +17,7 @@ import { MatStepperModule } from "@angular/material/stepper";
 import { MatTableModule } from "@angular/material/table";
 import { TranslocoModule } from "@ngneat/transloco";
 import { ContractResource } from "../contract.types";
+import { CommaExpr } from '@angular/compiler';
 
 const DEFAULT_CONTRACT_DATA = {
   id: 0,
@@ -58,14 +60,19 @@ export const items = {
   selector: "app-detail-contract",
   standalone: true,
   encapsulation: ViewEncapsulation.None,
-  imports: [TranslocoModule, MatIconModule, FormsModule, ReactiveFormsModule, MatStepperModule, MatFormFieldModule, MatInputModule, MatSelectModule, MatOptionModule, MatButtonModule, MatCheckboxModule, MatRadioModule, MatDatepickerModule, MatExpansionModule, CdkAccordionModule, MatTableModule, NgFor, NgIf, NgSwitch, NgSwitchCase, NgSwitchDefault, JsonPipe],
+  imports: [TranslocoModule, MatIconModule, FormsModule, MatChipsModule, ReactiveFormsModule, MatStepperModule, MatFormFieldModule, MatInputModule, MatSelectModule, MatOptionModule, MatButtonModule, MatCheckboxModule, MatRadioModule, MatDatepickerModule, MatExpansionModule, CdkAccordionModule, MatTableModule, NgFor, NgIf, NgSwitch, NgSwitchCase, NgSwitchDefault, JsonPipe],
   templateUrl: "./detail-contract.component.html",
   styleUrl: "./detail-contract.component.scss",
 })
 export class DetailContractComponent implements OnInit {
   includeForm: UntypedFormGroup;
   contractResource: ContractResource = DEFAULT_CONTRACT_DATA;
-  items: any= items;
+  items: any = items;
+  addOnBlur: boolean = true;
+  readonly separatorKeysCode = ['ENTER', 'COMMA'] as const;
+  nrsList: string[] = [];
+
+
 
   /**
    * Constructor
@@ -228,6 +235,31 @@ export class DetailContractComponent implements OnInit {
       function: [""],
       email: [""],
     });
+  }
+
+  addNR(event: MatChipInputEvent): void {
+    const value: string = (event.value || '').trim();
+    if (value) {
+      this.nrsList.push(value);
+    }
+    event.chipInput!.clear();
+  }
+  editNR(nr: string, event: MatChipInputEvent): void {
+    const value: string = event.value.trim();
+    if (value) {
+      this.removeNR(nr);
+    }
+    const index = this.nrsList.indexOf(nr);
+    if (index >= 0) {
+      this.nrsList[index] = value;
+    }
+  }
+
+  removeNR(nr: string) {
+    const index = this.nrsList.indexOf(nr);
+    if (index >= 0) {
+      this.nrsList.splice(index, 1);
+    }
   }
 
   save() {
