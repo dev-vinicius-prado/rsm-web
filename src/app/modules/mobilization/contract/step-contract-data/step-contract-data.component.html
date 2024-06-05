@@ -1,0 +1,127 @@
+<div *transloco="let trs" [formGroup]="contractDataForm">
+  <div class="flex flex-wrap gap-2">
+    <mat-form-field class="flex-auto">
+      <mat-label>{{ trs("numero-contrato") }}</mat-label>
+      <input matInput [formControlName]="'code'" />
+    </mat-form-field>
+    <mat-form-field class="flex-auto">
+      <mat-label>{{ trs("escopo") }}</mat-label>
+      <input matInput [formControlName]="'scope'" />
+    </mat-form-field>
+    <mat-form-field class="flex-auto">
+      <mat-label>{{ trs("grau-risco") }}</mat-label>
+      <mat-select [formControlName]="'degreeRiskLevel'" [placeholder]="trs('selecione')" required>
+        <mat-option value="HIGH">{{ trs("grau-risco-alto") }}</mat-option>
+        <mat-option value="MEDIUM">{{ trs("grau-risco-medio") }}</mat-option>
+        <mat-option value="LOW">{{ trs("grau-risco-baixo") }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="flex flex-wrap gap-2">
+    <mat-form-field class="flex-auto">
+      <mat-label>{{ trs("data-reuniao-inicial") }}</mat-label>
+      <input matInput [matDatepicker]="dateInitialMet" [placeholder]="'99/99/9999'" [formControlName]="'dateInitialMet'" />
+      <mat-datepicker-toggle matSuffix [for]="dateInitialMet"></mat-datepicker-toggle>
+      <mat-datepicker #dateInitialMet></mat-datepicker>
+    </mat-form-field>
+    <ng-container class="flex flex-wrap" [formGroupName]="'vigence'">
+      <mat-form-field class="flex-auto">
+        <mat-label>{{ trs("vigencia-inicio") }}</mat-label>
+        <input matInput [matDatepicker]="dateStartVigence" [placeholder]="'99/99/9999'" [formControlName]="'startAt'" />
+        <mat-datepicker-toggle matSuffix [for]="dateStartVigence"></mat-datepicker-toggle>
+        <mat-datepicker #dateStartVigence></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field class="flex-auto">
+        <mat-label>{{ trs("vigencia-fim") }}</mat-label>
+        <input matInput [matDatepicker]="dateEndingVigence" [placeholder]="'99/99/9999'" [formControlName]="'finishAt'" />
+        <mat-datepicker-toggle matSuffix [for]="dateEndingVigence"></mat-datepicker-toggle>
+        <mat-datepicker #dateEndingVigence></mat-datepicker>
+      </mat-form-field>
+    </ng-container>
+  </div>
+
+  <div class="flex flex-col gap-5">
+    <mat-accordion class="rounded-md shadow-md shadow-slate-300">
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <mat-icon class="icon-size-8 pr-2" matPrefix [svgIcon]="'heroicons_solid:user-circle'"></mat-icon>
+            <h5 class="text-2xl md:text-3xl font-extrabold tracking-tight leading-7 sm:leading-10 truncate">
+              {{ trs("painel-gestor-contrato") }}
+            </h5>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <section [formGroupName]="'contractManager'">
+          <div class="flex flex-wrap gap-2">
+            <mat-form-field class="flex flex-auto">
+              <mat-label>{{ trs("gestor-contrato-nome") }}</mat-label>
+              <input matInput [formControlName]="'name'" />
+              <mat-error>Campo obrigatório!</mat-error>
+              <mat-icon class="icon-size-5" matSuffix [svgIcon]="'heroicons_solid:user-circle'"></mat-icon>
+            </mat-form-field>
+
+            <mat-form-field class="flex flex-auto">
+              <mat-label>E-mail</mat-label>
+              <input matInput type="email" [formControlName]="'email'" />
+              <mat-icon class="icon-size-5" matSuffix [svgIcon]="'heroicons_solid:user-circle'"></mat-icon>
+            </mat-form-field>
+
+            <mat-form-field class="flex flex-auto">
+              <mat-label>Celular</mat-label>
+              <input matInput type="tel" mask="(00) 0 0000-0000" [formControlName]="'phoneNumber'" />
+              <mat-error>Campo obrigatório!</mat-error>
+              <mat-icon class="icon-size-5" matSuffix [svgIcon]="'heroicons_solid:user-circle'"></mat-icon>
+            </mat-form-field>
+          </div>
+        </section>
+      </mat-expansion-panel>
+    </mat-accordion>
+
+    <mat-accordion class="rounded-md shadow-md shadow-slate-300">
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <mat-icon class="icon-size-8 pr-2" matPrefix [svgIcon]="'heroicons_solid:table-cells'"></mat-icon>
+            <h5 class="text-2xl md:text-3xl font-extrabold tracking-tight leading-7 sm:leading-10 truncate">
+              {{ trs("painel-matrix-responsabilidade") }}
+            </h5>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <section [formArrayName]="'matrixOfResponsability'">
+          <div class="flex justify-end">
+            <button mat-flat-button color="primary" (click)="addResponsible()">{{ trs("adicionar") }}</button>
+          </div>
+
+          <div *ngFor="let responsible of matrix().controls; let rowIndex = index">
+            <div [formGroupName]="rowIndex" class="flex items-center gap-2">
+              <mat-form-field class="flex flex-auto">
+                <mat-label>{{ trs("nome") }}</mat-label>
+                <input matInput [formControlName]="'name'" required />
+              </mat-form-field>
+              <mat-form-field class="flex flex-auto">
+                <mat-label>{{ trs("função") }}</mat-label>
+                <input matInput [formControlName]="'function'" required />
+              </mat-form-field>
+              <mat-form-field class="flex flex-auto">
+                <mat-label>{{ trs("email") }}</mat-label>
+                <input matInput [formControlName]="'email'" required />
+              </mat-form-field>
+              <button mat-raised-button class="bg-warn text-white" (click)="removeResponsible(rowIndex)">
+                <mat-icon class="icon-5" [svgIcon]="'heroicons_solid:trash'"></mat-icon>
+              </button>
+            </div>
+          </div>
+        </section>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+  <div class="my-10 border-t"></div>
+
+  <div class="flex flex-wrap">
+    <button class="px-8" mat-flat-button [color]="'primary'" type="button" matStepperNext>
+      {{ trs("proximo") }}
+    </button>
+  </div>
+</div>
