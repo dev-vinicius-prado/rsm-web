@@ -32,33 +32,17 @@
               <step-contract-data></step-contract-data>
             </form>
           </mat-step>
+          <mat-step [stepControl]="contractorForm">
+            <form [formGroup]="contractorForm">
+              <ng-template matStepLabel>{{ trs("empresa-contratada") }}</ng-template>
+              <step-contractor-data></step-contractor-data>
+            </form>
+          </mat-step>
 
           <!-- <mat-step [formGroupName]="'contractorData'" [stepControl]="includeForm.get('contractorData')" #includeFormStepperContractorStep>
             <ng-template matStepLabel>{{ trs("empresa-contratada") }}</ng-template>
-            <div class="flex gap-2">
-              <mat-form-field class="flex-auto">
-                <mat-label>CNPJ</mat-label>
-                <input matInput [formControlName]="'cnpj'" />
-              </mat-form-field>
-              <mat-form-field class="flex-auto">
-                <mat-label>{{ trs("razao-social") }}</mat-label>
-                <input matInput [formControlName]="'companyName'" />
-              </mat-form-field>
-              <mat-form-field class="flex-auto">
-                <mat-label>{{ trs("nome-fantasia") }}</mat-label>
-                <input matInput [formControlName]="'fantasyName'" />
-              </mat-form-field>
-            </div>
-            <div class="flex gap-2">
-              <mat-form-field class="flex-auto">
-                <mat-label>E-mail</mat-label>
-                <input matInput [formControlName]="'email'" required />
-              </mat-form-field>
-              <mat-form-field class="flex-auto">
-                <mat-label>{{ trs("telefone") }}</mat-label>
-                <input matInput [formControlName]="'phoneNumber'" required />
-              </mat-form-field>
-            </div>
+            
+            
             <div class="my-2 border-t"></div>
             <div class="flex gap-2" [formGroupName]="'address'">
               <mat-form-field class="flex-auto">
@@ -94,86 +78,7 @@
                 <mat-icon class="icon-size-5" matSuffix [svgIcon]="'heroicons_solid:map-pin'"></mat-icon>
               </mat-form-field>
             </div>
-            <div class="flex flex-col gap-5">
-              <mat-accordion class="rounded-md shadow-md shadow-slate-300">
-                <mat-expansion-panel>
-                  <mat-expansion-panel-header>
-                    <mat-panel-title>
-                      <mat-icon class="icon-size-8 pr-2" matPrefix [svgIcon]="'heroicons_solid:user-circle'"></mat-icon>
-                      <h5 class="text-2xl md:text-3xl font-extrabold tracking-tight leading-7 sm:leading-10 truncate">
-                        {{ trs("painel-gestor-contratada") }}
-                      </h5>
-                    </mat-panel-title>
-                  </mat-expansion-panel-header>
-
-                  <section class="mb-3" [formGroupName]="'contractorManager'">
-                    <div class="flex flex-wrap gap-2">
-                      <mat-form-field class="flex-auto">
-                        <mat-label>{{ trs("gestor-contratada-nome") }}</mat-label>
-                        <input matInput [formControlName]="'name'" />
-                        <mat-error>Campo obrigatório!</mat-error>
-                        <mat-icon class="icon-size-5" matSuffix [svgIcon]="'heroicons_solid:user-circle'"></mat-icon>
-                      </mat-form-field>
-
-                      <mat-form-field class="flex-auto">
-                        <mat-label>E-mail</mat-label>
-                        <input matInput type="email" [formControlName]="'email'" />
-                        <mat-icon class="icon-size-5" matSuffix [svgIcon]="'heroicons_solid:user-circle'"></mat-icon>
-                      </mat-form-field>
-
-                      <mat-form-field class="flex-auto">
-                        <mat-label>{{ trs("telefone") }}</mat-label>
-                        <input matInput type="tel" mask="(00) 0 0000-0000" [formControlName]="'phoneNumber'" />
-                        <mat-error>Campo obrigatório!</mat-error>
-                        <mat-icon class="icon-size-5" matSuffix [svgIcon]="'heroicons_solid:user-circle'"></mat-icon>
-                      </mat-form-field>
-                    </div>
-                  </section>
-                </mat-expansion-panel>
-              </mat-accordion>
-
-              <mat-accordion class="rounded-md shadow-md shadow-slate-300">
-                <mat-expansion-panel>
-                  <mat-expansion-panel-header>
-                    <mat-panel-title>
-                      <mat-icon class="icon-size-8 pr-2" matPrefix [svgIcon]="'heroicons_solid:user-circle'"></mat-icon>
-                      <h5 class="text-2xl md:text-3xl font-extrabold tracking-tight leading-7 sm:leading-10 truncate">
-                        {{ trs("painel-documentos-contratada") }}
-                      </h5>
-                    </mat-panel-title>
-                  </mat-expansion-panel-header>
-
-                  <section [formArrayName]="'files'">
-                    <div class="flex justify-end">
-                      <button mat-flat-button color="primary" (click)="addFile()">{{ trs("adicionar") }}</button>
-                    </div>
-
-                    <div *ngFor="let file of files().controls; let rowIndex = index">
-                      <div [formGroupName]="rowIndex" class="flex gap-2">
-                        <mat-form-field class="flex-auto">
-                          <mat-label>{{ trs("nome") }}</mat-label>
-                          <input matInput [formControlName]="'fileName'" required />
-                        </mat-form-field>
-                        <div class="flex-auto flex-col">
-                          <label [className]="'label-color'" >{{ trs("obrigatorio") }}*</label>
-                          <div class="flex-auto">
-                            <mat-radio-group [formControlName]="'mandatory'" #planRadioGroup="matRadioGroup" required>
-                              <mat-radio-button color="primary" [value]="true">{{trs("sim")}}</mat-radio-button>
-                              <mat-radio-button [value]="false">{{trs("nao")}}</mat-radio-button>
-                            </mat-radio-group>
-                          </div>
-                        </div>
-                        <div class="flex items-center">
-                            <button mat-raised-button class="bg-warn text-white" (click)="removeResponsible(rowIndex)">
-                            <mat-icon class="icon-5" [svgIcon]="'heroicons_solid:trash'"></mat-icon>
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  </section>
-                </mat-expansion-panel>
-              </mat-accordion>
-            </div>
+            
 
             <div class="my-10 border-t"></div>
             <div class="flex justify-end">

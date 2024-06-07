@@ -18,6 +18,7 @@ import { MatTableModule } from "@angular/material/table";
 import { TranslocoModule } from "@ngneat/transloco";
 import { ContractResource } from "../contract.types";
 import { StepContractDataComponent } from '../step-contract-data/step-contract-data.component';
+import { StepContractorDataComponent } from '../step-contractor-data/step-contractor-data.component';
 
 const DEFAULT_CONTRACT_DATA = {
   id: 0,
@@ -60,7 +61,7 @@ export const items = {
   selector: "app-detail-contract",
   standalone: true,
   encapsulation: ViewEncapsulation.None,
-  imports: [TranslocoModule, MatIconModule, FormsModule, MatChipsModule, ReactiveFormsModule, MatStepperModule, MatFormFieldModule, MatInputModule, MatSelectModule, MatOptionModule, MatButtonModule, MatCheckboxModule, MatRadioModule, MatDatepickerModule, MatExpansionModule, CdkAccordionModule, MatTableModule, NgFor, NgIf, NgSwitch, NgSwitchCase, NgSwitchDefault, JsonPipe, StepContractDataComponent],
+  imports: [TranslocoModule, MatIconModule, FormsModule, MatChipsModule, ReactiveFormsModule, MatStepperModule, MatFormFieldModule, MatInputModule, MatSelectModule, MatOptionModule, MatButtonModule, MatCheckboxModule, MatRadioModule, MatDatepickerModule, MatExpansionModule, CdkAccordionModule, MatTableModule, NgFor, NgIf, NgSwitch, NgSwitchCase, NgSwitchDefault, JsonPipe, StepContractDataComponent, StepContractorDataComponent],
   templateUrl: "./detail-contract.component.html",
   styleUrl: "./detail-contract.component.scss",
 })
@@ -69,6 +70,7 @@ export class DetailContractComponent implements OnInit {
   isLinear = true;
   includeForm: FormGroup;
   contractForm: FormGroup;
+  contractorForm: FormGroup;
   contractResource: ContractResource = DEFAULT_CONTRACT_DATA;
   items: any = items;
   addOnBlur: boolean = true;
@@ -91,23 +93,8 @@ export class DetailContractComponent implements OnInit {
    */
   ngOnInit(): void {
     this.contractForm = this._formBuilder.group({});
+    this.contractorForm = this._formBuilder.group({});
     this.includeForm = this._formBuilder.group({
-      // contractData: this._formBuilder.group({
-      //   code: ["RSM-20240001"],
-      //   dateInitialMet: ["", Validators.required],
-      //   vigence: this._formBuilder.group({
-      //     startAt: ["", Validators.required],
-      //     finishAt: ["", Validators.required],
-      //   }),
-      //   scope: ["", Validators.required],
-      //   degreeRiskLevel: ["", Validators.required],
-      //   contractManager: this._formBuilder.group({
-      //     name: ["", Validators.required],
-      //     email: ["", Validators.required],
-      //     phoneNumber: ["", Validators.required],
-      //   }),
-      //   matrixOfResponsability: this._formBuilder.array([]),
-      // }),
       // contractorData: this._formBuilder.group({
       //   cnpj: ["", Validators.required],
       //   fantasyName: ["", Validators.required],

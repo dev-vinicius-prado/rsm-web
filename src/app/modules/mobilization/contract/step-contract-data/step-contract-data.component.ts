@@ -1,17 +1,17 @@
-import { Component, Input, OnInit } from "@angular/core";
 import { CdkAccordionModule } from "@angular/cdk/accordion";
-import { MatStepperModule } from "@angular/material/stepper";
-import { MatTableModule } from "@angular/material/table";
+import { NgFor } from "@angular/common";
+import { Component, OnInit } from "@angular/core";
+import { FormArray, FormBuilder, FormGroup, FormGroupDirective, FormsModule, ReactiveFormsModule, Validators } from "@angular/forms";
 import { MatButtonModule } from "@angular/material/button";
-import { NgFor, NgIf, NgSwitch, NgSwitchCase, NgSwitchDefault, JsonPipe } from "@angular/common";
-import { TranslocoModule } from "@ngneat/transloco";
+import { MatExpansionModule } from "@angular/material/expansion";
+import { MatFormFieldModule } from "@angular/material/form-field";
+import { MatIconModule } from "@angular/material/icon";
+import { MatInputModule } from "@angular/material/input";
 import { MatRadioModule } from "@angular/material/radio";
 import { MatSelectModule } from "@angular/material/select";
-import { FormArray, FormBuilder, FormGroup, FormGroupDirective, FormsModule, ReactiveFormsModule, Validators } from "@angular/forms";
-import { MatFormFieldModule } from "@angular/material/form-field";
-import { MatInputModule } from "@angular/material/input";
-import { MatExpansionModule } from "@angular/material/expansion";
-import { MatIconModule } from "@angular/material/icon";
+import { MatStepperModule } from "@angular/material/stepper";
+import { MatTableModule } from "@angular/material/table";
+import { TranslocoModule } from "@ngneat/transloco";
 @Component({
   selector: "step-contract-data",
   standalone: true,
