@@ -43,52 +43,9 @@
             <ng-template matStepLabel>{{ trs("empresa-contratada") }}</ng-template>
             
             
-            <div class="my-2 border-t"></div>
-            <div class="flex gap-2" [formGroupName]="'address'">
-              <mat-form-field class="flex-auto">
-                <mat-label>{{ trs("postal-code") }}</mat-label>
-                <input matInput [formControlName]="'postalCode'" required />
-                <mat-icon class="icon-size-5" matSuffix [svgIcon]="'heroicons_solid:map-pin'"></mat-icon>
-              </mat-form-field>
-              <mat-form-field class="flex-auto">
-                <mat-label>{{ trs("logradouro") }}</mat-label>
-                <input matInput [formControlName]="'street'" required />
-                <mat-icon class="icon-size-5" matSuffix [svgIcon]="'heroicons_solid:map-pin'"></mat-icon>
-              </mat-form-field>
-              <mat-form-field class="flex-auto">
-                <mat-label>{{ trs("numero") }}</mat-label>
-                <input matInput [formControlName]="'number'" required />
-                <mat-icon class="icon-size-5" matSuffix [svgIcon]="'heroicons_solid:map-pin'"></mat-icon>
-              </mat-form-field>
-            </div>
-            <div class="flex gap-2">
-              <mat-form-field class="flex-auto">
-                <mat-label>{{ trs("bairro") }}</mat-label>
-                <input matInput [formControlName]="'neighborhood'" required />
-                <mat-icon class="icon-size-5" matSuffix [svgIcon]="'heroicons_solid:map-pin'"></mat-icon>
-              </mat-form-field>
-              <mat-form-field class="flex-auto">
-                <mat-label>{{ trs("cidade") }}</mat-label>
-                <input matInput [formControlName]="'city'" required />
-                <mat-icon class="icon-size-5" matSuffix [svgIcon]="'heroicons_solid:map-pin'"></mat-icon>
-              </mat-form-field>
-              <mat-form-field class="flex-auto">
-                <mat-label>{{ trs("estado") }}</mat-label>
-                <input matInput [formControlName]="'state'" required />
-                <mat-icon class="icon-size-5" matSuffix [svgIcon]="'heroicons_solid:map-pin'"></mat-icon>
-              </mat-form-field>
-            </div>
-            
+           
 
-            <div class="my-10 border-t"></div>
-            <div class="flex justify-end">
-              <button class="px-8 mr-2" mat-flat-button [color]="'accent'" type="button" matStepperPrevious>
-                {{ trs("voltar") }}
-              </button>
-              <button class="px-8" mat-flat-button [color]="'primary'" type="button" matStepperNext>
-                {{ trs("proximo") }}
-              </button>
-            </div>
+            
           </mat-step>
 
           <mat-step [formGroupName]="'resourcesData'" [stepControl]="includeForm.get('resourcesData')" #includeFormStepperResorcesStep>
