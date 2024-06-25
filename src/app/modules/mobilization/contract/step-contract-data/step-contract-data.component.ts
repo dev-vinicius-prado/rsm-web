@@ -45,8 +45,32 @@ export class StepContractDataComponent implements OnInit {
     this.contractForm = this._ctrlContainer.form;
     this.contractForm.addControl("contractData", this.contractDataForm);
     this.addResponsible();
-  }
 
+    this.contractForm.patchValue({
+      contractData: {
+        code: "RSM-20240001",
+        dateInitialMet: new Date("2024-04-16"),
+        vigence: {
+          startAt: new Date("2024-04-16"),
+          finishAt: new Date("2024-04-16"),
+        },
+        scope: "Mineiração",
+        degreeRiskLevel: "HIGH",
+        contractManager: {
+          name: "Vinicius Francisco Prado",
+          email: "email@email.com",
+          phoneNumber: "32956565656",
+        },
+        matrixOfResponsability: [
+          {
+            name: "Vinicius Francisco Prado",
+            function: "admin",
+            email: "developer.vinicius.prado@gmail.com",
+          }
+        ],
+      },
+    });
+  }
   matrix(): FormArray {
     return this.contractDataForm.get("matrixOfResponsability") as FormArray;
   }
