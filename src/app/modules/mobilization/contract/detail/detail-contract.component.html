@@ -38,16 +38,14 @@
               <step-contractor-data></step-contractor-data>
             </form>
           </mat-step>
-
-          <!-- <mat-step [formGroupName]="'contractorData'" [stepControl]="includeForm.get('contractorData')" #includeFormStepperContractorStep>
-            <ng-template matStepLabel>{{ trs("empresa-contratada") }}</ng-template>
-            
-            
-           
-
-            
+          <mat-step [stepControl]="resourceForm">
+            <form [formGroup]="resourceForm">
+              <ng-template matStepLabel>{{ trs("recursos-contrato") }}</ng-template>
+              <step-resource-data></step-resource-data>
+            </form>
           </mat-step>
 
+        
           <mat-step [formGroupName]="'resourcesData'" [stepControl]="includeForm.get('resourcesData')" #includeFormStepperResorcesStep>
             <ng-template matStepLabel>{{ trs("recursos-contrato") }}</ng-template>
             <div class="flex flex-col gap-5">
@@ -61,148 +59,11 @@
                       </h5>
                     </mat-panel-title>
                   </mat-expansion-panel-header>
-                  <section class="mb-3" [formGroupName]="'contractorManager'">
-                    <div class="flex flex-wrap gap-2">
-                      <mat-form-field class="flex-auto">
-                        <mat-label>{{ trs("gestor-contratada-nome") }}</mat-label>
-                        <input matInput [formControlName]="'name'" />
-                        <mat-error>Campo obrigatório!</mat-error>
-                        <mat-icon class="icon-size-5" matSuffix [svgIcon]="'heroicons_solid:user-circle'"></mat-icon>
-                      </mat-form-field>
-
-                      <mat-form-field class="flex-auto">
-                        <mat-label>E-mail</mat-label>
-                        <input matInput type="email" [formControlName]="'email'" />
-                        <mat-icon class="icon-size-5" matSuffix [svgIcon]="'heroicons_solid:user-circle'"></mat-icon>
-                      </mat-form-field>
-
-                      <mat-form-field class="flex-auto">
-                        <mat-label>{{ trs("telefone") }}</mat-label>
-                        <input matInput type="tel" mask="(00) 0 0000-0000" [formControlName]="'phoneNumber'" />
-                        <mat-error>Campo obrigatório!</mat-error>
-                        <mat-icon class="icon-size-5" matSuffix [svgIcon]="'heroicons_solid:user-circle'"></mat-icon>
-                      </mat-form-field>
-                    </div>
-
-                    <div class="flex flex-wrap gap-2">
-                      <div class="flex-auto flex-col">
-                        <label [className]="'label-color'">{{ trs("emissao-cracha") }}*</label>
-                        <div class="flex-auto">
-                          <mat-radio-group [formControlName]="'mandatory'" #planRadioGroup="matRadioGroup" required>
-                            <mat-radio-button color="primary" [value]="true">{{ trs("sim") }}</mat-radio-button>
-                            <mat-radio-button [value]="false">{{ trs("nao") }}</mat-radio-button>
-                          </mat-radio-group>
-                        </div>
-                      </div>
-
-                      <div class="flex-auto flex-col">
-                        <label [className]="'label-color'">{{ trs("abrange-alimentacao") }}*</label>
-                        <div class="flex-auto">
-                          <mat-radio-group [formControlName]="'mandatory'" #planRadioGroup="matRadioGroup" required>
-                            <mat-radio-button color="primary" [value]="true">{{ trs("sim") }}</mat-radio-button>
-                            <mat-radio-button [value]="false">{{ trs("nao") }}</mat-radio-button>
-                          </mat-radio-group>
-                        </div>
-                      </div>
-
-                      <mat-form-field class="flex-auto">
-                        <mat-label>{{ trs("recurso-tipo") }}</mat-label>
-                        <mat-icon class="icon-size-5 mr-2" matPreffix [svgIcon]="'heroicons_solid:tag'"></mat-icon>
-                        <mat-select [formControlName]="'type'" [placeholder]="trs('selecione')" required>
-                          <mat-option value="HUMAN">{{ trs("recurso-tipo-humano") }}</mat-option>
-                          <mat-option value="EQUIPMENT">{{ trs("recurso-tipo-equipamento") }}</mat-option>
-                          <mat-option value="VEHICLE">{{ trs("recurso-tipo-veiculo") }}</mat-option>
-                        </mat-select>
-                      </mat-form-field>
-
-                      <mat-form-field class="flex-auto">
-                        <mat-label>{{ trs("recurso-funcao") }}</mat-label>
-                        <input matInput type="text" [formControlName]="'function'" />
-                        <mat-icon class="icon-size-5" matSuffix [svgIcon]="'heroicons_solid:user-circle'"></mat-icon>
-                      </mat-form-field>
-
-                      <mat-form-field class="flex-auto">
-                        <mat-label>{{ trs("recurso-quantidade") }}</mat-label>
-                        <input matInput type="number" [formControlName]="'quantity'" />
-                        <mat-error>Campo obrigatório!</mat-error>
-                        <mat-icon class="icon-size-5" matSuffix [svgIcon]="'heroicons_solid:user-circle'"></mat-icon>
-                      </mat-form-field>
-                    </div>
-                  </section>
+                  
                 </mat-expansion-panel>
               </mat-accordion>
 
-              <mat-accordion class="rounded-md shadow-md shadow-slate-300">
-                <mat-expansion-panel>
-                  <mat-expansion-panel-header>
-                    <mat-panel-title>
-                      <mat-icon class="icon-size-8 pr-2" matPrefix [svgIcon]="'heroicons_solid:document'"></mat-icon>
-                      <h5 class="text-2xl md:text-3xl font-extrabold tracking-tight leading-7 sm:leading-10 truncate">
-                        {{ trs("painel-documentos-contratada") }}
-                      </h5>
-                    </mat-panel-title>
-                  </mat-expansion-panel-header>
-
-                  <section [formArrayName]="'files'">
-                    <div class="flex justify-end">
-                      <button mat-flat-button color="primary" (click)="addFile()">{{ trs("adicionar") }}</button>
-                    </div>
-
-                    <div *ngFor="let file of files().controls; let rowIndex = index">
-                      <div [formGroupName]="rowIndex" class="flex gap-2">
-                        <mat-form-field class="flex-auto">
-                          <mat-label>{{ trs("nome") }}</mat-label>
-                          <input matInput [formControlName]="'fileName'" required />
-                        </mat-form-field>
-                        <div class="flex-auto flex-col">
-                          <label [className]="'label-color'">{{ trs("obrigatorio") }}*</label>
-                          <div class="flex-auto">
-                            <mat-radio-group [formControlName]="'mandatory'" #planRadioGroup="matRadioGroup" required>
-                              <mat-radio-button color="primary" [value]="true">{{ trs("sim") }}</mat-radio-button>
-                              <mat-radio-button [value]="false">{{ trs("nao") }}</mat-radio-button>
-                            </mat-radio-group>
-                          </div>
-                        </div>
-                        <div class="flex items-center">
-                          <button mat-raised-button class="bg-warn text-white" (click)="removeFile(rowIndex)">
-                            <mat-icon class="icon-5" [svgIcon]="'heroicons_solid:trash'"></mat-icon>
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-
-                    <! -- div class="flex flex-wrap gap-2">
-                      <ng-container *ngIf="items.files.length > 0">
-                        <div>
-                          <div class="font-medium">Files</div>
-                          <div class="flex flex-wrap -m-2 mt-2">
-                            <ng-container *ngFor="let file of items.files; trackBy: trackByFn">
-                              <a class="flex flex-col w-40 h-40 m-2 p-4 shadow rounded-2xl cursor-pointer bg-card" [routerLink]="['./details/', file.id]">
-                                <div class="aspect-[9/6]">
-                                  <div class="flex items-center justify-center h-full">
-                                    <div class="relative">
-                                      <mat-icon class="icon-size-14 text-hint opacity-50" [svgIcon]="'heroicons_solid:document'"></mat-icon>
-                                      <div class="absolute left-0 bottom-0 px-1.5 rounded text-sm font-semibold leading-5 text-white" [class.bg-red-600]="file.type === 'PDF'" [class.bg-blue-600]="file.type === 'DOC'" [class.bg-green-600]="file.type === 'XLS'" [class.bg-gray-600]="file.type === 'TXT'" [class.bg-amber-600]="file.type === 'JPG'">
-                                        {{ file.type.toUpperCase() }}
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                                <div class="flex flex-col flex-auto justify-center text-center text-sm font-medium">
-                                  <div class="truncate" [matTooltip]="file.name">{{ file.name }}</div>
-                                  <ng-container *ngIf="file.contents">
-                                    <div class="text-secondary truncate">{{ file.contents }}</div>
-                                  </ng-container>
-                                </div>
-                              </a>
-                            </ng-container>
-                          </div>
-                        </div>
-                      </ng-container>
-                    </div> -- >
-                  </section>
-                </mat-expansion-panel>
-              </mat-accordion>
+              
 
               <mat-accordion class="rounded-md shadow-md shadow-slate-300">
                 <mat-expansion-panel>
@@ -282,7 +143,7 @@
                 {{ " " + trs("enviar") }}
               </button>
             </div>
-          </mat-step> -->
+          </mat-step>
         </mat-horizontal-stepper>
       </form>
     </div>
