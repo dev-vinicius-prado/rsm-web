@@ -39,8 +39,22 @@ export class StepContractorDataComponent implements OnInit {
         phoneNumber: ["", Validators.required],
       }),
     });
-
+    
     this.contractForm = this._ctrlContainer.form;
-    this.contractForm.addControl("contractorDataForm", this.contractForm)
+    this.contractForm.addControl("contractorData", this.contractorDataForm);
+    
+    this.contractorDataForm.patchValue({
+        cnpj: "00.000.000/0001-00",
+        fantasyName: "Prado Sistemas SA",
+        companyName: "Prado Sistemas SA",
+        email: "prado.sistemas@gmail.com",
+        phoneNumber: "31980104522",
+        contractorManager: {
+          name: "Vinicius Francisco Prado",
+          email: "4lternativo@gmail.com",
+          phoneNumber: "31980104522",
+        },
+      },
+    );
   }
 }
