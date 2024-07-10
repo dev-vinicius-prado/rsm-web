@@ -26,7 +26,7 @@
     <div class="max-w-8xl">
       <form class="p-4 bg-card shadow rounded overflow-hidden" [formGroup]="includeForm">
         <mat-horizontal-stepper [linear]="isLinear" #includeFormStepper>
-          <mat-step [stepControl]="contractForm">
+          <!-- <mat-step [stepControl]="contractForm">
             <form [formGroup]="contractForm">
               <ng-template matStepLabel>{{ trs("dados-contrato") }}</ng-template>
               <step-contract-data></step-contract-data>
@@ -37,7 +37,7 @@
               <ng-template matStepLabel>{{ trs("empresa-contratada") }}</ng-template>
               <step-contractor-data></step-contractor-data>
             </form>
-          </mat-step>
+          </mat-step> -->
           <mat-step [stepControl]="resourceForm">
             <form [formGroup]="resourceForm">
               <ng-template matStepLabel>{{ trs("recursos-contrato") }}</ng-template>
