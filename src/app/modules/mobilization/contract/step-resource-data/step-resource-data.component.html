@@ -9,8 +9,9 @@
   <div class="w-full md:w-1/2 lg:w-1/3 px-2 my-2">
     <mat-form-field class="w-full">
       <mat-label>CPF</mat-label>
-      <input matInput [formControlName]="'cpf'" required />
-      <mat-error>Campo obrigatório!</mat-error>
+      <input matInput [formControlName]="'cpf'" mask="000.000.000-00" required />
+      <mat-error *ngIf="cpf.errors?.['isCPF']">Informe um CPF válido</mat-error>
+      <mat-error *ngIf="cpf.errors?.['required']">Campo obrigatório</mat-error>
     </mat-form-field>
   </div>
   <div class="w-full md:w-1/2 lg:w-1/3 px-2 my-2">
@@ -46,12 +47,12 @@
       {{ trs("documentos-obrigatorios") }}
     </h1>
   </div>
-  <ng-container [formGroupName]="'contractorManager'">
-      <div *ngFor="let document of requiredDocuments" class="flex items-center space-x-2w-full md:w-1/2 lg:w-1/3 px-2 my-2">
-        <mat-checkbox [(ngModel)]="selectedDocuments[document]" name="documentCheckboxes" class="w-full p-2 border border-gray-300 rounded">
-          {{ document }}
-        </mat-checkbox>
-      </div>
+  <ng-container>
+    <div *ngFor="let document of documentsArray.controls; let i = index" [formArrayName]="'documents'" class="flex items-center space-x-2w-full md:w-1/2 lg:w-1/3 px-2 my-2">
+      <mat-checkbox [formControlName]="i" class="w-full p-2 border border-gray-300 rounded">
+        {{ documentsData[i].value }}
+      </mat-checkbox>
+    </div>
   </ng-container>
 
   <div class="my-10 border-t"></div>

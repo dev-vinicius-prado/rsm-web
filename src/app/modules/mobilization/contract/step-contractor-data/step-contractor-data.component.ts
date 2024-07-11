@@ -1,5 +1,5 @@
 import { CdkAccordionModule } from "@angular/cdk/accordion";
-import { NgFor } from "@angular/common";
+import { NgFor, NgIf } from "@angular/common";
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, FormGroupDirective, FormsModule, ReactiveFormsModule, Validators } from "@angular/forms";
 import { MatButtonModule } from "@angular/material/button";
@@ -12,11 +12,14 @@ import { MatSelectModule } from "@angular/material/select";
 import { MatStepperModule } from "@angular/material/stepper";
 import { MatTableModule } from "@angular/material/table";
 import { TranslocoModule } from "@ngneat/transloco";
+import { AppValidators } from "app/core/utils/validators/app.validators";
+import { NgxMaskDirective, provideNgxMask } from "ngx-mask";
 
 @Component({
   selector: "step-contractor-data",
   standalone: true,
-  imports: [TranslocoModule, CdkAccordionModule, MatButtonModule, MatIconModule, MatExpansionModule, NgFor, MatStepperModule, MatTableModule, MatFormFieldModule, MatInputModule, MatSelectModule, MatIconModule, MatRadioModule, FormsModule, ReactiveFormsModule],
+  imports: [NgIf, NgxMaskDirective, TranslocoModule, CdkAccordionModule, MatButtonModule, MatIconModule, MatExpansionModule, NgFor, MatStepperModule, MatTableModule, MatFormFieldModule, MatInputModule, MatSelectModule, MatIconModule, MatRadioModule, FormsModule, ReactiveFormsModule],
+  providers: [provideNgxMask({})],
   templateUrl: "./step-contractor-data.component.html",
   styleUrl: "./step-contractor-data.component.scss",
 })
@@ -28,7 +31,7 @@ export class StepContractorDataComponent implements OnInit {
 
   ngOnInit(): void {
     this.contractorDataForm = this._formBuilder.group({
-      cnpj: ["", Validators.required],
+      cnpj: ["", [Validators.required, Validators.pattern('^[0-9]{14}$'), AppValidators.isCPNJ]],
       fantasyName: ["", Validators.required],
       companyName: ["", Validators.required],
       email: ["", Validators.required],
@@ -39,22 +42,24 @@ export class StepContractorDataComponent implements OnInit {
         phoneNumber: ["", Validators.required],
       }),
     });
-    
+
     this.contractForm = this._ctrlContainer.form;
     this.contractForm.addControl("contractorData", this.contractorDataForm);
-    
+
     this.contractorDataForm.patchValue({
-        cnpj: "00.000.000/0001-00",
-        fantasyName: "Prado Sistemas SA",
-        companyName: "Prado Sistemas SA",
-        email: "prado.sistemas@gmail.com",
+      fantasyName: "Prado Sistemas SA",
+      companyName: "Prado Sistemas SA",
+      email: "prado.sistemas@gmail.com",
+      phoneNumber: "31980104522",
+      contractorManager: {
+        name: "Vinicius Francisco Prado",
+        email: "4lternativo@gmail.com",
         phoneNumber: "31980104522",
-        contractorManager: {
-          name: "Vinicius Francisco Prado",
-          email: "4lternativo@gmail.com",
-          phoneNumber: "31980104522",
-        },
       },
-    );
+    });
+  }
+
+  get cnpj() {
+    return this.contractorDataForm.get("cnpj")!;
   }
 }
