@@ -12,12 +12,16 @@ import { MatSelectModule } from "@angular/material/select";
 import { MatStepperModule } from "@angular/material/stepper";
 import { MatTableModule } from "@angular/material/table";
 import { TranslocoModule } from "@ngneat/transloco";
+import { NgxMaskDirective, provideNgxMask } from "ngx-mask";
 @Component({
   selector: "step-contract-data",
   standalone: true,
   templateUrl: "./step-contract-data.component.html",
   styleUrls: ["./step-contract-data.component.css"],
-  imports: [TranslocoModule, CdkAccordionModule, MatButtonModule, MatIconModule, MatExpansionModule, NgFor, MatStepperModule, MatTableModule, MatFormFieldModule, MatInputModule, MatSelectModule, MatIconModule, MatRadioModule, FormsModule, ReactiveFormsModule],
+  imports: [
+    NgxMaskDirective,
+    TranslocoModule, CdkAccordionModule, MatButtonModule, MatIconModule, MatExpansionModule, NgFor, MatStepperModule, MatTableModule, MatFormFieldModule, MatInputModule, MatSelectModule, MatIconModule, MatRadioModule, FormsModule, ReactiveFormsModule],
+  providers: [provideNgxMask({})]
 })
 export class StepContractDataComponent implements OnInit {
   contractForm: FormGroup;
@@ -49,10 +53,10 @@ export class StepContractDataComponent implements OnInit {
     this.contractForm.patchValue({
       contractData: {
         code: "RSM-20240001",
-        dateInitialMet: new Date("2024-04-16"),
+        dateInitialMet: "12/04/2012",
         vigence: {
-          startAt: new Date("2024-04-16"),
-          finishAt: new Date("2024-04-16"),
+          startAt: '01/05/2012',
+          finishAt: '31/12/2025',
         },
         scope: "Mineiração",
         degreeRiskLevel: "HIGH",

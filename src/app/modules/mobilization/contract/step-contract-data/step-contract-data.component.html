@@ -24,7 +24,9 @@
   <div class="w-full md:w-1/2 lg:w-1/3 px-2 my-2">
     <mat-form-field class="w-full">
       <mat-label>{{ trs("data-reuniao-inicial") }}</mat-label>
-      <input matInput [matDatepicker]="dateInitialMet" [placeholder]="'99/99/9999'" [formControlName]="'dateInitialMet'" />
+      <input matInput [matDatepicker]="dateInitialMet" [placeholder]="'99/99/9999'" [formControlName]="'dateInitialMet'"
+      inputmode="numeric"
+      mask="d0/M0/0000" />
       <mat-datepicker-toggle matSuffix [for]="dateInitialMet"></mat-datepicker-toggle>
       <mat-datepicker #dateInitialMet></mat-datepicker>
     </mat-form-field>
@@ -33,7 +35,9 @@
     <div class="w-full md:w-1/2 lg:w-1/3 px-2 my-2">
       <mat-form-field class="w-full">
         <mat-label>{{ trs("vigencia-inicio") }}</mat-label>
-        <input matInput [matDatepicker]="dateStartVigence" [placeholder]="'99/99/9999'" [formControlName]="'startAt'" />
+        <input matInput [matDatepicker]="dateStartVigence" [placeholder]="'99/99/9999'" [formControlName]="'startAt'" 
+        inputmode="numeric"
+      mask="d0/M0/0000" />
         <mat-datepicker-toggle matSuffix [for]="dateStartVigence"></mat-datepicker-toggle>
         <mat-datepicker #dateStartVigence></mat-datepicker>
       </mat-form-field>
@@ -41,7 +45,9 @@
     <div class="w-full md:w-1/2 lg:w-1/3 px-2 my-2">
       <mat-form-field class="w-full">
         <mat-label>{{ trs("vigencia-fim") }}</mat-label>
-        <input matInput [matDatepicker]="dateEndingVigence" [placeholder]="'99/99/9999'" [formControlName]="'finishAt'" />
+        <input matInput [matDatepicker]="dateEndingVigence" [placeholder]="'99/99/9999'" [formControlName]="'finishAt'" 
+        inputmode="numeric"
+      mask="d0/M0/0000" />
         <mat-datepicker-toggle matSuffix [for]="dateEndingVigence"></mat-datepicker-toggle>
         <mat-datepicker #dateEndingVigence></mat-datepicker>
       </mat-form-field>

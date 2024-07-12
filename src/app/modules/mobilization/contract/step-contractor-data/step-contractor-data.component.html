@@ -28,7 +28,8 @@
   <div class="w-full md:w-1/2 lg:w-1/3 px-2 my-2">
     <mat-form-field class="w-full">
       <mat-label>{{ trs("telefone") }}</mat-label>
-      <input matInput [formControlName]="'phoneNumber'" required />
+      <input matInput type="tel" [formControlName]="'phoneNumber'" mask="(00) 0 0000-0000" required />
+      <mat-error>Campo obrigatório</mat-error>
     </mat-form-field>
   </div>
   <div class="w-full mb-2 border-t">
