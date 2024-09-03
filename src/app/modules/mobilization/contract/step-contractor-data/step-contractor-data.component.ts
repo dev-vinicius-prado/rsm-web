@@ -31,7 +31,7 @@ export class StepContractorDataComponent implements OnInit {
 
   ngOnInit(): void {
     this.contractorDataForm = this._formBuilder.group({
-      cnpj: ["", [Validators.required, Validators.pattern('^[0-9]{14}$'), AppValidators.isCPNJ]],
+      cnpj: ["81.858.905/0001-07", [Validators.required, Validators.pattern('^[0-9]{14}$'), AppValidators.isCPNJ]],
       fantasyName: ["", Validators.required],
       companyName: ["", Validators.required],
       email: ["", Validators.required],
