@@ -1,8 +1,8 @@
 {
-    "name": "fuse-angular",
-    "version": "19.0.0",
-    "description": "Fuse - Angular Admin Template and Starter Project",
-    "author": "https://themeforest.net/user/srcn",
+    "name": "rsm-resource-management",
+    "version": "0.1.0",
+    "description": "RSM - Resource Management",
+    "author": "https://github.com/dev-vinicius-prado/",
     "license": "https://themeforest.net/licenses/standard",
     "private": true,
     "scripts": {
