@@ -1,4 +1,4 @@
-<h1>Titulo ou Arte do Projeto</h1> 
+[<img alt="" src="./src/assets/images/logo/logo-rsm-transparente.svg" width="auto" height="auto">](https://github.com/dev-vinicius-prado/)
 
 > Status do Projeto: :heavy_check_mark: :warning: (concluido, em desenvolvimento, etc)
 
