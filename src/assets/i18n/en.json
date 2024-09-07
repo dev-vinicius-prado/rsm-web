@@ -1,6 +1,7 @@
 {
     "abrange-alimentacao": "Covers food",
     "home-login": "Sign in",
+    "home-signout-login": "Sign in",
     "home-signup": "Sign up",
     "home-signup-field-name": "Full name",
     "home-signup-field-name-required": "Full name is required",
@@ -9,6 +10,10 @@
     "home-signup-field-email-invalid": "Please enter a valid email address",
     "home-login-password": "Password",
     "home-login-rememberme": "Remember me",
+    "home-signout-signout": "You have signed out!",
+    "home-signout-redirect": "Redirecting",
+    "home-signout-redirect-to": "You are now being redirected!",
+    "home-signout-go-to": "Go to",
     "home-login-forgotpassword": "Forgot password",
     "home-dont-have-account": "Don't have an account?",
     "home-have-account": "Already have an account?",

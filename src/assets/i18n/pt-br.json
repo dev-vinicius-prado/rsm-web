@@ -1,6 +1,7 @@
 {
     "abrange-alimentacao": "Abrange alimentação",
     "home-login": "Acessar",
+    "home-signout-login": "Login",
     "home-signup": "Criar conta",
     "home-signup-field-name": "Nome completo",
     "home-signup-field-name-required": "Nome completo é obrigatório",
@@ -9,6 +10,10 @@
     "home-signup-field-email-invalid": "Por favor, informe um e-mail válido",
     "home-signup-field-password-required": "Senha é obrigatória",
     "home-login-password": "Senha",
+    "home-signout-signout": "Você encerrou sua sessão!",
+    "home-signout-redirect": "Redirecionando",
+    "home-signout-redirect-to": "Você será redirecionado agora!",
+    "home-signout-go-to": "Ir para",
     "home-login-rememberme": "Lembre de mim",
     "home-login-forgotpassword": "Esqueci a senha",
     "home-dont-have-account": "Não tem uma conta?",
