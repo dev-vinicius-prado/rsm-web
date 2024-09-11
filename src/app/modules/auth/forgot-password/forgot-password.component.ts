@@ -10,6 +10,7 @@ import { fuseAnimations } from '@fuse/animations';
 import { FuseAlertComponent, FuseAlertType } from '@fuse/components/alert';
 import { AuthService } from 'app/core/auth/auth.service';
 import { finalize } from 'rxjs';
+import { TranslocoModule } from '@ngneat/transloco';
 
 @Component({
     selector     : 'auth-forgot-password',
@@ -17,7 +18,7 @@ import { finalize } from 'rxjs';
     encapsulation: ViewEncapsulation.None,
     animations   : fuseAnimations,
     standalone   : true,
-    imports      : [NgIf, FuseAlertComponent, FormsModule, ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatButtonModule, MatProgressSpinnerModule, RouterLink],
+    imports      : [NgIf, TranslocoModule, FuseAlertComponent, FormsModule, ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatButtonModule, MatProgressSpinnerModule, RouterLink],
 })
 export class AuthForgotPasswordComponent implements OnInit
 {
