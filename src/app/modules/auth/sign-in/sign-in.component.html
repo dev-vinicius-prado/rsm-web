@@ -36,10 +36,10 @@
                         matInput
                         [formControlName]="'email'">
                     <mat-error *ngIf="signInForm.get('email').hasError('required')">
-                        {{trs('home-signup-field-email-required')}}
+                        {{trs('form-field-email-required')}}
                     </mat-error>
                     <mat-error *ngIf="signInForm.get('email').hasError('email')">
-                        {{trs('home-signup-field-email-invalid')}}
+                        {{trs('form-field-email-invalid')}}
                     </mat-error>
                 </mat-form-field>
 
@@ -67,7 +67,7 @@
                             [svgIcon]="'heroicons_solid:eye-slash'"></mat-icon>
                     </button>
                     <mat-error>
-                        {{trs('home-signup-field-password-required')}}
+                        {{trs('form-field-password-required')}}
                     </mat-error>
                 </mat-form-field>
 
