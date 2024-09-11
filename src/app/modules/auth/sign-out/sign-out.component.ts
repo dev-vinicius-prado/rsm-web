@@ -10,11 +10,12 @@ import { TranslocoModule } from '@ngneat/transloco';
     templateUrl  : './sign-out.component.html',
     encapsulation: ViewEncapsulation.None,
     standalone   : true,
-    imports      : [NgIf, RouterLink, I18nPluralPipe, TranslocoModule],
+    imports: [NgIf, RouterLink, I18nPluralPipe, TranslocoModule],
+    styleUrls  : ['./sign-out.scss'],
 })
 export class AuthSignOutComponent implements OnInit, OnDestroy
 {
-    countdown: number = 5;
+    countdown: number = 1000;
     countdownMapping: any = {
         '=1'   : '# second',
         'other': '# seconds',
