@@ -53,10 +53,6 @@
               <button class="px-8 mr-2" mat-flat-button [color]="'accent'" type="button" matStepperPrevious>
                 {{ trs("Back") }}
               </button>
-              <button matIconPrefix="'heroicons_solid:user-circle'" class="px-8" mat-flat-button [color]="'primary'" type="reset" (click)="horizontalStepper.reset()">
-                <mat-icon class="icon-size-4 -rotate-45" matPrefix [svgIcon]="'heroicons_solid:paper-airplane'"></mat-icon>
-                {{ " " + trs("enviar") }}
-              </button>
               <button matIconPrefix="'heroicons_solid:user-circle'" class="px-8" mat-flat-button [color]="'success'" type="submit" (click)="save()">
                 <mat-icon class="icon-size-4 -rotate-45" matPrefix [svgIcon]="'heroicons_solid:paper-airplane'"></mat-icon>
                 {{ " " + trs("enviar") }}
