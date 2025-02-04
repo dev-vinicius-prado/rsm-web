@@ -97,64 +97,13 @@ export class DetailContractComponent implements OnInit {
     this.contractForm = this._formBuilder.group({});
     this.contractorForm = this._formBuilder.group({});
     this.includeForm = this._formBuilder.group({
-      // contractorData: this._formBuilder.group({
-      //   cnpj: ["", Validators.required],
-      //   fantasyName: ["", Validators.required],
-      //   companyName: ["", Validators.required],
-      //   phoneNumber: ["", Validators.required],
-      //   email: ["", Validators.required],
-      //   address: this._formBuilder.group({
-      //     street: ["", Validators.required],
-      //     number: ["", Validators.required],
-      //     neighborhood: ["", Validators.required],
-      //     city: ["", Validators.required],
-      //     state: ["", Validators.required],
-      //     postalCode: ["", Validators.required],
-      //   }),
-      // }),
-      // resourcesData: this._formBuilder.group({
-      //   contractorManager: this._formBuilder.group({
-      //     name: ["", Validators.required],
-      //     email: ["", Validators.required],
-      //     phoneNumber: ["", Validators.required],
-      //   }),
-      //   type: ["", Validators.required],
-      //   function: ["", Validators.required],
-      //   quantity: ["", Validators.required],
-      //   files: this._formBuilder.array([]),
-      // }),
+        contractorData: this.contractForm,
+        resourceData: this.resourceForm,
+        contractData: this.contractorForm,
     });
-
   }
 
-
-
-  // addNR(event: MatChipInputEvent): void {
-  //   const value: string = (event.value || '').trim();
-  //   if (value) {
-  //     this.nrsList.push(value);
-  //   }
-  //   event.chipInput!.clear();
-  // }
-  // editNR(nr: string, event: MatChipInputEvent): void {
-  //   const value: string = event.value.trim();
-  //   if (value) {
-  //     this.removeNR(nr);
-  //   }
-  //   const index = this.nrsList.indexOf(nr);
-  //   if (index >= 0) {
-  //     this.nrsList[index] = value;
-  //   }
-  // }
-
-  // removeNR(nr: string) {
-  //   const index = this.nrsList.indexOf(nr);
-  //   if (index >= 0) {
-  //     this.nrsList.splice(index, 1);
-  //   }
-  // }
-
-  save() {
-    console.log(this.includeForm.value);
-  }
+    save() {
+        console.log('Includ Form: ',this.includeForm.value);
+    }
 }
