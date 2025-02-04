@@ -44,13 +44,13 @@ export class StepResourceDataComponent implements OnInit {
   }
   ngOnInit(): void {
     this.resourceDataForm = this._formBuilder.group({
-      name: ["", Validators.required],
-      cpf: ["", [Validators.required, Validators.pattern('^[0-9]{11}$'), AppValidators.isCPF]],
-      identity: ["", Validators.required],
-      jobTitle: ["", Validators.required],
-      birthday: ["", Validators.required],
-      phoneNumber: ["", Validators.required],
-      email: ["", Validators.required],
+      name: ["Vinicius Prado", Validators.required],
+      cpf: ["36085469012", [Validators.required, Validators.pattern('^[0-9]{11}$'), AppValidators.isCPF]],
+      identity: ["mg1234567", Validators.required],
+      jobTitle: ["Dev Senior", Validators.required],
+      birthday: [""],
+      phoneNumber: ["31980104522", Validators.required],
+      email: ["developer.vinicius.prado@gmail.com", Validators.required],
       documents: new FormArray([]),
     });
     this.addDocuments();
