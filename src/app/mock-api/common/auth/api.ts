@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { FuseMockApiService } from '@fuse/lib/mock-api';
-import { user as userData } from 'app/mock-api/common/user/data';
+import { user as userData, users } from 'app/mock-api/common/user/data';
 import Base64 from 'crypto-js/enc-base64';
 import Utf8 from 'crypto-js/enc-utf8';
 import HmacSHA256 from 'crypto-js/hmac-sha256';
@@ -64,8 +64,14 @@ export class AuthMockApi
             .onPost('api/auth/sign-in', 1500)
             .reply(({request}) =>
             {
+
+                users.forEach(user => {
+                    if (request.body.email === user.email && request.body.password === user.password) {
+                        this._user = user;
+                    }
+                });
                 // Sign in successful
-                if ( request.body.email === 'hughes.brian@company.com' && request.body.password === 'admin' )
+                if ( this._user )
                 {
                     return [
                         200,
