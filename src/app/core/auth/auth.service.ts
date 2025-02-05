@@ -2,7 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { AuthUtils } from 'app/core/auth/auth.utils';
 import { UserService } from 'app/core/user/user.service';
-import { catchError, Observable, of, switchMap, throwError } from 'rxjs';
+import { BehaviorSubject, catchError, Observable, of, switchMap, throwError } from 'rxjs';
+import { UserRole } from './model/UserRole';
 
 @Injectable({providedIn: 'root'})
 export class AuthService
@@ -10,10 +11,43 @@ export class AuthService
     private _authenticated: boolean = false;
     private _httpClient = inject(HttpClient);
     private _userService = inject(UserService);
+    private _userRoleSubject = new BehaviorSubject<UserRole | null>(
+        this.getStoredUserRole()
+    );
+    userRole$ = this._userRoleSubject.asObservable();
 
     // -----------------------------------------------------------------------------------------------------
     // @ Accessors
     // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Getter for userRole
+     *
+     * @returns {Observable<UserRole>}
+     */
+    getStoredUserRole(): UserRole | null {
+        return localStorage.getItem('userRole') as UserRole | null;
+    }
+
+    /**
+     * Setter for userRole
+     *
+     * @param role
+     */
+    setUserRoler(role: UserRole | null): void {
+        localStorage.setItem('userRole', role);
+        this._userRoleSubject.next(role);
+    }
+
+
+    /**
+     * Check if the user is authenticated
+     *
+     * @returns {boolean}
+     */
+    isAuthenticaded(): boolean {
+        return !!localStorage.getItem('accessToken');
+    }
 
     /**
      * Setter & getter for access token
