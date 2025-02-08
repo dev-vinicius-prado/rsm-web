@@ -11,9 +11,7 @@ export class AuthService
     private _authenticated: boolean = false;
     private _httpClient = inject(HttpClient);
     private _userService = inject(UserService);
-    private _userRoleSubject = new BehaviorSubject<UserRole | null>(
-        this.getStoredUserRole()
-    );
+    private _userRoleSubject = new BehaviorSubject<UserRole | null>(this.getStoredUserRole());
     userRole$ = this._userRoleSubject.asObservable();
 
     // -----------------------------------------------------------------------------------------------------
@@ -164,6 +162,7 @@ export class AuthService
     {
         // Remove the access token from the local storage
         localStorage.removeItem('accessToken');
+        localStorage.removeItem('userRole');
 
         // Set the authenticated flag to false
         this._authenticated = false;
