@@ -15,7 +15,7 @@ import { TranslocoModule } from '@ngneat/transloco';
 })
 export class AuthSignOutComponent implements OnInit, OnDestroy
 {
-    countdown: number = 1000;
+    countdown: number = 5;
     countdownMapping: any = {
         '=1'   : '# second',
         'other': '# seconds',
