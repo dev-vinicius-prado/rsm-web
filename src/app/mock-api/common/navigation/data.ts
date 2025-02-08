@@ -15,10 +15,10 @@ export const defaultNavigation: FuseNavigationItem[] = [
                 type : 'basic',
                 link : '/mobilizacao/contratos',
                 icon: 'heroicons_outline:clipboard-document-list',
-                allowRoles: [UserRole.ADMIN, UserRole.CONTRACT, UserRole.CONTRACTOR]
+                allowRoles: [UserRole.ADMIN, UserRole.CONTRACTED, UserRole.CONTRACTOR]
             },
         ],
-        allowRoles: [UserRole.ADMIN, UserRole.CONTRACT, UserRole.CONTRACTOR]
+        allowRoles: [UserRole.ADMIN, UserRole.CONTRACTED, UserRole.CONTRACTOR]
     },
     {
         id   : 'configuracao',
@@ -32,9 +32,9 @@ export const defaultNavigation: FuseNavigationItem[] = [
                 type : 'basic',
                 link : '/configuracoes/empresa',
                 icon: 'heroicons_outline:building-office-2',
-                allowRoles: [UserRole.ADMIN, UserRole.CONTRACT]
+                allowRoles: [UserRole.ADMIN, UserRole.CONTRACTOR]
             },
         ],
-        allowRoles: [UserRole.ADMIN, UserRole.CONTRACT]
+        allowRoles: [UserRole.ADMIN, UserRole.CONTRACTOR]
     }
 ];
