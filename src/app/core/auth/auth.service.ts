@@ -4,6 +4,7 @@ import { AuthUtils } from 'app/core/auth/auth.utils';
 import { UserService } from 'app/core/user/user.service';
 import { BehaviorSubject, catchError, Observable, of, switchMap, throwError } from 'rxjs';
 import { UserRole } from './model/UserRole';
+import { User } from '../user/user.types';
 
 @Injectable({providedIn: 'root'})
 export class AuthService
@@ -32,7 +33,7 @@ export class AuthService
      *
      * @param role
      */
-    setUserRoler(role: UserRole | null): void {
+    private _setUserRoler(role: UserRole | null): void {
         localStorage.setItem('userRole', role);
         this._userRoleSubject.next(role);
     }
@@ -109,10 +110,18 @@ export class AuthService
                 // Store the user on the user service
                 this._userService.user = response.user;
 
+                // Store the user in the local storage
+                this._setUserRoler(response.user.role);
+
+                this._loggedUser(response.user);
+
                 // Return a new observable with the response
                 return of(response);
             }),
         );
+    }
+    private _loggedUser(user: User): void {
+        localStorage.setItem('user', JSON.stringify(user));
     }
 
     /**
