@@ -1,5 +1,6 @@
 /* eslint-disable */
 import { FuseNavigationItem } from '@fuse/components/navigation';
+import { UserRole } from 'app/core/auth/model/UserRole';
 
 export const defaultNavigation: FuseNavigationItem[] = [
     {
@@ -13,9 +14,11 @@ export const defaultNavigation: FuseNavigationItem[] = [
                 title: 'Contrato',
                 type : 'basic',
                 link : '/mobilizacao/contratos',
-                icon : 'heroicons_outline:clipboard-document-list'
+                icon: 'heroicons_outline:clipboard-document-list',
+                allowRoles: [UserRole.ADMIN, UserRole.CONTRACT, UserRole.CONTRACTOR]
             },
         ],
+        allowRoles: [UserRole.ADMIN, UserRole.CONTRACT, UserRole.CONTRACTOR]
     },
     {
         id   : 'configuracao',
@@ -28,8 +31,10 @@ export const defaultNavigation: FuseNavigationItem[] = [
                 title: 'empresa-contratante',
                 type : 'basic',
                 link : '/configuracoes/empresa',
-                icon : 'heroicons_outline:building-office-2'
+                icon: 'heroicons_outline:building-office-2',
+                allowRoles: [UserRole.ADMIN, UserRole.CONTRACT]
             },
         ],
+        allowRoles: [UserRole.ADMIN, UserRole.CONTRACT]
     }
 ];

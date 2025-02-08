@@ -1,4 +1,5 @@
 import { IsActiveMatchOptions, Params, QueryParamsHandling } from '@angular/router';
+import { UserRole } from 'app/core/auth/model/UserRole';
 
 export interface FuseNavigationItem
 {
@@ -44,6 +45,7 @@ export interface FuseNavigationItem
     };
     children?: FuseNavigationItem[];
     meta?: any;
+    allowRoles: UserRole[];
 }
 
 export type FuseVerticalNavigationAppearance =
