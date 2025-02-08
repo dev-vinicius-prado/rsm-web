@@ -86,10 +86,8 @@ export class AuthSignInComponent implements OnInit
         // Sign in
         this._authService.signIn(this.signInForm.value)
             .subscribe(
-                (response) =>
+                () =>
                 {
-                    localStorage.setItem('accessToken', response.accessToken);
-                    localStorage.setItem('userRole', response.user.role);
 
                     // Set the redirect url.
                     // The '/signed-in-redirect' is a dummy url to catch the request and redirect the user
