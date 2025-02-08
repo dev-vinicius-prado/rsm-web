@@ -124,6 +124,9 @@ export class AuthService
         localStorage.setItem('user', JSON.stringify(user));
     }
 
+    get loggecUser(): User | null {
+        return JSON.parse(localStorage.getItem('user') as string);
+    }
     /**
      * Sign in using the access token
      */
