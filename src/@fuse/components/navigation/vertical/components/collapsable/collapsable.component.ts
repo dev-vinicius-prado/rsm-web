@@ -13,7 +13,10 @@ import { FuseVerticalNavigationGroupItemComponent } from '@fuse/components/navig
 import { FuseVerticalNavigationSpacerItemComponent } from '@fuse/components/navigation/vertical/components/spacer/spacer.component';
 import { FuseVerticalNavigationComponent } from '@fuse/components/navigation/vertical/vertical.component';
 import { TranslocoModule } from '@ngneat/transloco';
+import { UserRole } from 'app/core/auth/model/UserRole';
 import { filter, Subject, takeUntil } from 'rxjs';
+import { get } from 'lodash';
+import { AuthService } from 'app/core/auth/auth.service';
 
 @Component({
     selector       : 'fuse-vertical-navigation-collapsable-item',
@@ -37,6 +40,7 @@ export class FuseVerticalNavigationCollapsableItemComponent implements OnInit, O
     isExpanded: boolean = false;
     private _fuseVerticalNavigationComponent: FuseVerticalNavigationComponent;
     private _unsubscribeAll: Subject<any> = new Subject<any>();
+    _userRole: UserRole;
 
     /**
      * Constructor
@@ -45,6 +49,7 @@ export class FuseVerticalNavigationCollapsableItemComponent implements OnInit, O
         private _changeDetectorRef: ChangeDetectorRef,
         private _router: Router,
         private _fuseNavigationService: FuseNavigationService,
+        private _authService: AuthService
     )
     {
     }
@@ -75,6 +80,11 @@ export class FuseVerticalNavigationCollapsableItemComponent implements OnInit, O
      */
     ngOnInit(): void
     {
+        this._userRole = this._authService.getStoredUserRole();
+
+        console.log('LOGGED USER ROLE', this._userRole);
+
+
         // Get the parent navigation component
         this._fuseVerticalNavigationComponent = this._fuseNavigationService.getComponent(this.name);
 
@@ -186,6 +196,7 @@ export class FuseVerticalNavigationCollapsableItemComponent implements OnInit, O
      */
     ngOnDestroy(): void
     {
+        localStorage.removeItem('userRole');
         // Unsubscribe from all subscriptions
         this._unsubscribeAll.next(null);
         this._unsubscribeAll.complete();
@@ -353,5 +364,12 @@ export class FuseVerticalNavigationCollapsableItemComponent implements OnInit, O
         }
 
         return false;
+    }
+
+    isToShow(): boolean{
+        if(this.item.allowRoles){
+            return this.item.allowRoles.includes(this._userRole);
+        }
+        return true;
     }
 }
