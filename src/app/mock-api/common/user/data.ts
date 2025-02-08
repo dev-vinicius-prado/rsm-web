@@ -24,11 +24,11 @@ export const userContract = {
 export const userContractor = {
     id    : uuidv4(),
     name  : 'Joana Silva',
-    email : 'joana.silva@company.com',
+    email : 'joana.silva@contracted-company.com',
     avatar: 'assets/images/avatars/female-02.jpg',
     status: 'online',
-    role: 'CONTRACTOR',
-    password: 'contractor',
+    role: 'CONTRACTED',
+    password: 'contracted',
 };
 
 export const users = [user, userContract, userContractor];
