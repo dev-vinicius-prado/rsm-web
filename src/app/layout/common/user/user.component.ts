@@ -50,6 +50,11 @@ export class UserComponent implements OnInit, OnDestroy
      */
     ngOnInit(): void
     {
+        this._userService.load().subscribe((user) => {
+            this.user = user;
+            this._changeDetectorRef.markForCheck();
+        });
+
         // Subscribe to user changes
         this._userService.user$
             .pipe(takeUntil(this._unsubscribeAll))

@@ -9,7 +9,6 @@ export class UserService {
     private _httpClient = inject(HttpClient);
     private _user: ReplaySubject<User> = new ReplaySubject<User>(1);
 
-
     // -----------------------------------------------------------------------------------------------------
     // @ Accessors
     // -----------------------------------------------------------------------------------------------------
@@ -44,6 +43,21 @@ export class UserService {
     }
 
     /**
+     * Load the user
+     */
+    load(): Observable<User> {
+        const user: User = JSON.parse(localStorage.getItem('user'));
+        return this._httpClient
+            .get<User>('api/common/user/load', {
+                params: { ID: user.id },
+            })
+            .pipe(
+                tap((user) => {
+                    this._user.next(user);
+                })
+            );
+    }
+    /**
      * Update the user
      *
      * @param user
@@ -55,5 +69,4 @@ export class UserService {
             })
         );
     }
-
 }
