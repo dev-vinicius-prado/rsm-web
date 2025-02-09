@@ -5,22 +5,23 @@ export interface Contract {
     dateInitialMet: Date;
     fantasyName: string;
     vigence: {
-      startAt: Date;
-      finishAt: Date;
+        startAt: Date;
+        finishAt: Date;
     };
     scope: string;
     degreeRiskLevel: string;
     contractManager: {
-      name: string;
-      email: string;
-      phoneNumber: string;
+        name: string;
+        email: string;
+        phoneNumber: string;
+        company: string;
     };
     matrixOfResponsability: {
-      name: string;
-      function: string;
-      email: string;
+        name: string;
+        function: string;
+        email: string;
     }[];
     contractor: {
-      name: string;
+        name: string;
     };
-  }
+}
