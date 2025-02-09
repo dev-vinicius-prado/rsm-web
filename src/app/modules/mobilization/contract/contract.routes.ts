@@ -14,7 +14,7 @@ export default [
         component: ListContractComponent,
       },
       {
-        path: "incluir",
+        path: ":id/detalhe",
         component: DetailContractComponent,
       },
     ],

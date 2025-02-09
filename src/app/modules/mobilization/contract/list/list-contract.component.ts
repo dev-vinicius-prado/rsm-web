@@ -86,5 +86,9 @@ export class ListContractComponent {
 
   createContract() {
     this._router.navigate(["incluir"], { relativeTo: this._activatedRoute });
-  }
+    }
+
+    detail(contractId: number) {
+        this._router.navigate([`${contractId}/detalhe`], { relativeTo: this._activatedRoute });
+    }
 }
