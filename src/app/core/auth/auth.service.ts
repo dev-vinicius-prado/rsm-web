@@ -61,6 +61,11 @@ export class AuthService
         return localStorage.getItem('accessToken') ?? '';
     }
 
+    get loggedUser(): User
+    {
+        return JSON.parse(localStorage.getItem('user') ?? '{}');
+    }
+
     // -----------------------------------------------------------------------------------------------------
     // @ Public methods
     // -----------------------------------------------------------------------------------------------------
