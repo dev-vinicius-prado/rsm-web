@@ -11,14 +11,14 @@ import { MatIconModule } from "@angular/material/icon";
 import { MatInputModule } from "@angular/material/input";
 import { MatPaginatorModule } from "@angular/material/paginator";
 import { MatTableModule } from "@angular/material/table";
-import { ActivatedRoute, Router, RouterOutlet } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { TranslocoModule } from "@ngneat/transloco";
+import { RoleAccessDirective } from "app/core/directives/role-access.directive";
 import {
     Observable,
     Subject,
 } from "rxjs";
 import { ContractResource } from "../contract.types";
-import { RoleAccessDirective } from "app/core/directives/role-access.directive";
 
 @Component({
   selector: "app-list-contract",
