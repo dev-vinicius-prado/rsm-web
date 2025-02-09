@@ -1,27 +1,27 @@
 import { CommonModule } from "@angular/common";
-import { Component } from "@angular/core";
+import { Component, ViewChild } from "@angular/core";
 import {
+    FormControl,
     FormsModule,
-    ReactiveFormsModule,
-    UntypedFormControl,
+    ReactiveFormsModule
 } from "@angular/forms";
 import { MatButtonModule } from "@angular/material/button";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatIconModule } from "@angular/material/icon";
 import { MatInputModule } from "@angular/material/input";
-import { MatPaginatorModule } from "@angular/material/paginator";
-import { MatTableModule } from "@angular/material/table";
+import { MatPaginator, MatPaginatorModule } from "@angular/material/paginator";
+import { MatTableDataSource, MatTableModule } from "@angular/material/table";
 import { ActivatedRoute, Router } from "@angular/router";
 import { TranslocoModule } from "@ngneat/transloco";
+import { FormatDateVigenceDirective } from "app/core/directives/format-date-vigence.directive";
 import { RoleAccessDirective } from "app/core/directives/role-access.directive";
+import { Contract } from "app/core/models/contract/contract.types";
+import { ContractService } from "app/core/services/contract/contract.service";
 import {
-    Observable,
-    of,
-    Subject,
+    debounceTime,
+    Observable
 } from "rxjs";
 import { ContractResource } from "../contract.types";
-import { ContractService } from "app/core/services/contract/contract.service";
-import { FormatDateVigenceDirective } from "app/core/directives/format-date-vigence.directive";
 
 
 @Component({
@@ -45,11 +45,16 @@ import { FormatDateVigenceDirective } from "app/core/directives/format-date-vige
   styleUrl: "./list-contract.component.scss",
 })
 export class ListContractComponent {
+    displayedColumns: string[] = ['codigo-contrato', 'empresa-contratante', 'vigencia'];
+    dataSource = new MatTableDataSource<Contract>([]);
+    searchInputControl = new FormControl();
+
+    @ViewChild(MatPaginator) paginator!: MatPaginator;
+
+
+
   isLoading: boolean = false;
-  searchInputControl: UntypedFormControl = new UntypedFormControl();
-  private _unsubscribeAll: Subject<any> = new Subject<any>();
   contracts$: Observable<ContractResource[]>;
-  displayedColumns: string[] = ['codigo-contrato', 'empresa-contratante', 'vigencia'];
 
   constructor(
     private _router: Router,
@@ -59,10 +64,19 @@ export class ListContractComponent {
 
   ngOnInit(): void {
       this._contractService.getContracts().subscribe((contracts) => {
-          this.contracts$ = of(contracts);
-          console.log(contracts);
-
+          this.dataSource.data = contracts;
+          this.dataSource.paginator = this.paginator;
       });
+
+      this.dataSource.filterPredicate = (data: Contract, filter: string) => {
+          filter = filter.trim().toLowerCase();
+            return data.code.toLowerCase().includes(filter) ||
+              data.contractManager.company.toLowerCase().includes(filter)
+      };
+
+      this.searchInputControl.valueChanges
+          .pipe(debounceTime(300))
+          .subscribe((value) => this.dataSource.filter = value.trim().toLowerCase());
   }
 
   createContract() {
