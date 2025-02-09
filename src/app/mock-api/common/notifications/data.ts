@@ -28,7 +28,7 @@ export const notifications = [
         id: 'b91ccb58-b06c-413b-b389-87010e03a120',
         icon: 'heroicons_outline:clipboard-document-list',
         title: 'Contrato',
-        description: 'You have 15 unread mails across 3 mailboxes',
+        description: 'Um novo contrato foi adicionado',
         time: now.minus({ hour: 3 }).toFormat('F'), // 3 hours ago
         read: false,
         link: '/mobilizacao/contratos',
