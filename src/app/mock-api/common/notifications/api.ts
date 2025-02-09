@@ -31,7 +31,14 @@ export class NotificationsMockApi
         // -----------------------------------------------------------------------------------------------------
         this._fuseMockApiService
             .onGet('api/common/notifications')
-            .reply(() => [200, cloneDeep(this._notifications)]);
+            .reply((request) => {
+                const userId = JSON.parse(localStorage.getItem('user')).id;
+                const userNotifications = this._notifications.filter((notification: any) => notification.user === userId);
+                if (userNotifications.length === 0) {
+                    return [200, cloneDeep(this._notifications)];
+                }
+                return [200, cloneDeep(userNotifications)]
+            });
 
         // -----------------------------------------------------------------------------------------------------
         // @ Notifications - POST
