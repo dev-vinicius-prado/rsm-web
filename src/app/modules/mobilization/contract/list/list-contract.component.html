@@ -50,19 +50,23 @@
       <!-- Contract code Column -->
       <ng-container matColumnDef="codigo-contrato">
         <th mat-header-cell *matHeaderCellDef>{{trs('codigo-contrato')}}</th>
-        <td mat-cell *matCellDef="let element">{{ element.code }}</td>
+        <td mat-cell *matCellDef="let contract">{{ contract.code }}</td>
       </ng-container>
 
       <!-- Contractor Column -->
       <ng-container matColumnDef="empresa-contratante">
         <th mat-header-cell *matHeaderCellDef>{{trs('empresa-contratante')}}</th>
-        <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+        <td mat-cell *matCellDef="let contract">{{ contract.name }}</td>
       </ng-container>
 
       <!-- Vigence Column -->
       <ng-container matColumnDef="vigencia">
         <th mat-header-cell *matHeaderCellDef>{{trs('vigencia')}}</th>
-        <td mat-cell *matCellDef="let element">{{ element.vigence }}</td>
+        <td mat-cell *matCellDef="let contract"
+        [appFormatDateVigence]
+        [startAt]="contract.vigence.startAt"
+        [finishAt]="contract.vigence.finishAt"
+        ></td>
       </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

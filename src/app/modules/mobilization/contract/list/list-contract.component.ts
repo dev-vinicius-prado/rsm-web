@@ -16,9 +16,13 @@ import { TranslocoModule } from "@ngneat/transloco";
 import { RoleAccessDirective } from "app/core/directives/role-access.directive";
 import {
     Observable,
+    of,
     Subject,
 } from "rxjs";
 import { ContractResource } from "../contract.types";
+import { ContractService } from "app/core/services/contract/contract.service";
+import { FormatDateVigenceDirective } from "app/core/directives/format-date-vigence.directive";
+
 
 @Component({
   selector: "app-list-contract",
@@ -34,7 +38,8 @@ import { ContractResource } from "../contract.types";
     MatTableModule,
     MatPaginatorModule,
       TranslocoModule,
-    RoleAccessDirective
+      RoleAccessDirective,
+    FormatDateVigenceDirective
   ],
   templateUrl: "./list-contract.component.html",
   styleUrl: "./list-contract.component.scss",
@@ -48,11 +53,16 @@ export class ListContractComponent {
 
   constructor(
     private _router: Router,
-    private _activatedRoute: ActivatedRoute,
+      private _activatedRoute: ActivatedRoute,
+    private _contractService: ContractService
   ) {}
 
   ngOnInit(): void {
-    console.log("initialzing contract list component!!");
+      this._contractService.getContracts().subscribe((contracts) => {
+          this.contracts$ = of(contracts);
+          console.log(contracts);
+
+      });
   }
 
   createContract() {
