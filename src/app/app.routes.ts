@@ -1,8 +1,9 @@
+import { CompanyComponent } from 'app/modules/registrations/company/company.component';
 import { Route } from '@angular/router';
 import { initialDataResolver } from 'app/app.resolvers';
-import { authGuard as AuthGuard } from 'app/core/auth/guards/auth.guard';
 import { NoAuthGuard } from 'app/core/auth/guards/noAuth.guard';
 import { LayoutComponent } from 'app/layout/layout.component';
+import { authGuard as AuthGuard } from 'app/core/auth/guards/auth.guard';
 
 
 // @formatter:off
@@ -11,14 +12,14 @@ import { LayoutComponent } from 'app/layout/layout.component';
 export const appRoutes: Route[] = [
 
     // Redirect empty path to '/example'
-    {path: 'example/contratada', pathMatch : 'full', redirectTo: 'example/contratada'},
+    {path: '', pathMatch : 'full', redirectTo: 'example'},
 
     // Redirect signed-in user to the '/example'
     //
     // After the user signs in, the sign-in page will redirect the user to the 'signed-in-redirect'
     // path. Below is another redirection for that path to redirect the user to the desired
     // location. This is a small convenience to keep all main routes together here on this file.
-    {path: 'signed-in-redirect', pathMatch : 'full', redirectTo: 'example/contratada'},
+    {path: 'signed-in-redirect', pathMatch : 'full', redirectTo: 'example'},
 
     // Auth routes for guests
     {
@@ -75,26 +76,9 @@ export const appRoutes: Route[] = [
             initialData: initialDataResolver
         },
         children: [
-            {
-                path: 'example', loadChildren: () => import('app/modules/admin/example/example.routes'),
-                data: {expectedRole: ['ADMIN', 'CONTRACTOR']}
-            },
-            {
-                path: 'mobilizacao/contratos', loadChildren: () => import('app/modules/mobilization/contract/contract.routes'),
-                data: {expectedRole: ['ADMIN', 'CONTRACTOR']}
-            },
-            {
-                path: 'configuracoes/empresa', loadChildren: () => import('app/modules/registrations/company/company.routes'),
-                data: {expectedRole: ['ADMIN', 'CONTRACTOR']}
-            },
-            {
-                path: 'example/contratada', loadChildren: () => import('app/modules/admin/example/example.routes'),
-                data: {expectedRole: ['CONTRACTED']}
-            },
-            {
-                path: 'mobilizacao/contratos/contratada', loadChildren: () => import('app/modules/mobilization/contract/contract.routes'),
-                data: {expectedRole: ['CONTRACTED']}
-            },
+            {path: 'example', loadChildren: () => import('app/modules/admin/example/example.routes')},
+            {path: 'mobilizacao/contratos', loadChildren: () => import('app/modules/mobilization/contract/contract.routes')},
+            {path: 'configuracoes/empresa', loadChildren: () => import('app/modules/registrations/company/company.routes')},
         ]
     },
 ];

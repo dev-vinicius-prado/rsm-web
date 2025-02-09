@@ -88,13 +88,6 @@ export class AuthSignInComponent implements OnInit
             .subscribe(
                 () =>
                 {
-                    const userRole = this._authService.getStoredUserRole();
-
-                    if (userRole === 'ADMIN' || userRole === 'CONTRACTOR') {
-                        this._router.navigate(['/mobilizacao/contratos']);
-                    } else {
-                        this._router.navigate(['/example/contratada']);
-                    }
 
                     // Set the redirect url.
                     // The '/signed-in-redirect' is a dummy url to catch the request and redirect the user
@@ -103,7 +96,7 @@ export class AuthSignInComponent implements OnInit
                     const redirectURL = this._activatedRoute.snapshot.queryParamMap.get('redirectURL') || '/signed-in-redirect';
 
                     // Navigate to the redirect url
-                    // this._router.navigateByUrl(redirectURL);
+                    this._router.navigateByUrl(redirectURL);
 
                 },
                 (response) =>
