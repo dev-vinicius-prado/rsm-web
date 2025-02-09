@@ -22,6 +22,8 @@ import {
     Observable
 } from "rxjs";
 import { ContractResource } from "../contract.types";
+import { MatMenu, MatMenuItem, MatMenuModule } from "@angular/material/menu";
+import { MatTooltipModule } from "@angular/material/tooltip";
 
 
 @Component({
@@ -39,13 +41,16 @@ import { ContractResource } from "../contract.types";
     MatPaginatorModule,
       TranslocoModule,
       RoleAccessDirective,
-    FormatDateVigenceDirective
+      FormatDateVigenceDirective,
+      MatMenuModule,
+      MatTooltipModule,
+
   ],
   templateUrl: "./list-contract.component.html",
   styleUrl: "./list-contract.component.scss",
 })
 export class ListContractComponent {
-    displayedColumns: string[] = ['codigo-contrato', 'empresa-contratante', 'vigencia'];
+    displayedColumns: string[] = ['codigo-contrato', 'empresa-contratante', 'vigencia', 'acoes'];
     dataSource = new MatTableDataSource<Contract>([]);
     searchInputControl = new FormControl();
 
