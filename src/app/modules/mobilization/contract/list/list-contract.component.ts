@@ -1,9 +1,9 @@
 import { CommonModule } from "@angular/common";
 import { Component } from "@angular/core";
 import {
-  FormsModule,
-  ReactiveFormsModule,
-  UntypedFormControl,
+    FormsModule,
+    ReactiveFormsModule,
+    UntypedFormControl,
 } from "@angular/forms";
 import { MatButtonModule } from "@angular/material/button";
 import { MatFormFieldModule } from "@angular/material/form-field";
@@ -14,10 +14,11 @@ import { MatTableModule } from "@angular/material/table";
 import { ActivatedRoute, Router, RouterOutlet } from "@angular/router";
 import { TranslocoModule } from "@ngneat/transloco";
 import {
-  Observable,
-  Subject,
+    Observable,
+    Subject,
 } from "rxjs";
 import { ContractResource } from "../contract.types";
+import { RoleAccessDirective } from "app/core/directives/role-access.directive";
 
 @Component({
   selector: "app-list-contract",
@@ -30,10 +31,10 @@ import { ContractResource } from "../contract.types";
     FormsModule,
     MatButtonModule,
     ReactiveFormsModule,
-    RouterOutlet,
     MatTableModule,
     MatPaginatorModule,
-    TranslocoModule
+      TranslocoModule,
+    RoleAccessDirective
   ],
   templateUrl: "./list-contract.component.html",
   styleUrl: "./list-contract.component.scss",

@@ -11,7 +11,7 @@ export class RoleAccessDirective {
     private userRole!: UserRole | null;
     private subscription!: Subscription;
 
-    @Input() set allowRoles(roles: UserRole[]) {
+    @Input('appRoleAccess') set allowRoles(roles: UserRole[]) {
         this.subscription = this.authService.userRole$.subscribe((userRole) => {
             this.userRole = userRole;
             this.updateView(roles);
@@ -28,7 +28,7 @@ export class RoleAccessDirective {
         this.viewContainer.clear();
         if (allowRoles.includes(this.userRole! as UserRole)) {
             this.viewContainer.createEmbeddedView(this.templateRef);
-        } 
+        }
     }
 
     ngOnDestroy(): void {
