@@ -6,8 +6,8 @@ export const contracts = [
         dateInitialMet: new Date('2024-04-16'),
         fantasyName: 'Prado Sistemas SA',
         vigence: {
-            startAt: new Date('2024-04-17'),
-            finishAt: new Date('2025-12-31'),
+            startAt: new Date('2024-04-17T00:00:00-03:00'),
+            finishAt: new Date('2025-12-31T00:00:00-03:00'),
         },
         scope: '32.240-410',
         degreeRiskLevel: 'HIGH',
