@@ -42,7 +42,7 @@
       </button>
     </div>
   </div>
-  <section>
+  <section class="p-3">
     <table mat-table [dataSource]="contracts$" class="mat-elevation-z1">
       <!--- Note that these columns can be defined in any order.
             The actual rendered columns are set as a property on the row definition" -->
@@ -56,7 +56,7 @@
       <!-- Contractor Column -->
       <ng-container matColumnDef="empresa-contratante">
         <th mat-header-cell *matHeaderCellDef>{{trs('empresa-contratante')}}</th>
-        <td mat-cell *matCellDef="let contract">{{ contract.name }}</td>
+        <td mat-cell *matCellDef="let contract">{{ contract.contractManager.company }}</td>
       </ng-container>
 
       <!-- Vigence Column -->

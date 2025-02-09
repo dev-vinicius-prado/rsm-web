@@ -15,6 +15,7 @@ export const contracts = [
             name: 'Vinicius Francisco Prado',
             email: 'email@email.com',
             phoneNumber: '32956565656',
+            company: 'Pico Mineiro SA',
         },
         matrixOfResponsability: [
             {
