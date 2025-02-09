@@ -6,7 +6,10 @@ import { cloneDeep } from 'lodash-es';
 
 @Injectable({ providedIn: 'root' })
 export class ContractMockApi {
-    private _contracts: Contract[] = contractsData;
+    private _contracts: Contract[] = contractsData.map(contract => ({
+        ...contract,
+        dateInitialMet: new Date(contract.dateInitialMet)
+    }));
 
     constructor(private _fuseMockApiService: FuseMockApiService) {
         this.registerHandlers();
