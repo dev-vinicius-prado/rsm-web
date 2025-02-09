@@ -2,7 +2,7 @@
 import { DateTime } from 'luxon';
 
 /* Get the current instant */
-const now = DateTime.now();
+const now = DateTime.now().setLocale('pt-BR');
 
 export const notifications = [
     {
@@ -11,7 +11,8 @@ export const notifications = [
         title      : 'Daily challenges',
         description: 'Your submission has been accepted',
         time       : now.minus({minute: 25}).toISO(), // 25 minutes ago
-        read       : false,
+        read: false,
+        user: "a14aac2a-a24a-4612-bd6d-95a09980ea1b",
     },
     {
         id         : '6e3e97e5-effc-4fb7-b730-52a151f0b641',
@@ -20,17 +21,19 @@ export const notifications = [
         time       : now.minus({minute: 50}).toISO(), // 50 minutes ago
         read       : true,
         link       : '/dashboards/project',
-        useRouter  : true,
+        useRouter: true,
+        user: "a14aac2a-a24a-4612-bd6d-95a09980ea1b",
     },
     {
-        id         : 'b91ccb58-b06c-413b-b389-87010e03a120',
-        icon       : 'heroicons_mini:envelope',
-        title      : 'Mailbox',
+        id: 'b91ccb58-b06c-413b-b389-87010e03a120',
+        icon: 'heroicons_outline:clipboard-document-list',
+        title: 'Contrato',
         description: 'You have 15 unread mails across 3 mailboxes',
-        time       : now.minus({hour: 3}).toISO(), // 3 hours ago
-        read       : false,
-        link       : '/dashboards/project',
-        useRouter  : true,
+        time: now.minus({ hour: 3 }).toISO(), // 3 hours ago
+        read: false,
+        link: '/mobilizacao/contratos',
+        useRouter: true,
+        user: 'c243e6a8-746b-4cfc-97b7-d726b869f9d1',
     },
     {
         id         : '541416c9-84a7-408a-8d74-27a43c38d797',
@@ -40,7 +43,8 @@ export const notifications = [
         time       : now.minus({hour: 5}).toISO(), // 5 hours ago
         read       : false,
         link       : '/dashboards/project',
-        useRouter  : true,
+        useRouter: true,
+        user: "a14aac2a-a24a-4612-bd6d-95a09980ea1b",
     },
     {
         id         : 'ef7b95a7-8e8b-4616-9619-130d9533add9',
@@ -49,7 +53,8 @@ export const notifications = [
         time       : now.minus({hour: 7}).toISO(), // 7 hours ago
         read       : true,
         link       : '/dashboards/project',
-        useRouter  : true,
+        useRouter: true,
+        user: "a14aac2a-a24a-4612-bd6d-95a09980ea1b",
     },
     {
         id         : 'eb8aa470-635e-461d-88e1-23d9ea2a5665',
@@ -58,7 +63,8 @@ export const notifications = [
         time       : now.minus({hour: 9}).toISO(), // 9 hours ago
         read       : true,
         link       : '/dashboards/project',
-        useRouter  : true,
+        useRouter: true,
+        user: "a14aac2a-a24a-4612-bd6d-95a09980ea1b",
     },
     {
         id         : 'b85c2338-cc98-4140-bbf8-c226ce4e395e',
@@ -68,7 +74,8 @@ export const notifications = [
         time       : now.minus({day: 1}).toISO(), // 1 day ago
         read       : true,
         link       : '/dashboards/project',
-        useRouter  : true,
+        useRouter: true,
+        user: "a14aac2a-a24a-4612-bd6d-95a09980ea1b",
     },
     {
         id         : '8f8e1bf9-4661-4939-9e43-390957b60f42',
@@ -78,7 +85,8 @@ export const notifications = [
         time       : now.minus({day: 3}).toISO(), // 3 days ago
         read       : true,
         link       : '/dashboards/project',
-        useRouter  : true,
+        useRouter: true,
+        user: "a14aac2a-a24a-4612-bd6d-95a09980ea1b",
     },
     {
         id         : '30af917b-7a6a-45d1-822f-9e7ad7f8bf69',
@@ -88,6 +96,7 @@ export const notifications = [
         time       : now.minus({day: 4}).toISO(), // 4 days ago
         read       : true,
         link       : '/dashboards/project',
-        useRouter  : true,
+        useRouter: true,
+        user: "a14aac2a-a24a-4612-bd6d-95a09980ea1b",
     },
 ];
