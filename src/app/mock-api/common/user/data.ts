@@ -9,6 +9,7 @@ export const user = {
     status: 'online',
     role: 'ADMIN',
     password: 'admin',
+    companyId: 0,
 };
 /* eslint-disable */
 export const userContract = {
@@ -19,6 +20,7 @@ export const userContract = {
     status: 'online',
     role: 'CONTRACT',
     password: 'contract',
+    companyId: 1,
 };
 /* eslint-disable */
 export const userContractor = {
@@ -29,6 +31,7 @@ export const userContractor = {
     status: 'online',
     role: 'CONTRACTED',
     password: 'contracted',
+    companyId: 2,
 };
 
 export const users = [user, userContract, userContractor];

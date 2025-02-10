@@ -23,5 +23,7 @@ export interface Contract {
     }[];
     contractor: {
         name: string;
+        company: string;
+        companyId: number;
     };
 }

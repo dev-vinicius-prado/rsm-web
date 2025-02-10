@@ -31,6 +31,8 @@ export const contracts = [
         ],
         contractor: {
             name: 'Empresa Alpha',
+            company: 'Alpha Corp',
+            companyId: 1,
         },
     },
     {
@@ -65,6 +67,8 @@ export const contracts = [
         ],
         contractor: {
             name: 'Empresa Beta',
+            company: 'Beta Corp',
+            companyId: 2,
         },
     },
     {
@@ -94,6 +98,8 @@ export const contracts = [
         ],
         contractor: {
             name: 'Empresa Gama',
+            company: 'Gama Corp',
+            companyId: 3,
         },
     },
     {
@@ -122,7 +128,9 @@ export const contracts = [
             },
         ],
         contractor: {
-            name: 'Contractor 4',
+            name: 'Empresa Delta',
+            company: 'Delta Corp',
+            companyId: 4,
         },
     },
     {
@@ -151,7 +159,9 @@ export const contracts = [
             },
         ],
         contractor: {
-            name: 'Contractor 5',
+            name: 'Empresa Epsilon',
+            company: 'Epsilon Corp',
+            companyId: 5,
         },
     },
     {
@@ -180,7 +190,9 @@ export const contracts = [
             },
         ],
         contractor: {
-            name: 'Contractor 6',
+            name: 'Empresa Zeta',
+            company: 'Zeta Corp',
+            companyId: 6,
         },
     },
     {
@@ -209,7 +221,9 @@ export const contracts = [
             },
         ],
         contractor: {
-            name: 'Contractor 7',
+            name: 'Empresa Eta',
+            company: 'Eta Corp',
+            companyId: 7,
         },
     },
     {
@@ -238,7 +252,9 @@ export const contracts = [
             },
         ],
         contractor: {
-            name: 'Contractor 8',
+            name: 'Empresa Theta',
+            company: 'Theta Corp',
+            companyId: 8,
         },
     },
     {
@@ -267,7 +283,9 @@ export const contracts = [
             },
         ],
         contractor: {
-            name: 'Contractor 9',
+            name: 'Empresa Iota',
+            company: 'Iota Corp',
+            companyId: 9,
         },
     },
     {
@@ -296,7 +314,9 @@ export const contracts = [
             },
         ],
         contractor: {
-            name: 'Contractor 10',
+            name: 'Empresa Kappa',
+            company: 'Kappa Corp',
+            companyId: 10,
         },
     },
     {
@@ -325,7 +345,9 @@ export const contracts = [
             },
         ],
         contractor: {
-            name: 'Contractor 11',
+            name: 'Empresa Lambda',
+            company: 'Lambda Corp',
+            companyId: 11,
         },
     },
     {
@@ -354,7 +376,9 @@ export const contracts = [
             },
         ],
         contractor: {
-            name: 'Contractor 12',
+            name: 'Empresa Mu',
+            company: 'Mu Corp',
+            companyId: 12,
         },
     },
     {
@@ -383,7 +407,9 @@ export const contracts = [
             },
         ],
         contractor: {
-            name: 'Contractor 13',
+            name: 'Empresa Nu',
+            company: 'Nu Corp',
+            companyId: 13,
         },
     },
 ];

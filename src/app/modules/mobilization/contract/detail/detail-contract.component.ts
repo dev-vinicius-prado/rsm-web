@@ -1,5 +1,4 @@
 import { CdkAccordionModule } from "@angular/cdk/accordion";
-import { JsonPipe, NgFor, NgIf, NgSwitch, NgSwitchCase, NgSwitchDefault } from "@angular/common";
 import { Component, OnInit, ViewEncapsulation } from "@angular/core";
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { MatButtonModule } from "@angular/material/button";
@@ -63,7 +62,7 @@ export const items = {
     selector: "app-detail-contract",
     standalone: true,
     encapsulation: ViewEncapsulation.None,
-    imports: [TranslocoModule, MatIconModule, FormsModule, MatChipsModule,ReactiveFormsModule, MatStepperModule, MatFormFieldModule, MatInputModule, MatSelectModule, MatOptionModule, MatButtonModule, MatCheckboxModule, MatRadioModule, MatDatepickerModule, MatExpansionModule, CdkAccordionModule, MatTableModule, NgFor, NgIf, NgSwitch, NgSwitchCase, NgSwitchDefault, JsonPipe, StepContractDataComponent, StepContractorDataComponent, StepResourceDataComponent],
+    imports: [TranslocoModule, MatIconModule, FormsModule, MatChipsModule,ReactiveFormsModule, MatStepperModule, MatFormFieldModule, MatInputModule, MatSelectModule, MatOptionModule, MatButtonModule, MatCheckboxModule, MatRadioModule, MatDatepickerModule, MatExpansionModule, CdkAccordionModule, MatTableModule, StepContractDataComponent, StepContractorDataComponent, StepResourceDataComponent],
     templateUrl: "./detail-contract.component.html",
     styleUrl: "./detail-contract.component.scss",
 })
