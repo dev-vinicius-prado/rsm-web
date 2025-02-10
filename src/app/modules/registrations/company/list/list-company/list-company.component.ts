@@ -1,16 +1,16 @@
-import { Component } from "@angular/core";
 import { CommonModule } from '@angular/common';
+import { Component } from "@angular/core";
+import {
+    FormsModule,
+    ReactiveFormsModule,
+    UntypedFormControl,
+} from "@angular/forms";
+import { MatButtonModule } from "@angular/material/button";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatIconModule } from "@angular/material/icon";
 import { MatInputModule } from "@angular/material/input";
-import { MatButtonModule } from "@angular/material/button";
-import {
-  FormsModule,
-  ReactiveFormsModule,
-  UntypedFormControl,
-} from "@angular/forms";
+import { ActivatedRoute, Router } from "@angular/router";
 import { Subject, debounceTime, map, switchMap, takeUntil } from "rxjs";
-import { ActivatedRoute, Router, RouterOutlet } from "@angular/router";
 
 @Component({
   selector: "app-list-company",
@@ -22,8 +22,7 @@ import { ActivatedRoute, Router, RouterOutlet } from "@angular/router";
     MatInputModule,
     FormsModule,
     MatButtonModule,
-    ReactiveFormsModule,
-    RouterOutlet,
+    ReactiveFormsModule
   ],
   templateUrl: "./list-company.component.html",
   styleUrl: "./list-company.component.scss",
