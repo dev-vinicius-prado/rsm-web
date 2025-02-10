@@ -1,10 +1,10 @@
-import { MatChipsModule } from '@angular/material/chips';
 import { CdkAccordionModule } from "@angular/cdk/accordion";
-import { NgFor, NgIf, NgSwitch, NgSwitchCase, NgSwitchDefault, JsonPipe } from "@angular/common";
+import { JsonPipe, NgFor, NgIf, NgSwitch, NgSwitchCase, NgSwitchDefault } from "@angular/common";
 import { Component, OnInit, ViewEncapsulation } from "@angular/core";
-import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { MatButtonModule } from "@angular/material/button";
 import { MatCheckboxModule } from "@angular/material/checkbox";
+import { MatChipsModule } from '@angular/material/chips';
 import { MatOptionModule } from "@angular/material/core";
 import { MatDatepickerModule } from "@angular/material/datepicker";
 import { MatExpansionModule } from "@angular/material/expansion";
@@ -15,6 +15,7 @@ import { MatRadioModule } from "@angular/material/radio";
 import { MatSelectModule } from "@angular/material/select";
 import { MatStepperModule } from "@angular/material/stepper";
 import { MatTableModule } from "@angular/material/table";
+import { Router } from "@angular/router";
 import { TranslocoModule } from "@ngneat/transloco";
 import { ContractResource } from "../contract.types";
 import { StepContractDataComponent } from '../step-contract-data/step-contract-data.component';
@@ -59,51 +60,55 @@ export const items = {
   files: [],
 };
 @Component({
-  selector: "app-detail-contract",
-  standalone: true,
-  encapsulation: ViewEncapsulation.None,
-  imports: [TranslocoModule, MatIconModule, FormsModule, MatChipsModule, ReactiveFormsModule, MatStepperModule, MatFormFieldModule, MatInputModule, MatSelectModule, MatOptionModule, MatButtonModule, MatCheckboxModule, MatRadioModule, MatDatepickerModule, MatExpansionModule, CdkAccordionModule, MatTableModule, NgFor, NgIf, NgSwitch, NgSwitchCase, NgSwitchDefault, JsonPipe, StepContractDataComponent, StepContractorDataComponent, StepResourceDataComponent],
-  templateUrl: "./detail-contract.component.html",
-  styleUrl: "./detail-contract.component.scss",
+    selector: "app-detail-contract",
+    standalone: true,
+    encapsulation: ViewEncapsulation.None,
+    imports: [TranslocoModule, MatIconModule, FormsModule, MatChipsModule,ReactiveFormsModule, MatStepperModule, MatFormFieldModule, MatInputModule, MatSelectModule, MatOptionModule, MatButtonModule, MatCheckboxModule, MatRadioModule, MatDatepickerModule, MatExpansionModule, CdkAccordionModule, MatTableModule, NgFor, NgIf, NgSwitch, NgSwitchCase, NgSwitchDefault, JsonPipe, StepContractDataComponent, StepContractorDataComponent, StepResourceDataComponent],
+    templateUrl: "./detail-contract.component.html",
+    styleUrl: "./detail-contract.component.scss",
 })
 export class DetailContractComponent implements OnInit {
 
-  isLinear = true;
-  includeForm: FormGroup;
-  contractForm: FormGroup;
-  contractorForm: FormGroup;
-  resourceForm: FormGroup;
-  contractResource: ContractResource = DEFAULT_CONTRACT_DATA;
-  addOnBlur: boolean = true;
-  readonly separatorKeysCode = ['ENTER', 'COMMA'] as const;
-  nrsList: string[] = [];
+    isLinear = true;
+    includeForm: FormGroup;
+    contractForm: FormGroup;
+    contractorForm: FormGroup;
+    resourceForm: FormGroup;
+    contractResource: ContractResource = DEFAULT_CONTRACT_DATA;
+    addOnBlur: boolean = true;
+    readonly separatorKeysCode = ['ENTER', 'COMMA'] as const;
+    nrsList: string[] = [];
 
 
 
-  /**
-   * Constructor
-   */
-  constructor(private _formBuilder: FormBuilder) {}
+    /**
+     * Constructor
+     */
+    constructor(private _formBuilder: FormBuilder, private _router: Router) { }
 
-  // -----------------------------------------------------------------------------------------------------
-  // @ Lifecycle hooks
-  // -----------------------------------------------------------------------------------------------------
+    // -----------------------------------------------------------------------------------------------------
+    // @ Lifecycle hooks
+    // -----------------------------------------------------------------------------------------------------
 
-  /**
-   * On init
-   */
-  ngOnInit(): void {
-    this.resourceForm = this._formBuilder.group({});
-    this.contractForm = this._formBuilder.group({});
-    this.contractorForm = this._formBuilder.group({});
-    this.includeForm = this._formBuilder.group({
-        contractorData: this.contractForm,
-        resourceData: this.resourceForm,
-        contractData: this.contractorForm,
-    });
-  }
+    /**
+     * On init
+     */
+    ngOnInit(): void {
+        this.resourceForm = this._formBuilder.group({});
+        this.contractForm = this._formBuilder.group({});
+        this.contractorForm = this._formBuilder.group({});
+        this.includeForm = this._formBuilder.group({
+            contractorData: this.contractForm,
+            resourceData: this.resourceForm,
+            contractData: this.contractorForm,
+        });
+    }
 
     save() {
-        console.log('Includ Form: ',this.includeForm.value);
+        console.log('Includ Form: ', this.includeForm.value);
+    }
+
+    backToList() {
+        this._router.navigate(['mobilizacao/contratos']);
     }
 }
