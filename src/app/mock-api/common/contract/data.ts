@@ -2,414 +2,533 @@ export const contracts = [
     {
         id: 1,
         code: 'RSM-20240001',
-        cnpj: '00.000.000/0001-00',
-        dateInitialMet: new Date('2024-04-16T00:00:00Z'),
-        fantasyName: 'Prado Sistemas SA',
-        vigence: {
-            startAt: new Date('2024-04-17T00:00:00-03:00'),
-            finishAt: new Date('2025-12-31T00:00:00-03:00'),
-        },
-        scope: '32.240-410',
+        dateInitialMet: '2024-04-16T00:00:00Z',
+        scope: 'Mineração',
         degreeRiskLevel: 'HIGH',
+        vigence: {
+            startAt: '2024-04-17T00:00:00-03:00',
+            finishAt: '2025-12-31T00:00:00-03:00',
+        },
+        contractor: {
+            cnpj: '78.345.678/0001-22',
+            company: 'Monte Azul Mineração Ltda.',
+        },
         contractManager: {
-            name: 'Vinicius Francisco Prado',
-            email: 'email@email.com',
-            phoneNumber: '32956565656',
-            company: 'Pico Mineiro SA',
+            participant: {
+                name: 'Lucas Almeida',
+                function: 'Gerente de Projetos',
+                contact: {
+                    phoneNumber: '(31) 91234-5678',
+                    email: 'lucas.almeida@monteazul.com',
+                },
+            },
         },
         matrixOfResponsability: [
             {
-                name: 'Vinicius Francisco Prado',
-                function: 'admin',
-                email: 'developer.vinicius.prado@gmail.com',
-            },
-            {
-                name: 'Vinicius Francisco Prado',
-                function: 'coordenador',
-                email: 'developer.vinicius.prado@gmail.com',
+                participant: {
+                    name: 'Fernanda Costa',
+                    function: 'Supervisora',
+                    contact: {
+                        phoneNumber: '(31) 99876-5432',
+                        email: 'fernanda.costa@monteazul.com',
+                    },
+                },
             },
         ],
-        contractor: {
-            name: 'Empresa Alpha',
-            company: 'Alpha Corp',
-            companyId: 1,
+        contracted: {
+            id: 1,
+            cnpj: '23.123.456/0001-90',
+            company: 'Terranova Engenharia Ltda.',
+            responsibleParticipant: {
+                name: 'Carlos Nogueira',
+                function: 'Engenheiro Chefe',
+                contact: {
+                    phoneNumber: '(31) 98765-4321',
+                    email: 'carlos.nogueira@terranova.com',
+                },
+            },
+            documents: [
+                {
+                    document: {
+                        id: 1,
+                        description:
+                            'Certidão Negativa de Débitos Trabalhistas',
+                        name: 'CND Trabalhista',
+                        required: true,
+                        file: '',
+                        downloadLink: '',
+                    },
+                },
+            ],
+        },
+        resourcesOfContract: {
+            resources: [
+                {
+                    resource: {
+                        id: 1,
+                        type: 'PERSONAL',
+                        description: 'Equipe de perfuração',
+                        category: 'MOBILE',
+                        makeEmployBadge: true,
+                        provideFood: true,
+                        items: [
+                            {
+                                item: {
+                                    id: 1,
+                                    function: 'Técnico de Perfuração',
+                                    quantity: 5,
+                                    documents: [
+                                        {
+                                            document: {
+                                                id: 2,
+                                                description:
+                                                    'Certificado NR-35',
+                                                name: 'Treinamento NR-35 Trabalho em Altura',
+                                                required: true,
+                                                file: '',
+                                                downloadLink: '',
+                                            },
+                                        },
+                                    ],
+                                    racs: [{ rac: {} }],
+                                    nrs: [{ nr: {} }],
+                                },
+                            },
+                        ],
+                    },
+                },
+            ],
         },
     },
     {
         id: 2,
         code: 'RSM-20240002',
-        cnpj: '11.111.111/0001-11',
-        dateInitialMet: new Date('2024-05-10T00:00:00Z'),
-        fantasyName: 'Tech Solutions LTDA',
-        vigence: {
-            startAt:  new Date('2024-05-15T00:00:00-03:00'),
-            finishAt: new Date('2026-06-30T00:00:00-03:00'),
-        },
-        scope: '45.320-812',
+        dateInitialMet: '2024-05-10T00:00:00Z',
+        scope: 'Mineração',
         degreeRiskLevel: 'MEDIUM',
+        vigence: {
+            startAt: '2024-05-15T00:00:00-03:00',
+            finishAt: '2026-06-30T00:00:00-03:00',
+        },
+        contractor: {
+            cnpj: '85.654.321/0001-11',
+            company: 'Serra Branca Mineração S.A.',
+        },
         contractManager: {
-            name: 'Lucas Andrade',
-            email: 'lucas.andrade@email.com',
-            phoneNumber: '31987654321',
-            company: 'InovaTech SA',
+            participant: {
+                name: 'Ana Beatriz Lima',
+                function: 'Superintendente',
+                contact: {
+                    phoneNumber: '(21) 99988-7766',
+                    email: 'ana.lima@serrabranca.com',
+                },
+            },
         },
         matrixOfResponsability: [
             {
-                name: 'Lucas Andrade',
-                function: 'gerente',
-                email: 'lucas.andrade@email.com',
-            },
-            {
-                name: 'Mariana Souza',
-                function: 'supervisor',
-                email: 'mariana.souza@email.com',
+                participant: {
+                    name: 'Roberto Farias',
+                    function: 'Analista de Segurança',
+                    contact: {
+                        phoneNumber: '(21) 98877-6655',
+                        email: 'roberto.farias@serrabranca.com',
+                    },
+                },
             },
         ],
-        contractor: {
-            name: 'Empresa Beta',
-            company: 'Beta Corp',
-            companyId: 2,
+        contracted: {
+            id: 2,
+            cnpj: '29.876.543/0001-99',
+            company: 'GeoTech Consultoria Ltda.',
+            responsibleParticipant: {
+                name: 'Marcos Tavares',
+                function: 'Diretor Técnico',
+                contact: {
+                    phoneNumber: '(21) 97777-5555',
+                    email: 'marcos.tavares@geotech.com',
+                },
+            },
+            documents: [
+                {
+                    document: {
+                        id: 3,
+                        description: 'Alvará de Funcionamento Atualizado',
+                        name: 'Alvará de Funcionamento Municipal',
+                        required: true,
+                        file: '',
+                        downloadLink: '',
+                    },
+                },
+            ],
+        },
+        resourcesOfContract: {
+            resources: [
+                {
+                    resource: {
+                        id: 2,
+                        type: 'EQUIPMENT',
+                        description: 'Perfuratriz hidráulica',
+                        category: 'MOBILE',
+                        makeEmployBadge: false,
+                        provideFood: false,
+                        items: [
+                            {
+                                item: {
+                                    id: 2,
+                                    function: 'Operador de Equipamento',
+                                    quantity: 2,
+                                    documents: [
+                                        {
+                                            document: {
+                                                id: 4,
+                                                description:
+                                                    'Treinamento NR-12',
+                                                name: 'Certificado de Segurança NR-12',
+                                                required: true,
+                                                file: '',
+                                                downloadLink: '',
+                                            },
+                                        },
+                                    ],
+                                    racs: [{ rac: {} }],
+                                    nrs: [{ nr: {} }],
+                                },
+                            },
+                        ],
+                    },
+                },
+            ],
         },
     },
     {
         id: 3,
-        code: 'RSM-20240003',
-        cnpj: '22.222.222/0001-22',
-        dateInitialMet: new Date('2024-06-20T00:00:00Z'),
-        fantasyName: 'AlphaTech Solutions',
+        code: 'RSM-20240002',
+        dateInitialMet: '2024-04-16T00:00:00Z',
+        scope: 'Mineração',
+        degreeRiskLevel: 'HIGH',
         vigence: {
-            startAt:  new Date('2024-06-21T00:00:00-03:00'),
-            finishAt: new Date('2026-12-31T00:00:00-03:00'),
+            startAt: '2024-04-17T00:00:00-03:00',
+            finishAt: '2025-12-31T00:00:00-03:00',
         },
-        scope: '52.120-330',
-        degreeRiskLevel: 'LOW',
+        contractor: {
+            cnpj: '45.678.912/0001-34',
+            company: 'Mineração Pedra Branca Ltda.',
+        },
         contractManager: {
-            name: 'Carla Mendes',
-            email: 'carla.mendes@email.com',
-            phoneNumber: '31955554444',
-            company: 'Sigma Corp',
+            participant: {
+                name: 'Eduardo Almeida',
+                function: 'Supervisor de Operações',
+                contact: {
+                    phoneNumber: '(31) 99854-3210',
+                    email: 'eduardo.almeida@pedrabranca.com.br',
+                },
+            },
         },
         matrixOfResponsability: [
             {
-                name: 'Carla Mendes',
-                function: 'diretor',
-                email: 'carla.mendes@email.com',
+                participant: {
+                    name: 'Ana Cláudia Mendes',
+                    function: 'Coordenadora de Segurança',
+                    contact: {
+                        phoneNumber: '(11) 91234-5678',
+                        email: 'ana.mendes@pedrabranca.com.br',
+                    },
+                },
+            },
+            {
+                participant: {
+                    name: 'Roberto Figueiredo',
+                    function: 'Engenheiro de Projetos',
+                    contact: {
+                        phoneNumber: '(21) 96547-1234',
+                        email: 'roberto.figueiredo@pedrabranca.com.br',
+                    },
+                },
             },
         ],
-        contractor: {
-            name: 'Empresa Gama',
-            company: 'Gama Corp',
-            companyId: 3,
+        contracted: {
+            id: 3,
+            cnpj: '78.910.111/0001-22',
+            company: 'Terra Nova Engenharia S.A.',
+            responsibleParticipant: {
+                name: 'Mário César Souza',
+                function: 'Diretor Técnico',
+                contact: {
+                    phoneNumber: '(41) 99876-5432',
+                    email: 'mario.souza@terranova.com',
+                },
+            },
+            documents: [
+                {
+                    document: {
+                        id: 5,
+                        description:
+                            'Certidão Negativa de Débitos Trabalhistas',
+                        name: 'Certidão Negativa Atualizada',
+                        required: true,
+                        file: '',
+                        downloadLink: '',
+                    },
+                },
+            ],
+        },
+        resourcesOfContract: {
+            resources: [
+                {
+                    resource: {
+                        id: 20,
+                        type: 'EQUIPMENT',
+                        description: 'Perfuratriz hidráulica',
+                        category: 'MOBILE',
+                        makeEmployBadge: false,
+                        provideFood: false,
+                        items: [
+                            {
+                                item: {
+                                    id: 20,
+                                    function: 'Operador de Equipamento',
+                                    quantity: 2,
+                                    documents: [
+                                        {
+                                            document: {
+                                                id: 40,
+                                                description:
+                                                    'Treinamento NR-12',
+                                                name: 'Certificado de Segurança NR-12',
+                                                required: true,
+                                                file: '',
+                                                downloadLink: '',
+                                            },
+                                        },
+                                    ],
+                                    racs: [{ rac: {} }],
+                                    nrs: [{ nr: {} }],
+                                },
+                            },
+                        ],
+                    },
+                },
+            ],
         },
     },
     {
         id: 4,
-        code: 'RSM-20240004',
-        cnpj: '00.000.000/0004-00',
-        dateInitialMet: new Date('2024-04-20'),
-        fantasyName: 'Empresa 4',
+        code: 'RSM-20240003',
+        dateInitialMet: '2024-05-10T00:00:00Z',
+        scope: 'Mineração',
+        degreeRiskLevel: 'HIGH',
         vigence: {
-            startAt: new Date('2024-04-20'),
-            finishAt: new Date('2025-04-20'),
+            startAt: '2024-05-15T00:00:00-03:00',
+            finishAt: '2026-12-31T00:00:00-03:00',
         },
-        scope: '32.240-414',
-        degreeRiskLevel: 'MEDIUM',
+        contractor: {
+            cnpj: '55.999.333/0001-88',
+            company: 'Extração Mineral Brasil Ltda.',
+        },
         contractManager: {
-            name: 'Manager 4',
-            email: 'manager4@empresa4.com',
-            phoneNumber: '32956565654',
-            company: 'Empresa 4',
+            participant: {
+                name: 'Carolina Nunes',
+                function: 'Gerente de Contratos',
+                contact: {
+                    phoneNumber: '(11) 95678-9876',
+                    email: 'carolina.nunes@extracaobrasil.com',
+                },
+            },
         },
         matrixOfResponsability: [
             {
-                name: 'Responsável 4',
-                function: 'admin',
-                email: 'responsavel4@empresa4.com',
+                participant: {
+                    name: 'Ricardo Gonçalves',
+                    function: 'Analista de Recursos Minerais',
+                    contact: {
+                        phoneNumber: '(21) 96541-7854',
+                        email: 'ricardo.goncalves@extracaobrasil.com',
+                    },
+                },
+            },
+            {
+                participant: {
+                    name: 'Fernanda Duarte',
+                    function: 'Coordenadora Ambiental',
+                    contact: {
+                        phoneNumber: '(31) 99845-6598',
+                        email: 'fernanda.duarte@extracaobrasil.com',
+                    },
+                },
             },
         ],
-        contractor: {
-            name: 'Empresa Delta',
-            company: 'Delta Corp',
-            companyId: 4,
+        contracted: {
+            id: 4,
+            cnpj: '99.888.777/0001-55',
+            company: 'Soluções Minerais Integradas S.A.',
+            responsibleParticipant: {
+                name: 'Alberto Castilho',
+                function: 'Diretor Operacional',
+                contact: {
+                    phoneNumber: '(81) 98765-4321',
+                    email: 'alberto.castilho@solucoesminerais.com',
+                },
+            },
+            documents: [
+                {
+                    document: {
+                        id: 6,
+                        description: 'Alvará de Funcionamento',
+                        name: 'Alvará de Funcionamento para Mineração',
+                        required: true,
+                        file: '',
+                        downloadLink: '',
+                    },
+                },
+            ],
+        },
+        resourcesOfContract: {
+            resources: [
+                {
+                    resource: {
+                        id: 30,
+                        type: 'EQUIPMENT',
+                        description: 'Perfuratriz hidráulica',
+                        category: 'MOBILE',
+                        makeEmployBadge: false,
+                        provideFood: false,
+                        items: [
+                            {
+                                item: {
+                                    id: 30,
+                                    function: 'Operador de Equipamento',
+                                    quantity: 2,
+                                    documents: [
+                                        {
+                                            document: {
+                                                id: 30,
+                                                description:
+                                                    'Treinamento NR-12',
+                                                name: 'Certificado de Segurança NR-12',
+                                                required: true,
+                                                file: '',
+                                                downloadLink: '',
+                                            },
+                                        },
+                                    ],
+                                    racs: [{ rac: {} }],
+                                    nrs: [{ nr: {} }],
+                                },
+                            },
+                        ],
+                    },
+                },
+            ],
         },
     },
     {
         id: 5,
-        code: 'RSM-20240005',
-        cnpj: '00.000.000/0005-00',
-        dateInitialMet: new Date('2024-04-21'),
-        fantasyName: 'Empresa 5',
-        vigence: {
-            startAt: new Date('2024-04-21'),
-            finishAt: new Date('2025-04-21'),
-        },
-        scope: '32.240-415',
-        degreeRiskLevel: 'LOW',
-        contractManager: {
-            name: 'Manager 5',
-            email: 'manager5@empresa5.com',
-            phoneNumber: '32956565655',
-            company: 'Empresa 5',
-        },
-        matrixOfResponsability: [
-            {
-                name: 'Responsável 5',
-                function: 'coordenador',
-                email: 'responsavel5@empresa5.com',
-            },
-        ],
-        contractor: {
-            name: 'Empresa Epsilon',
-            company: 'Epsilon Corp',
-            companyId: 5,
-        },
-    },
-    {
-        id: 6,
-        code: 'RSM-20240006',
-        cnpj: '00.000.000/0006-00',
-        dateInitialMet: new Date('2024-04-22'),
-        fantasyName: 'Empresa 6',
-        vigence: {
-            startAt: new Date('2024-04-22'),
-            finishAt: new Date('2025-04-22'),
-        },
-        scope: '32.240-416',
+        code: 'RSM-20250001',
+        dateInitialMet: '2025-01-10T00:00:00Z',
+        scope: 'Mineração',
         degreeRiskLevel: 'HIGH',
-        contractManager: {
-            name: 'Manager 6',
-            email: 'manager6@empresa6.com',
-            phoneNumber: '32956565656',
-            company: 'Empresa 6',
-        },
-        matrixOfResponsability: [
-            {
-                name: 'Responsável 6',
-                function: 'admin',
-                email: 'responsavel6@empresa6.com',
-            },
-        ],
-        contractor: {
-            name: 'Empresa Zeta',
-            company: 'Zeta Corp',
-            companyId: 6,
-        },
-    },
-    {
-        id: 7,
-        code: 'RSM-20240007',
-        cnpj: '00.000.000/0007-00',
-        dateInitialMet: new Date('2024-04-23'),
-        fantasyName: 'Empresa 7',
         vigence: {
-            startAt: new Date('2024-04-23'),
-            finishAt: new Date('2025-04-23'),
+            startAt: '2024-12-20T00:00:00-03:00',
+            finishAt: '2026-12-31T00:00:00-03:00',
         },
-        scope: '32.240-417',
-        degreeRiskLevel: 'MEDIUM',
+        contractor: {
+            cnpj: '55.999.333/0001-88',
+            company: 'Pico Mineração S.A.',
+        },
         contractManager: {
-            name: 'Manager 7',
-            email: 'manager7@empresa7.com',
-            phoneNumber: '32956565657',
-            company: 'Empresa 7',
+            participant: {
+                name: 'Priscila Nunes',
+                function: 'Gerente de Contratos',
+                contact: {
+                    phoneNumber: '(11) 95678-9876',
+                    email: 'priscila.nunes@pico.com',
+                },
+            },
         },
         matrixOfResponsability: [
             {
-                name: 'Responsável 7',
-                function: 'coordenador',
-                email: 'responsavel7@empresa7.com',
+                participant: {
+                    name: 'Marcelo Gonçalves',
+                    function: 'Analista de Recursos Minerais',
+                    contact: {
+                        phoneNumber: '(21) 96541-7854',
+                        email: 'marcelo.goncalves@pico.com',
+                    },
+                },
             },
-        ],
-        contractor: {
-            name: 'Empresa Eta',
-            company: 'Eta Corp',
-            companyId: 7,
-        },
-    },
-    {
-        id: 8,
-        code: 'RSM-20240008',
-        cnpj: '00.000.000/0008-00',
-        dateInitialMet: new Date('2024-04-24'),
-        fantasyName: 'Empresa 8',
-        vigence: {
-            startAt: new Date('2024-04-24'),
-            finishAt: new Date('2025-04-24'),
-        },
-        scope: '32.240-418',
-        degreeRiskLevel: 'LOW',
-        contractManager: {
-            name: 'Manager 8',
-            email: 'manager8@empresa8.com',
-            phoneNumber: '32956565658',
-            company: 'Empresa 8',
-        },
-        matrixOfResponsability: [
             {
-                name: 'Responsável 8',
-                function: 'admin',
-                email: 'responsavel8@empresa8.com',
+                participant: {
+                    name: 'Carla Duarte',
+                    function: 'Coordenadora Ambiental',
+                    contact: {
+                        phoneNumber: '(31) 99845-6598',
+                        email: 'carla.duarte@pico.com',
+                    },
+                },
             },
         ],
-        contractor: {
-            name: 'Empresa Theta',
-            company: 'Theta Corp',
-            companyId: 8,
-        },
-    },
-    {
-        id: 9,
-        code: 'RSM-20240009',
-        cnpj: '00.000.000/0009-00',
-        dateInitialMet: new Date('2024-04-25'),
-        fantasyName: 'Empresa 9',
-        vigence: {
-            startAt: new Date('2024-04-25'),
-            finishAt: new Date('2025-04-25'),
-        },
-        scope: '32.240-419',
-        degreeRiskLevel: 'HIGH',
-        contractManager: {
-            name: 'Manager 9',
-            email: 'manager9@empresa9.com',
-            phoneNumber: '32956565659',
-            company: 'Empresa 9',
-        },
-        matrixOfResponsability: [
-            {
-                name: 'Responsável 9',
-                function: 'coordenador',
-                email: 'responsavel9@empresa9.com',
+        contracted: {
+            id: 5,
+            cnpj: '99.888.777/0001-55',
+            company: 'Soluções Minerais Integradas S.A.',
+            responsibleParticipant: {
+                name: 'Alberto Castilho',
+                function: 'Diretor Operacional',
+                contact: {
+                    phoneNumber: '(81) 98765-4321',
+                    email: 'alberto.castilho@solucoesminerais.com',
+                },
             },
-        ],
-        contractor: {
-            name: 'Empresa Iota',
-            company: 'Iota Corp',
-            companyId: 9,
+            documents: [
+                {
+                    document: {
+                        id: 7,
+                        description: 'Alvará de Funcionamento',
+                        name: 'Alvará de Funcionamento para Mineração',
+                        required: true,
+                        file: '',
+                        downloadLink: '',
+                    },
+                },
+            ],
         },
-    },
-    {
-        id: 10,
-        code: 'RSM-20240010',
-        cnpj: '00.000.000/0010-00',
-        dateInitialMet: new Date('2024-04-26'),
-        fantasyName: 'Empresa 10',
-        vigence: {
-            startAt: new Date('2024-04-26'),
-            finishAt: new Date('2025-04-26'),
-        },
-        scope: '32.240-420',
-        degreeRiskLevel: 'MEDIUM',
-        contractManager: {
-            name: 'Manager 10',
-            email: 'manager10@empresa10.com',
-            phoneNumber: '32956565660',
-            company: 'Empresa 10',
-        },
-        matrixOfResponsability: [
-            {
-                name: 'Responsável 10',
-                function: 'admin',
-                email: 'responsavel10@empresa10.com',
-            },
-        ],
-        contractor: {
-            name: 'Empresa Kappa',
-            company: 'Kappa Corp',
-            companyId: 10,
-        },
-    },
-    {
-        id: 11,
-        code: 'RSM-20240011',
-        cnpj: '00.000.000/0011-00',
-        dateInitialMet: new Date('2024-04-27'),
-        fantasyName: 'Empresa 11',
-        vigence: {
-            startAt: new Date('2024-04-27'),
-            finishAt: new Date('2025-04-27'),
-        },
-        scope: '32.240-421',
-        degreeRiskLevel: 'LOW',
-        contractManager: {
-            name: 'Manager 11',
-            email: 'manager11@empresa11.com',
-            phoneNumber: '32956565661',
-            company: 'Empresa 11',
-        },
-        matrixOfResponsability: [
-            {
-                name: 'Responsável 11',
-                function: 'coordenador',
-                email: 'responsavel11@empresa11.com',
-            },
-        ],
-        contractor: {
-            name: 'Empresa Lambda',
-            company: 'Lambda Corp',
-            companyId: 11,
-        },
-    },
-    {
-        id: 12,
-        code: 'RSM-20240012',
-        cnpj: '00.000.000/0012-00',
-        dateInitialMet: new Date('2024-04-28'),
-        fantasyName: 'Empresa 12',
-        vigence: {
-            startAt: new Date('2024-04-28'),
-            finishAt: new Date('2025-04-28'),
-        },
-        scope: '32.240-422',
-        degreeRiskLevel: 'HIGH',
-        contractManager: {
-            name: 'Manager 12',
-            email: 'manager12@empresa12.com',
-            phoneNumber: '32956565662',
-            company: 'Empresa 12',
-        },
-        matrixOfResponsability: [
-            {
-                name: 'Responsável 12',
-                function: 'admin',
-                email: 'responsavel12@empresa12.com',
-            },
-        ],
-        contractor: {
-            name: 'Empresa Mu',
-            company: 'Mu Corp',
-            companyId: 12,
-        },
-    },
-    {
-        id: 13,
-        code: 'RSM-20240013',
-        cnpj: '00.000.000/0013-00',
-        dateInitialMet: new Date('2024-04-29'),
-        fantasyName: 'Empresa 13',
-        vigence: {
-            startAt: new Date('2024-04-29'),
-            finishAt: new Date('2025-04-29'),
-        },
-        scope: '32.240-423',
-        degreeRiskLevel: 'MEDIUM',
-        contractManager: {
-            name: 'Manager 13',
-            email: 'manager13@empresa13.com',
-            phoneNumber: '32956565663',
-            company: 'Empresa 13',
-        },
-        matrixOfResponsability: [
-            {
-                name: 'Responsável 13',
-                function: 'coordenador',
-                email: 'responsavel13@empresa13.com',
-            },
-        ],
-        contractor: {
-            name: 'Empresa Nu',
-            company: 'Nu Corp',
-            companyId: 13,
+        resourcesOfContract: {
+            resources: [
+                {
+                    resource: {
+                        id: 40,
+                        type: 'EQUIPMENT',
+                        description: 'Perfuratriz hidráulica',
+                        category: 'MOBILE',
+                        makeEmployBadge: false,
+                        provideFood: false,
+                        items: [
+                            {
+                                item: {
+                                    id: 40,
+                                    function: 'Operador de Equipamento',
+                                    quantity: 2,
+                                    documents: [
+                                        {
+                                            document: {
+                                                id: 40,
+                                                description:
+                                                    'Treinamento NR-12',
+                                                name: 'Certificado de Segurança NR-12',
+                                                required: true,
+                                                file: '',
+                                                downloadLink: '',
+                                            },
+                                        },
+                                    ],
+                                    racs: [{ rac: {} }],
+                                    nrs: [{ nr: {} }],
+                                },
+                            },
+                        ],
+                    },
+                },
+            ],
         },
     },
 ];
