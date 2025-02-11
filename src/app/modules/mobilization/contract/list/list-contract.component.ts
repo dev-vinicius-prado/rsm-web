@@ -45,6 +45,7 @@ export class ListContractComponent {
     displayedColumns: string[] = [
         'codigo-contrato',
         'empresa-contratante',
+        'empresa-contratada',
         'vigencia',
         'acoes',
     ];

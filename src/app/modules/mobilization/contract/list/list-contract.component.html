@@ -56,7 +56,13 @@
       <!-- Contractor Column -->
       <ng-container matColumnDef="empresa-contratante">
         <th mat-header-cell *matHeaderCellDef   class="text-center">{{trs('empresa-contratante')}}</th>
-        <td mat-cell *matCellDef="let contract" class="text-center">{{ contract.contractManager.company }}</td>
+        <td mat-cell *matCellDef="let contract" class="text-center">{{ contract.contractor.company }}</td>
+      </ng-container>
+
+      <!-- Contracted Column -->
+      <ng-container matColumnDef="empresa-contratada">
+        <th mat-header-cell *matHeaderCellDef   class="text-center">{{trs('empresa-contratada')}}</th>
+        <td mat-cell *matCellDef="let contract" class="text-center">{{ contract.contracted.company }}</td>
       </ng-container>
 
       <!-- Vigence Column -->
