@@ -12,12 +12,11 @@ import { TranslocoModule } from '@ngneat/transloco';
 import { FormatDateVigenceDirective } from 'app/core/directives/format-date-vigence.directive';
 import { RoleAccessDirective } from 'app/core/directives/role-access.directive';
 
-import { ContractService } from 'app/core/services/contract/contract.service';
-import { debounceTime, Observable } from 'rxjs';
-import { ContractResource } from '../contract.types';
-import { MatMenu, MatMenuItem, MatMenuModule } from '@angular/material/menu';
+import { MatMenuModule } from '@angular/material/menu';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { Contract } from 'app/core/models/contract/contract.types';
+import { ContractService } from 'app/core/services/contract/contract.service';
+import { debounceTime, Observable } from 'rxjs';
 
 @Component({
     selector: 'app-list-contract',
@@ -55,7 +54,7 @@ export class ListContractComponent {
     @ViewChild(MatPaginator) paginator!: MatPaginator;
 
     isLoading: boolean = false;
-    contracts$: Observable<ContractResource[]>;
+    contracts$: Observable<Contract[]>;
 
     constructor(
         private _router: Router,
