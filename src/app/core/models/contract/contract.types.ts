@@ -43,7 +43,7 @@ interface MatrixOfResponsability {
 /**
  * Empresa Contratata
  */
-interface contracted {
+interface Contracted {
     id: number;
     cnpj: string;
     company: string;
@@ -94,6 +94,6 @@ export interface Contract {
     contractor: Contractor;
     contractManager: ContractManager;
     matrixOfResponsability: MatrixOfResponsability[];
-    contracted: contracted;
+    contracted: Contracted;
     resourcesOfContract: ResourcesOfContract;
 }
