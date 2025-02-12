@@ -23,4 +23,7 @@ export class ContractService {
             })
         );
     }
+    getContractById(id: number): Observable<Contract> {
+        return this._httpClient.get<Contract>(`${this._apiUrl}/${id}`);
+    }
 }
