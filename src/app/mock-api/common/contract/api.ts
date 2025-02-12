@@ -28,10 +28,19 @@ export class ContractMockApi {
                 return [200, cloneDeep(this._contracts)];
             }
             const filtredContracts = this._contracts.filter(
-                (contract) =>
-                    contract.contracted.id === loggedUser.companyId
+                (contract) => contract.contracted.id === loggedUser.companyId
             );
             return [200, cloneDeep(filtredContracts)];
         });
+
+        this._fuseMockApiService
+            .onGet('api/common/contracts/:id')
+            .reply(({ request }) => {
+                const id = Number(request.urlWithParams.split('/').pop());
+                const contract = this._contracts.find((c) => c.id === id);
+                return contract
+                    ? [200, contract]
+                    : [404, { message: 'Contrato não encontrado!' }];
+            });
     }
 }
